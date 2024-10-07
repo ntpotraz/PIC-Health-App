@@ -19,8 +19,8 @@ const eventData = [
   { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
 ]
 
-const EventListItem = ({ title, desc, date }) => {
-
+const EventListItem = props => {
+  const { title, desc, date } = props.item;
   return (
     <View style={styles.listItem}>
       <View style={styles.nameDesc}>
@@ -37,7 +37,8 @@ const EventList = () => {
       <FlatList
         style={styles.flatlist}
         data={eventData}
-        renderItem={({ item }) => <EventListItem title={item.title} desc={item.desc} date={item.date} />}
+        // renderItem={({ item }) => <EventListItem title={item.title} desc={item.desc} date={item.date} />}
+        renderItem={({ item }) => <EventListItem item={item}/>}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
   )
