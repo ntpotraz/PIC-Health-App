@@ -3,7 +3,7 @@ import { StyleSheet, View, SectionList, Text } from "react-native";
 
 const eventData = [
   {
-    title: "October",
+    month: "October",
     data: [
       { eventName: "Halloween Party", eventDesc: "Join our pirate and sailor themed party!", eventDate: "10/31" },
       { eventName: "Halloween Party", eventDesc: "Join our pirate and sailor themed party!", eventDate: "10/31" },
@@ -11,14 +11,14 @@ const eventData = [
     ],
   },
   {
-    title: "November",
+    month: "November",
     data: [
       { eventName: "Thanksgiving Party", eventDesc: "Come eat a lot of food", eventDate: "11/28" },
       { eventName: "Thanksgiving Party", eventDesc: "Come eat a lot of food", eventDate: "11/28" },
     ],
   },
   {
-    title: "December",
+    month: "December",
     data: [
       { eventName: "Christmas Party", eventDesc: "Come get drunk and hit on coworkers", eventDate: "12/25" },
     ],
@@ -43,10 +43,9 @@ const EventList = () => {
     <SectionList
       style={styles.flatlist}
       sections={eventData}
-      // renderItem={({ item }) => <EventListItem title={item.title} desc={item.desc} date={item.date} />}
       renderItem={({ item }) => <EventListItem item={item} />}
       renderSectionHeader={({ section }) => (
-        <Text style={styles.sectionHeader}>{section.title}</Text>
+        <Text style={styles.sectionHeader}>{section.month}</Text>
       )}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
     />
