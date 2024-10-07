@@ -17,6 +17,8 @@ You might have to install these dependencies if the web view doesn't open
 
 ```bash
 npx expo install react-native-web react-dom @expo/metro-runtime
+expo install @react-navigation/native @react-navigation/bottom-tabs
+
 ```
 
 ## Start App
