@@ -1,46 +1,55 @@
-import { StyleSheet, View, FlatList, Text } from "react-native";
+import { StyleSheet, View, SectionList, Text } from "react-native";
 
 
 const eventData = [
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
-  { title: "Halloween Party", desc: "Join our pirate and sailor themed party!", date: "8/31" },
+  {
+    title: "October",
+    data: [
+      { eventName: "Halloween Party", eventDesc: "Join our pirate and sailor themed party!", eventDate: "10/31" },
+      { eventName: "Halloween Party", eventDesc: "Join our pirate and sailor themed party!", eventDate: "10/31" },
+      { eventName: "Halloween Party", eventDesc: "Join our pirate and sailor themed party!", eventDate: "10/31" },
+    ],
+  },
+  {
+    title: "November",
+    data: [
+      { eventName: "Thanksgiving Party", eventDesc: "Come eat a lot of food", eventDate: "11/28" },
+      { eventName: "Thanksgiving Party", eventDesc: "Come eat a lot of food", eventDate: "11/28" },
+    ],
+  },
+  {
+    title: "December",
+    data: [
+      { eventName: "Christmas Party", eventDesc: "Come get drunk and hit on coworkers", eventDate: "12/25" },
+    ],
+  },
 ]
 
 const EventListItem = props => {
-  const { title, desc, date } = props.item;
+  const { eventName, eventDesc, eventDate } = props.item;
   return (
     <View style={styles.listItem}>
       <View style={styles.nameDesc}>
-        <Text style={styles.eventTitle}>{title}</Text>
-        <Text style={styles.eventDescription}>{desc}</Text>
+        <Text style={styles.eventTitle}>{eventName}</Text>
+        <Text style={styles.eventDescription}>{eventDesc}</Text>
       </View>
-      <Text style={styles.date}>{date}</Text>
+      <Text style={styles.date}>{eventDate}</Text>
     </View>
   )
 }
 
 const EventList = () => {
   return (
-      <FlatList
-        style={styles.flatlist}
-        data={eventData}
-        // renderItem={({ item }) => <EventListItem title={item.title} desc={item.desc} date={item.date} />}
-        renderItem={({ item }) => <EventListItem item={item}/>}
-        ItemSeparatorComponent={() => <View style={styles.separator} />}
-      />
+    <SectionList
+      style={styles.flatlist}
+      sections={eventData}
+      // renderItem={({ item }) => <EventListItem title={item.title} desc={item.desc} date={item.date} />}
+      renderItem={({ item }) => <EventListItem item={item} />}
+      renderSectionHeader={({ section }) => (
+        <Text style={styles.sectionHeader}>{section.title}</Text>
+      )}
+      ItemSeparatorComponent={() => <View style={styles.separator} />}
+    />
   )
 }
 
@@ -74,5 +83,14 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 24,
     alignSelf: "center",
+  },
+  sectionHeader: {
+    paddingTop: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 5,
+    fontSize: 26,
+    fontWeight: 'bold',
+    backgroundColor: "#eee"
   },
 });
