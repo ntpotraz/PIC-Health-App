@@ -1,7 +1,13 @@
 import "@expo/metro-runtime";
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet } from 'react-native';
 import EventList from './components/EventList';
+import HomeScreen from './components/HomeScreen';
+import MentalHealth from './components/MentalHealth';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
