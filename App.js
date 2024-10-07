@@ -11,14 +11,32 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      {
-      // <Text>Open up App.js to start working on your app!</Text>
-      // <Test />
-      }
-      <EventList />
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = 'list';
+            } else if (route.name === 'Calendar') {
+              iconName = 'calendar';
+            } else if (route.name === 'Health') {
+              iconName = 'heart';
+            }
+
+            return <Icon name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'black',
+          tabBarInactiveTintColor: 'gray',
+          headerShown: false,
+        })}
+      >
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Calendar" component={EventList} />
+        <Tab.Screen name="Health" component={MentalHealth} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 

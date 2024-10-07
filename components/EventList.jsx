@@ -1,4 +1,4 @@
-import { StyleSheet, View, SectionList, Text } from "react-native";
+import { StyleSheet, SafeAreaView, View, SectionList, Text } from "react-native";
 
 
 const eventData = [
@@ -40,22 +40,28 @@ const EventListItem = props => {
 
 const EventList = () => {
   return (
-    <SectionList
-      style={styles.flatlist}
-      sections={eventData}
-      renderItem={({ item }) => <EventListItem item={item} />}
-      renderSectionHeader={({ section }) => (
-        <Text style={styles.sectionHeader}>{section.month}</Text>
-      )}
-      ItemSeparatorComponent={() => <View style={styles.separator} />}
-    />
+    <SafeAreaView style={styles.container}>
+      <SectionList
+        style={styles.sectionlist}
+        sections={eventData}
+        renderItem={({ item }) => <EventListItem item={item} />}
+        renderSectionHeader={({ section }) => (
+          <Text style={styles.sectionHeader}>{section.month}</Text>
+        )}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+      />
+    </SafeAreaView>
   )
 }
 
 export default EventList;
 
 const styles = StyleSheet.create({
-  flatlist: {
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  sectionlist: {
     flex: 1,
   },
   separator: {
