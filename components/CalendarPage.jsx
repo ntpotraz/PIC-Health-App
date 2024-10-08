@@ -1,4 +1,5 @@
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context'
 import ListView from "./ListView";
 import CalendarView from "./CalendarView";
 import { useState } from "react";
@@ -15,7 +16,7 @@ const CalendarBar = ( {calendarMode, setCalendarMode} ) => {
   }
 
   return (
-    <SafeAreaView style={barStyles.container}>
+    <View style={barStyles.container}>
       <TouchableOpacity onPress={todayBtn}>
         <View style={barStyles.buttons}>
           <Text style={barStyles.buttonText}>Today</Text>
@@ -27,7 +28,7 @@ const CalendarBar = ( {calendarMode, setCalendarMode} ) => {
           <Text style={barStyles.buttonText}>{calendarMode ? "List View" : "Calendar View"}</Text>
         </View>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   )
 }
 
@@ -59,7 +60,7 @@ const barStyles = StyleSheet.create({
 
 const CalendarPage = () => {
 
-  const [calendarMode, setCalendarMode] = useState(false);
+  const [calendarMode, setCalendarMode] = useState(true);
   return (
     <SafeAreaView style={styles.container}>
       <CalendarBar calendarMode={calendarMode} setCalendarMode={setCalendarMode} />

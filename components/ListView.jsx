@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, View, SectionList, Text } from "react-native";
+import { StyleSheet, View, SectionList, Text } from "react-native";
 
 
 const eventData = [
@@ -40,7 +40,7 @@ const EventListItem = props => {
 
 const ListView = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <SectionList
         style={styles.sectionlist}
         sections={eventData}
@@ -50,7 +50,7 @@ const ListView = () => {
         )}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
-    </SafeAreaView>
+    </View>
   )
 }
 
