@@ -1,5 +1,6 @@
-import { StyleSheet, View, SectionList, Text } from "react-native";
-
+import React, { useState } from 'react';
+import { StyleSheet, View, SectionList, Text, TouchableOpacity } from "react-native";
+import Popup from './PopUp'; // Import the Popup component
 
 const eventData = [
   {
@@ -25,34 +26,72 @@ const eventData = [
   },
 ]
 
-const EventListItem = props => {
-  const { eventName, eventDesc, eventDate } = props.item;
+const EventListItem = ({ item, onPress }) => {
   return (
-    <View style={styles.listItem}>
-      <View style={styles.nameDesc}>
-        <Text style={styles.eventTitle}>{eventName}</Text>
-        <Text style={styles.eventDescription}>{eventDesc}</Text>
+    <TouchableOpacity onPress={() => onPress(item)}>
+      <View style={styles.listItem}>
+        <View style={styles.nameDesc}>
+          <Text style={styles.eventTitle}>{item.eventName}</Text>
+          <Text style={styles.eventDescription}>{item.eventDesc}</Text>
+        </View>
+        <Text style={styles.date}>{item.eventDate}</Text>
       </View>
-      <Text style={styles.date}>{eventDate}</Text>
-    </View>
-  )
-}
+    </TouchableOpacity>
+  );
+};
 
 const ListView = () => {
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
+  const handleEventPress = (event) => {
+    setSelectedEvent(event);
+    setPopupVisible(true);
+  };
+
+  const handleClosePopup = () => {
+    setPopupVisible(false);
+    setSelectedEvent(null);
+  };
+
+  const handleGoing = () => {
+    alert("Marked as Going");
+    handleClosePopup();
+  };
+
+  const handleNotGoing = () => {
+    alert("Marked as Not Going");
+    handleClosePopup();
+  };
+
+  const handleMaybe = () => {
+    alert("Marked as Maybe");
+    handleClosePopup();
+  };
+
   return (
     <View style={styles.container}>
       <SectionList
         style={styles.sectionlist}
         sections={eventData}
-        renderItem={({ item }) => <EventListItem item={item} />}
+        renderItem={({ item }) => <EventListItem item={item} onPress={handleEventPress} />}
         renderSectionHeader={({ section }) => (
           <Text style={styles.sectionHeader}>{section.month}</Text>
         )}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
       />
+
+      <Popup
+        visible={isPopupVisible}
+        onClose={handleClosePopup}
+        event={selectedEvent}
+        onGoing={handleGoing}
+        onNotGoing={handleNotGoing}
+        onMaybe={handleMaybe}
+      />
     </View>
-  )
-}
+  );
+};
 
 export default ListView;
 
@@ -86,7 +125,7 @@ const styles = StyleSheet.create({
   },
   date: {
     flex: 1,
-    fontSize: 24,
+    fontSize: 22,
     alignSelf: "center",
   },
   sectionHeader: {
