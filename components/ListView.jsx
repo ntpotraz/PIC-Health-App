@@ -38,7 +38,7 @@ const EventListItem = props => {
   )
 }
 
-const EventList = () => {
+const ListView = () => {
   return (
     <SafeAreaView style={styles.container}>
       <SectionList
@@ -54,11 +54,11 @@ const EventList = () => {
   )
 }
 
-export default EventList;
+export default ListView;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 10,
     backgroundColor: '#fff',
   },
   sectionlist: {
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 5,
+    marginBottom: 10,
     fontSize: 26,
     fontWeight: 'bold',
     backgroundColor: "#eee"
