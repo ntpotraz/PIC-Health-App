@@ -23,8 +23,8 @@ const CalendarBar = ( {calendarMode, setCalendarMode} ) => {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={viewBtn}>
-        <View style={barStyles.buttons}>
-          <Text style={barStyles.buttonText}>Calendar View</Text>
+        <View style={[barStyles.buttons, barStyles.calBtn]}>
+          <Text style={barStyles.buttonText}>{calendarMode ? "List View" : "Calendar View"}</Text>
         </View>
       </TouchableOpacity>
     </SafeAreaView>
@@ -47,7 +47,14 @@ const barStyles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
+  },
+  calBtn: {
+    width: 115,
+  },
+  buttonText: {
+    alignSelf: "center",
   }
+
 })
 
 const CalendarPage = () => {
