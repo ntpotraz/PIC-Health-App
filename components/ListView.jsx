@@ -28,15 +28,15 @@ const eventData = [
 
 const EventListItem = ({ item, onPress }) => {
   return (
-    <TouchableOpacity onPress={() => onPress(item)}>
-      <View style={styles.listItem}>
+    <View style={styles.itemBorder}>
+      <TouchableOpacity style={styles.listItem} onPress={() => onPress(item)}>
         <View style={styles.nameDesc}>
           <Text style={styles.eventTitle}>{item.eventName}</Text>
           <Text style={styles.eventDescription}>{item.eventDesc}</Text>
         </View>
         <Text style={styles.date}>{item.eventDate}</Text>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -109,11 +109,13 @@ const styles = StyleSheet.create({
   listItem: {
     width: "95%",
     minHeight: 100,
-    paddingLeft: 20,
+    flexDirection: 'row',
+  },
+  itemBorder: {
     borderWidth: 2,
     borderRadius: 10,
-    flexDirection: 'row',
     alignSelf: "center",
+    paddingLeft: 20,
   },
   nameDesc: {
     flex: 5,
