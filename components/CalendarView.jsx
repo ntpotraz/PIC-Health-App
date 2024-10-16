@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
-
+import { Calendar, CalendarList, Agenda} from 'react-native-calendars';
+/*
 const Calendar = () => {
   return (
     <View style={styles.calendar}>
@@ -8,6 +9,7 @@ const Calendar = () => {
     </View>
   )
 }
+*/
 
 const UpcomingEvent = () => {
   return (
@@ -26,7 +28,9 @@ const UpcomingEvent = () => {
 const CalendarView = () => {
   return (
     <View style={styles.container}>
+
       <Calendar />
+
       <View style={styles.eventsView}>
         <Text style={styles.upcoming}>Upcoming Events</Text>
         <UpcomingEvent />
