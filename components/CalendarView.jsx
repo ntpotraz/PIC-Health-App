@@ -43,7 +43,6 @@ const CalendarView = () => {
           '2024-10-31': {marked: true, selected: true, selectedColor: 'orange'},
           '2024-10-19': {marked: true, dotColor: 'red'}
         }}
-        
       />
 
       <View style={styles.eventsView}>
@@ -75,8 +74,7 @@ const styles = StyleSheet.create({
     borderColor: "white",
   },
   RNCalendar: {
-    marginHorizontal: 10,
-    marginBottom: 10,
+    marginBottom: 20,
   },
   eventsView: {
     flex: 3,
