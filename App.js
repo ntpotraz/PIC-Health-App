@@ -27,9 +27,12 @@ export default function App() {
 
             return <Icon name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'black',
+          tabBarActiveTintColor: 'white',
           tabBarInactiveTintColor: 'gray',
           headerShown: false,
+          tabBarStyle: {
+            backgroundColor: '#2d4887'
+          }
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
