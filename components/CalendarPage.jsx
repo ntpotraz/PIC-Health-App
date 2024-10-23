@@ -35,7 +35,7 @@ const CalendarBar = ({ calendarMode, setCalendarMode }) => {
 
 const barStyles = StyleSheet.create({
   container: {
-    backgroundColor: "lightgray",
+    backgroundColor: "#2d4887",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -48,12 +48,14 @@ const barStyles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
+    borderColor: "#808080"
   },
   calBtn: {
     width: 115,
   },
   buttonText: {
     alignSelf: "center",
+    color: "#FFFFFF",
   }
 
 })
