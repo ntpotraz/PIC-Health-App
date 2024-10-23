@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import ListView from "./ListView";
 import CalendarView from "./CalendarView";
 import { useState } from "react";
+import { BlurView } from "expo-blur";
 
 
 const CalendarBar = ({ calendarMode, setCalendarMode }) => {
@@ -67,10 +68,12 @@ const CalendarPage = () => {
         resizeMode="cover"
         style={styles.image}
       >
-        <View style={styles.darken}>
-          <CalendarBar calendarMode={calendarMode} setCalendarMode={setCalendarMode} />
-          {calendarMode ? <CalendarView /> : <ListView />}
-        </View>
+        <BlurView intensity={20} style={styles.blur}>
+          <View style={styles.darken}>
+            <CalendarBar calendarMode={calendarMode} setCalendarMode={setCalendarMode} />
+            {calendarMode ? <CalendarView /> : <ListView />}
+          </View>
+        </BlurView>
       </ImageBackground>
     </SafeAreaView>
   )
@@ -86,9 +89,13 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
+    tintColor: "#000000",
   },
   darken: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.4)",
-  }
+  },
+  blur: {
+    flex: 1,
+  },
 })
