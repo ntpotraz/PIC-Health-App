@@ -1,68 +1,77 @@
 import React from 'react';
-import { ImageBackground, View, Text, StyleSheet, ScrollView } from 'react-native';
+import { ImageBackground, View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from './Header';
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Header />
-      <ImageBackground
-        source={require("../assets/background.png")}
-        style={styles.image}
-        blurRadius={4}
-      >
-        <ScrollView>
-          <View style={textBox.container}>
-            <Text style={textBox.title}>ABOUT</Text>
-            <Text style={textBox.text}>
-              Established in 2013, Pacific Islander Community Health (PIC Health)
-              serves the Southern California region, by advancing health equity and
-              social justice for Pacific Islander communities through culturally centered
-              health initiatives and community-centered research. PIC Health is dedicated
-              to promoting wellness and resilience by addressing the unique health needs
-              and disparities our Pasifika communities endure and navigate every day.
-            </Text>
-          </View>
+    <View style={{flex: 1}}>
+      <SafeAreaView style={{flex: 1,}}>
+        
+        
+        <ImageBackground
+          source={require("../assets/background.png")}
+          style={styles.image}
+          blurRadius={4}
+        >
+          <ScrollView>
+          
+            <View style={{alignItems: 'center', marginBottom: 20}}>
+              <Image
+                source={require('../assets/pic-logo.png')}
+                style={{height: 200, width: 200, alignSelf: 'center'}}
+              />
+              <Text 
+                style={{fontSize: 30, fontWeight: 'bold', textAlign: 'center', color: 'white'}}>
+                  Welcome to PIC Health App PWA Application Mobile Interface Headquarters Incorporated, Inc.
+              </Text>
+            </View>
 
-          <View style={textBox.container}>
-            <Text style={textBox.title}>LAND ACKNOWLEDGEMENT</Text>
-            <Text style={textBox.text}>
-              We acknowledge that the land on which we gather is the traditional territory
-              of the Luiseño/Payómkawichum people. PIC Health and its surrounding areas are
-              still home to the six federally recognized bands of the La Jolla, Pala, Pauma,
-              Pechanga, Rincon, Soboba Luiseño/Payómkawichum people.
-            </Text>
-          </View>
+            <View style={{backgroundColor: 'rgba(255, 255, 255, .95)', borderRadius: 10 }}>
+              <View style={textBox.container}>
+                <Text style={textBox.title}>About Us</Text>
+                <Text style={textBox.text}>
+                  Established in 2013, Pacific Islander Community Health (PIC Health)
+                  serves the Southern California region, by advancing health equity and
+                  social justice for Pacific Islander communities through culturally centered
+                  health initiatives and community-centered research. PIC Health is dedicated
+                  to promoting wellness and resilience by addressing the unique health needs
+                  and disparities our Pasifika communities endure and navigate every day.
+                </Text>
+              </View>
 
-          <View style={textBox.container}>
-            <Text style={textBox.title}>MISSION STATEMENT</Text>
-            <Text style={textBox.text}>
-              At PIC Health, our mission is to empower and uplift the Pacific Islander community
-              by promoting holistic health and wellness initiatives rooted in cultural sensitivity
-              and community engagement. Through collaborative research, advocacy, and education,
-              we strive to address indigenous health disparities, foster equitable access to
-              healthcare, and cultivate a thriving environment where every individual can achieve
-              their highest level of well-being.
-            </Text>
-          </View>
+              <View style={seperator.border} />
+    
+              <View style={textBox.container}>
+                <Text style={textBox.title}>Our Mission</Text>
+                <Text style={textBox.text}>
+                  At PIC Health, our mission is to empower and uplift the Pacific Islander community
+                  by promoting holistic health and wellness initiatives rooted in cultural sensitivity
+                  and community engagement. Through collaborative research, advocacy, and education,
+                  we strive to address indigenous health disparities, foster equitable access to
+                  healthcare, and cultivate a thriving environment where every individual can achieve
+                  their highest level of well-being.
+                </Text>
+              </View>
 
-          <View style={textBox.container}>
-            <Text style={textBox.title}>MISSION STATEMENT</Text>
-            <Text style={textBox.text}>
-              At PIC Health, our mission is to empower and uplift the Pacific Islander community
-              by promoting holistic health and wellness initiatives rooted in cultural sensitivity
-              and community engagement. Through collaborative research, advocacy, and education,
-              we strive to address indigenous health disparities, foster equitable access to
-              healthcare, and cultivate a thriving environment where every individual can achieve
-              their highest level of well-being.
-            </Text>
-          </View>
-
-        </ScrollView>
-      </ImageBackground>
-
-    </SafeAreaView>
+              <View style={seperator.border} />
+  
+              <View style={textBox.container}>
+                <Text style={textBox.title}>Land Acknowledgement</Text>
+                <Text style={textBox.text}>
+                  We acknowledge that the land on which we gather is the traditional territory
+                  of the Luiseño/Payómkawichum people. PIC Health and its surrounding areas are
+                  still home to the six federally recognized bands of the La Jolla, Pala, Pauma,
+                  Pechanga, Rincon, Soboba Luiseño/Payómkawichum people.
+                </Text>
+              </View>
+            </View>
+  
+          </ScrollView>
+        </ImageBackground>
+  
+      </SafeAreaView>
+    </View>
   );
 }
 
@@ -80,32 +89,50 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'thin',
     fontFamily: 'sans-serif',
+    color: 'white'
   },
   image: {
     flex: 1,
     height: "100%",
     width: "100%",
+  },
+  logo: {
+    flex: 1,
+    height: 250,
+    width: 250,
+    alignSelf: 'center',
   }
 });
 
 // styles for the content on the page
 const textBox = StyleSheet.create({
   container: {
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    padding: 15,
-    margin: 5,
-    borderRadius: 5,
+    //backgroundColor: 'rgba(0,0,0,.8)',
+    padding: 20,
+    margin: 20,
+    borderRadius: 10,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     fontFamily: 'sans-serif',
-    color: "white",
+    color: "black",
+    marginBottom: 10,
   },
   text: {
     fontSize: 18,
     fontWeight: 'thin',
     fontFamily: 'sans-serif',
-    color: "hsl(200, 50%, 50%)"
+    color: "hsl(200, 50%, 50%)",
   },
+});
+
+const seperator = StyleSheet.create({
+  border: {
+    flex: 1,
+    alignSelf: 'center',
+    borderWidth: .5,
+    borderColor: 'black',
+    width: 75,
+  }
 });

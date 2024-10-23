@@ -28,7 +28,7 @@ export default function App() {
             return <Icon name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: 'white',
-          tabBarInactiveTintColor: 'gray',
+          tabBarInactiveTintColor: 'darkgray',
           headerShown: false,
           tabBarStyle: {
             backgroundColor: '#2d4887'
