@@ -9,6 +9,7 @@ export default function HomeScreen() {
       <Header />
       <ImageBackground
         source={require("../assets/background.png")}
+        style={styles.image}
         blurRadius={4}
       >
         <ScrollView>
@@ -80,6 +81,11 @@ const styles = StyleSheet.create({
     fontWeight: 'thin',
     fontFamily: 'sans-serif',
   },
+  image: {
+    flex: 1,
+    height: "100%",
+    width: "100%",
+  }
 });
 
 // styles for the content on the page
