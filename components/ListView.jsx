@@ -97,8 +97,8 @@ export default ListView;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 10,
-    backgroundColor: '#fff',
+    flex: 1,
+    //backgroundColor: "rgba(0, 0, 0, 0.4)",
   },
   sectionlist: {
     flex: 1,
@@ -112,21 +112,28 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderWidth: 2,
     borderRadius: 10,
+    borderColor: "white",
     flexDirection: 'row',
     alignSelf: "center",
   },
   nameDesc: {
     flex: 5,
     gap: 10,
+    color: "white",
   },
   eventTitle: {
     fontSize: 28,
     fontWeight: "bold",
+    color:"white",
+  },
+  eventDescription: {
+    color: "white",
   },
   date: {
     flex: 1,
     fontSize: 22,
     alignSelf: "center",
+    color: "white",
   },
   sectionHeader: {
     paddingTop: 20,
@@ -136,6 +143,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 26,
     fontWeight: 'bold',
-    backgroundColor: "#eee"
+    color: "white",
   },
 });

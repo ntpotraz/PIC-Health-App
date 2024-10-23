@@ -44,6 +44,7 @@ export default CalendarView;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //backgroundColor: "rgba(0,0,0,0.4)",
   },
   calendar: {
     flex: 3,
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     width: 350,
     borderRadius: 40,
     borderWidth: 2,
+    borderColor: "white",
   },
   eventsView: {
     flex: 3,
@@ -60,6 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: "center",
     fontSize: 32,
+    color: "white",
   },
   month: {
     fontWeight: "bold",
@@ -68,10 +71,11 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 10,
     paddingTop: 10,
     paddingBottom: 10,
+    color: "white",
   },
   monthBorder: {
     height: 3,
-    backgroundColor: "black",
+    backgroundColor: "white",
   },
   upcomingEvent: {
     flex: 1,
@@ -79,23 +83,24 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingRight: 20,
     paddingLeft: 10,
-
   },
   eventTitle: {
     fontSize: 24,
     fontWeight: "bold",
+    color: "white",
   },
   eventDesc: {
     margin: "auto",
     paddingBottom: 10,
-    color: "darkgray",
+    color: "#DDD",
   },
   eventLike: {
     margin: "auto",
+    color: "white"
   },
   eventSplitter: {
     height: 2,
-    backgroundColor: "black",
+    backgroundColor: "white",
     width: 50,
     alignSelf: "center",
     margin: 10,

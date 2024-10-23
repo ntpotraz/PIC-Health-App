@@ -1,11 +1,11 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { ImageBackground, View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context'
 import ListView from "./ListView";
 import CalendarView from "./CalendarView";
 import { useState } from "react";
 
 
-const CalendarBar = ( {calendarMode, setCalendarMode} ) => {
+const CalendarBar = ({ calendarMode, setCalendarMode }) => {
 
   const todayBtn = () => {
     alert("Today Pressed");
@@ -35,7 +35,6 @@ const CalendarBar = ( {calendarMode, setCalendarMode} ) => {
 const barStyles = StyleSheet.create({
   container: {
     backgroundColor: "lightgray",
-    marginBottom: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -62,9 +61,17 @@ const CalendarPage = () => {
 
   const [calendarMode, setCalendarMode] = useState(true);
   return (
-    <SafeAreaView style={styles.container}>
-      <CalendarBar calendarMode={calendarMode} setCalendarMode={setCalendarMode} />
-      {calendarMode ? <CalendarView /> : <ListView />}
+    <SafeAreaView edges={["top"]} style={styles.container}>
+      <ImageBackground
+        source={require("../assets/background.png")}
+        resizeMode="cover"
+        style={styles.image}
+      >
+        <View style={styles.darken}>
+          <CalendarBar calendarMode={calendarMode} setCalendarMode={setCalendarMode} />
+          {calendarMode ? <CalendarView /> : <ListView />}
+        </View>
+      </ImageBackground>
     </SafeAreaView>
   )
 }
@@ -75,4 +82,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  image: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
+  darken: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.4)",
+  }
 })
