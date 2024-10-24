@@ -1,22 +1,21 @@
 import React from 'react';
 import { ImageBackground, View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Header from './Header';
+import Header from '../components/Header';
 
 export default function HomeScreen() {
   return (
     <View style={{flex: 1}}>
       <SafeAreaView style={{flex: 1,}}>
-        
-        
         <ImageBackground
           source={require("../assets/background.png")}
           style={styles.image}
           blurRadius={4}
         >
           <ScrollView>
-          
-            <View style={{alignItems: 'center', marginBottom: 20}}>
+
+            {/* Logo and homepage title area */}
+            <View style={{alignItems: 'center', margin: 20}}>
               <Image
                 source={require('../assets/pic-logo.png')}
                 style={{height: 200, width: 200, alignSelf: 'center'}}
@@ -27,7 +26,10 @@ export default function HomeScreen() {
               </Text>
             </View>
 
-            <View style={{backgroundColor: 'rgba(255, 255, 255, .95)', borderRadius: 10 }}>
+            {/* Information section */}
+            <View style={{backgroundColor: 'rgba(255, 255, 255, .9)', borderRadius: 10 }}>
+
+              {/* Textbox */}
               <View style={textBox.container}>
                 <Text style={textBox.title}>About Us</Text>
                 <Text style={textBox.text}>
@@ -65,11 +67,11 @@ export default function HomeScreen() {
                   Pechanga, Rincon, Soboba Luiseño/Payómkawichum people.
                 </Text>
               </View>
+
+              {/* TO DO: Insert Social media links/icons */}
             </View>
-  
           </ScrollView>
         </ImageBackground>
-  
       </SafeAreaView>
     </View>
   );

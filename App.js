@@ -2,10 +2,10 @@ import "@expo/metro-runtime";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet } from 'react-native';
-import CalendarPage from "./components/CalendarPage";
-import HomeScreen from './components/HomeScreen';
-import MentalHealth from './components/MentalHealth';
+import CalendarScreen from "./screens/CalendarScreen";
+import HomeScreen from './screens/HomeScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import HealthScreen from "./screens/HealthScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -36,8 +36,8 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Calendar" component={CalendarPage} />
-        <Tab.Screen name="Health" component={MentalHealth} />
+        <Tab.Screen name="Calendar" component={CalendarScreen} />
+        <Tab.Screen name="Health" component={HealthScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

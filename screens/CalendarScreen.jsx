@@ -1,7 +1,7 @@
 import { ImageBackground, View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context'
-import ListView from "./ListView";
-import CalendarView from "./CalendarView";
+import ListView from "../components/ListView";
+import CalendarView from "../components/CalendarView";
 import { useState } from "react";
 
 

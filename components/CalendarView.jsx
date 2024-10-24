@@ -1,16 +1,6 @@
 import { View, Text, StyleSheet, Alert } from "react-native";
 import { Calendar, CalendarList, Agenda} from 'react-native-calendars';
 
-/*
-const Calendar = () => {
-  return (
-    <View style={styles.calendar}>
-      <Text style={styles.month}>October</Text>
-      <View style={styles.monthBorder}></View>
-    </View>
-  )
-}
-*/
 
 const UpcomingEvent = () => {
   return (
@@ -63,15 +53,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     //backgroundColor: "rgba(0,0,0,0.4)",
-  },
-  calendar: {
-    flex: 3,
-    marginVertical: 20,
-    marginHorizontal: "auto",
-    width: 350,
-    borderRadius: 40,
-    borderWidth: 2,
-    borderColor: "white",
   },
   RNCalendar: {
     marginBottom: 20,

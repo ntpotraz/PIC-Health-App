@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, SectionList, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
+import { SectionList, TouchableOpacity } from 'react-native';
 import Popup from './PopUp'; // Import the Popup component
 
 const eventData = [

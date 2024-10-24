@@ -8,7 +8,7 @@ const Header = () => {
         style={{ width: 60, height: 60 }}
         source={require('../assets/pic-logo.png')}
       />
-      <Text style={header.title}>PIC Health</Text>
+      <Text style={header.title}>Health Resources</Text>
     </View>
   )
 }
@@ -22,7 +22,7 @@ const header = StyleSheet.create({
       alignItems: 'center',
       width: '100%',
       height: 65,
-      backgroundColor: 'rgba(45, 72, 135, 1)',
+      backgroundColor: 'rgba(45, 72, 135, 0)',
       
       shadowColor: 'black',
       borderBottomEndRadius: 1,
