@@ -1,4 +1,17 @@
 import { View, Text, StyleSheet, Alert } from "react-native";
+import { Calendar, CalendarList, Agenda} from 'react-native-calendars';
+
+/*
+const Calendar = () => {
+  return (
+    <View style={styles.calendar}>
+      <Text style={styles.month}>October</Text>
+      <View style={styles.monthBorder}></View>
+    </View>
+  )
+}
+*/
+import { View, Text, StyleSheet, Alert } from "react-native";
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 
 
