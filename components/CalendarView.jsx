@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Alert } from "react-native";
-import { Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 
 
 const UpcomingEvent = () => {
@@ -21,7 +21,8 @@ const CalendarView = () => {
     <View style={styles.container}>
 
       {/* React Native Calendar Component */}
-      <Calendar style={styles.RNCalendar}
+      <Calendar
+        style={styles.RNCalendar}
         // Callback called when user presses a day
         onDayPress={day => {
           console.log('selected day:', day);
@@ -30,8 +31,14 @@ const CalendarView = () => {
         * (there's a way to not harcode this but my brain is too smooth)
         */
         markedDates={{
-          '2024-10-31': {marked: true, selected: true, selectedColor: 'orange'},
-          '2024-10-19': {marked: true, dotColor: 'red'}
+          '2024-10-31': { marked: true, selected: true, selectedColor: 'orange' },
+          '2024-10-19': { marked: true, dotColor: 'red' }
+        }}
+        theme={{
+          calendarBackground: "rgba(255, 255, 255, 0)",
+          dayTextColor: "black",
+          monthTextColor: "black",
+          textSectionTitleColor: "hsl(200, 50%, 40%)",
         }}
       />
 
@@ -55,7 +62,11 @@ const styles = StyleSheet.create({
     //backgroundColor: "rgba(0,0,0,0.4)",
   },
   RNCalendar: {
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
     marginBottom: 20,
+    paddingBottom: 10,
+    borderBottomStartRadius: 20,
+    borderBottomEndRadius: 20,
   },
   eventsView: {
     flex: 3,
