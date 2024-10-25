@@ -22,15 +22,18 @@ const CalendarBar = ({ calendarMode, setCalendarMode }) => {
           <Text style={barStyles.buttonText}>Today</Text>
         </View>
       </TouchableOpacity>
-
+      <Text style={{fontSize: 24, fontWeight: "bold"}}>PIC Health App</Text>
       <TouchableOpacity onPress={viewBtn}>
         <View style={[barStyles.buttons, barStyles.calBtn]}>
-          <Text style={barStyles.buttonText}>{calendarMode ? "List View" : "Calendar View"}</Text>
+          <Text style={barStyles.buttonText}>View</Text>
         </View>
       </TouchableOpacity>
     </View>
   )
 }
+
+// This is for line 28 to switch the View text
+// <Text style={barStyles.buttonText}>{calendarMode ? "List View" : "Calendar View"}</Text>
 
 const barStyles = StyleSheet.create({
   container: {
@@ -41,6 +44,9 @@ const barStyles = StyleSheet.create({
     height: 65,
     shadowRadius: 3,
     shadowOffset: 4,
+    marginTop: 30,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   buttons: {
     margin: 10,
@@ -50,7 +56,7 @@ const barStyles = StyleSheet.create({
     borderColor: "#808080"
   },
   calBtn: {
-    width: 115,
+    width: 75,
   },
   buttonText: {
     alignSelf: "center",

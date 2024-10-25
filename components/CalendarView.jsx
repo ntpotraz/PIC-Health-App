@@ -54,7 +54,18 @@ const CalendarView = () => {
           textSectionTitleColor: "hsl(200, 50%, 40%)",
         }}
       />
-
+      <View style={styles.middleBtns}>
+        <TouchableOpacity>
+          <View style={styles.wellnessSOS}>
+            <Text style={{fontSize: 20, fontWeight: "bold"}}>Wellness Check</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.wellnessSOS}>
+            <Text style={{fontSize:20, fontWeight: "bold"}}>SOS</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
       <View style={styles.eventsView}>
         <Text style={styles.upcoming}>Upcoming Events</Text>
         <UpcomingEvent />
@@ -131,4 +142,17 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     margin: 10,
   },
+  middleBtns: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  wellnessSOS: {
+    width: 200,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
+    marginBottom: 20,
+  }
 })

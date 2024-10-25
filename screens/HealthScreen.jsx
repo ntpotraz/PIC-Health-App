@@ -15,7 +15,7 @@ export default function HealthScreen() {
       >
       <Header />
       <ScrollView>
-        <View style={{ flex: 1, backgroundColor: 'rgba(255, 255, 255, .9)', margin: 5, borderRadius: 10}}>
+        <View style={{ flex: 1,  margin: 5, borderRadius: 10}}>
 
           <View style={textBox.container}>
             <Text style={textBox.title}>Mental Health</Text>
@@ -111,7 +111,11 @@ const styles = StyleSheet.create({
 const textBox = StyleSheet.create({
   container: {
     //backgroundColor: 'white',
-    margin: 20,
+    backgroundColor: 'rgba(255, 255, 255, .9)',
+    marginBottom: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 10,
   },
   title: {
     fontSize: 20,
