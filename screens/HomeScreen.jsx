@@ -129,13 +129,3 @@ const textBox = StyleSheet.create({
     color: "hsl(200, 50%, 50%)",
   },
 });
-
-const seperator = StyleSheet.create({
-  border: {
-    flex: 1,
-    alignSelf: 'center',
-    borderWidth: .5,
-    borderColor: 'black',
-    width: 75,
-  }
-});
