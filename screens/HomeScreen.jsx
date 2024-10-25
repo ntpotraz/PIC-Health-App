@@ -1,6 +1,7 @@
 import React from 'react';
 import { ImageBackground, View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Seperator from "../components/Seperator";
 import Header from '../components/Header';
 
 export default function HomeScreen() {
@@ -42,7 +43,7 @@ export default function HomeScreen() {
                 </Text>
               </View>
 
-              <View style={seperator.border} />
+              <Seperator />
     
               <View style={textBox.container}>
                 <Text style={textBox.title}>Our Mission</Text>
@@ -56,7 +57,7 @@ export default function HomeScreen() {
                 </Text>
               </View>
 
-              <View style={seperator.border} />
+              <Seperator />
   
               <View style={textBox.container}>
                 <Text style={textBox.title}>Land Acknowledgement</Text>
