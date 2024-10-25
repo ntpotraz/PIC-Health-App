@@ -22,7 +22,7 @@ const CalendarBar = ({ calendarMode, setCalendarMode }) => {
           <Text style={barStyles.buttonText}>Today</Text>
         </View>
       </TouchableOpacity>
-      <Text style={{fontSize: 24, fontWeight: "bold"}}>PIC Health App</Text>
+      <Text style={{fontSize: 24, fontWeight: "bold", color: "white"}}>PIC Health App</Text>
       <TouchableOpacity onPress={viewBtn}>
         <View style={[barStyles.buttons, barStyles.calBtn]}>
           <Text style={barStyles.buttonText}>View</Text>
