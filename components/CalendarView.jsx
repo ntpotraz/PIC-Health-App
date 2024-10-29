@@ -58,8 +58,11 @@ export default CalendarView;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
     height: Dimensions.get('window').height / 2, // Half of the screen height
-    backgroundColor: 'white', // Optional background color for clarity
+  },
+  Agenga: {
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
   },
   eventItem: {
     padding: 10,
