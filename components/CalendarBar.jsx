@@ -3,8 +3,8 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 const CalendarBar = ({ calendarMode, setCalendarMode }) => {
   // "Today" button functionality can be customized as needed
-  const todayBtn = () => {
-    alert("Today Pressed");
+  const newEvent = () => {
+    alert("Google Submission Sheet");
   };
 
   // Toggles between Calendar and List view
@@ -14,9 +14,9 @@ const CalendarBar = ({ calendarMode, setCalendarMode }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={todayBtn}>
+      <TouchableOpacity onPress={newEvent}>
         <View style={styles.buttons}>
-          <Text style={styles.buttonText}>Today</Text>
+          <Text style={styles.buttonText}>Submit Event</Text>
         </View>
       </TouchableOpacity>
       <Text style={{ fontSize: 24, fontWeight: "bold", color: "white" }}>PIC Health App</Text>
