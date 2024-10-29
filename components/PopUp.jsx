@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
-  if (!event) return null; // Ensure an event is present
+  if (!event) return null;
 
   return (
     <Modal
@@ -13,9 +13,11 @@ const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
     >
       <View style={styles.overlay}>
         <View style={styles.container}>
-          <Text style={styles.title}>{event.eventName}</Text>
-          <Text style={styles.description}>{event.eventDesc}</Text>
-          <Text style={styles.date}>Date: {event.eventDate}</Text>
+          <Text style={styles.title}>{event.summary}</Text>
+          <Text style={styles.description}>{event.description || "No description available"}</Text>
+          <Text style={styles.date}>
+            Date: {new Date(event.start.dateTime || event.start.date).toLocaleString()}
+          </Text>
 
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={onGoing}>
