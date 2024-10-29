@@ -1,95 +1,38 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text } from "react-native";
-import { SectionList, TouchableOpacity } from 'react-native';
-import Popup from './PopUp'; // Import the Popup component
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { fetchCalendarEvents } from './GoogleCalendarService';
 
-const eventData = [
-  {
-    month: "October",
-    data: [
-      { eventName: "Halloween Party", eventDesc: "Join our pirate and sailor themed party!", eventDate: "10/31" },
-      { eventName: "Halloween Party", eventDesc: "Join our pirate and sailor themed party!", eventDate: "10/31" },
-      { eventName: "Halloween Party", eventDesc: "Join our pirate and sailor themed party!", eventDate: "10/31" },
-    ],
-  },
-  {
-    month: "November",
-    data: [
-      { eventName: "Thanksgiving Party", eventDesc: "Come eat a lot of food", eventDate: "11/28" },
-      { eventName: "Thanksgiving Party", eventDesc: "Come eat a lot of food", eventDate: "11/28" },
-    ],
-  },
-  {
-    month: "December",
-    data: [
-      { eventName: "Christmas Party", eventDesc: "Come get drunk and hit on coworkers", eventDate: "12/25" },
-    ],
-  },
-]
+const ListView = ({ onEventPress }) => {
+  const [events, setEvents] = useState([]);
 
-const EventListItem = ({ item, onPress }) => {
-  return (
-    <TouchableOpacity onPress={() => onPress(item)}>
-      <View style={styles.listItem}>
-        <View style={styles.nameDesc}>
-          <Text style={styles.eventTitle}>{item.eventName}</Text>
-          <Text style={styles.eventDescription}>{item.eventDesc}</Text>
-        </View>
-        <Text style={styles.date}>{item.eventDate}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-};
-
-const ListView = () => {
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [isPopupVisible, setPopupVisible] = useState(false);
-
-  const handleEventPress = (event) => {
-    setSelectedEvent(event);
-    setPopupVisible(true);
-  };
-
-  const handleClosePopup = () => {
-    setPopupVisible(false);
-    setSelectedEvent(null);
-  };
-
-  const handleGoing = () => {
-    alert("Marked as Going");
-    handleClosePopup();
-  };
-
-  const handleNotGoing = () => {
-    alert("Marked as Not Going");
-    handleClosePopup();
-  };
-
-  const handleMaybe = () => {
-    alert("Marked as Maybe");
-    handleClosePopup();
-  };
+  useEffect(() => {
+    async function loadEvents() {
+      const fetchedEvents = await fetchCalendarEvents();
+      setEvents(fetchedEvents);
+    }
+    loadEvents();
+  }, []);
 
   return (
     <View style={styles.container}>
-      <SectionList
-        style={styles.sectionlist}
-        sections={eventData}
-        renderItem={({ item }) => <EventListItem item={item} onPress={handleEventPress} />}
-        renderSectionHeader={({ section }) => (
-          <Text style={styles.sectionHeader}>{section.month}</Text>
-        )}
-        ItemSeparatorComponent={() => <View style={styles.separator} />}
-      />
-
-      <Popup
-        visible={isPopupVisible}
-        onClose={handleClosePopup}
-        event={selectedEvent}
-        onGoing={handleGoing}
-        onNotGoing={handleNotGoing}
-        onMaybe={handleMaybe}
-      />
+      {events.length > 0 ? (
+        <FlatList
+          data={events}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => onEventPress(item)}>
+              <View style={styles.eventItem}>
+                <Text style={styles.eventTitle}>{item.summary}</Text>
+                <Text style={styles.eventTime}>
+                  {new Date(item.start.dateTime || item.start.date).toLocaleString()}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+      ) : (
+        <Text style={styles.noEventsText}>No upcoming events</Text>
+      )}
     </View>
   );
 };
@@ -99,51 +42,26 @@ export default ListView;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: "rgba(0, 0, 0, 0.4)",
+    padding: 16,
+    backgroundColor: '#fff',
   },
-  sectionlist: {
-    flex: 1,
-  },
-  separator: {
-    height: 10,
-  },
-  listItem: {
-    backgroundColor: "rgba(255,255,255,0.9)",
-    width: "95%",
-    minHeight: 100,
-    paddingLeft: 20,
-    borderRadius: 10,
-    // borderWidth: 2,
-    // borderColor: "white",
-    flexDirection: 'row',
-    alignSelf: "center",
-  },
-  nameDesc: {
-    flex: 5,
-    gap: 10,
+  eventItem: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
   },
   eventTitle: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "black",
-  },
-  eventDescription: {
-    color: "black",
-  },
-  date: {
-    flex: 1,
-    fontSize: 22,
-    alignSelf: "center",
-    color: "black",
-  },
-  sectionHeader: {
-    paddingTop: 20,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 5,
-    marginBottom: 10,
-    fontSize: 26,
+    fontSize: 16,
     fontWeight: 'bold',
-    color: "white",
+  },
+  eventTime: {
+    fontSize: 14,
+    color: '#555',
+  },
+  noEventsText: {
+    fontSize: 16,
+    color: '#888',
+    textAlign: 'center',
+    marginTop: 20,
   },
 });
