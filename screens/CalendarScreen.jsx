@@ -77,18 +77,12 @@ const CalendarPage = () => {
             ? <CalendarView 
               onEventPress={handleEventPress}
               events={events}
-              setEvents={setEvents}
               selectedCalendars={selectedCalendars}
-              setSelectedCalendars={setSelectedCalendars}
-              calendarOptions={calendarOptions}
             /> 
             : <ListView 
               onEventPress={handleEventPress}
               events={events}
-              setEvents={setEvents}
               selectedCalendars={selectedCalendars}
-              setSelectedCalendars={setSelectedCalendars}
-              calendarOptions={calendarOptions}
             />}
         </View>
       </ImageBackground>
