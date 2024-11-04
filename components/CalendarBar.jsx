@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 
 const CalendarBar = ({ calendarMode, setCalendarMode }) => {
   // "Today" button functionality can be customized as needed
@@ -13,21 +13,23 @@ const CalendarBar = ({ calendarMode, setCalendarMode }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={newEvent}>
-        <View style={styles.buttons}>
-          <Text style={styles.buttonText}>Submit Event</Text>
-        </View>
-      </TouchableOpacity>
-      <Text style={{ fontSize: 24, fontWeight: "bold", color: "white" }}>PIC Health App</Text>
-      <TouchableOpacity onPress={viewBtn}>
-        <View style={[styles.buttons, styles.calBtn]}>
-          <Text style={styles.buttonText}>
-            {calendarMode ? "List View" : "Calendar View"}
-          </Text>
-        </View>
-      </TouchableOpacity>
-    </View>
+    <SafeAreaView>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={newEvent} style={styles.flexItem}>
+          <View style={styles.buttons}>
+            <Text style={styles.buttonText}>Submit Event</Text>
+          </View>
+        </TouchableOpacity>
+        <Text style={[styles.flexItem, styles.title]}>PIC Health App</Text>
+        <TouchableOpacity onPress={viewBtn} style={styles.flexItem}>
+          <View style={[styles.buttons, styles.calBtn]}>
+            <Text style={styles.buttonText}>
+              {calendarMode ? "List View" : "Calendar View"}
+            </Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -45,6 +47,16 @@ const styles = StyleSheet.create({
     marginTop: 30,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+    paddingHorizontal: 10,
+  },
+  flexItem: {
+    flex: 1,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "center",
   },
   buttons: {
     margin: 10,
