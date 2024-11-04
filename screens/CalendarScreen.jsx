@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ImageBackground, View, StyleSheet } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ListView from "../components/ListView";
@@ -6,12 +6,48 @@ import CalendarView from "../components/CalendarView"
 import Popup from "../components/PopUp";
 import CalendarBar from "../components/CalendarBar"; 
 
+import { fetchCalendarEvents } from '../services/GoogleCalendarService';
+
+  const calendarOptions = [
+    { key: 'pichealthtest@gmail.com', value: 'Pacific Islander Community' },
+    { key: 'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com', value: 'Latino Community' }
+  ];
+
 const CalendarPage = () => {
   const [calendarMode, setCalendarMode] = useState(true);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
-  // Handle event press to show popup
+  const [events, setEvents] = useState({});
+  const [selectedCalendars, setSelectedCalendars] = useState([]);
+
+  const calendarOptions = [
+    { key: 'pichealthtest@gmail.com', value: 'Pacific Islander Community' },
+    { key: 'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com', value: 'Latino Community' }
+  ];
+
+  useEffect(() => {
+    async function loadEvents() {
+      if (selectedCalendars.length === 0) {
+        setEvents({});
+        return;
+      }
+
+      const fetchedEvents = await fetchCalendarEvents(selectedCalendars);
+
+      const formattedEvents = fetchedEvents.reduce((acc, event) => {
+        const date = (event.start.dateTime || event.start.date).split('T')[0];
+        if (!acc[date]) acc[date] = [];
+        acc[date].push({ name: event.summary, time: new Date(event.start.dateTime).toLocaleTimeString(), ...event });
+        return acc;
+      }, {});
+      
+      setEvents(formattedEvents);
+    }
+    loadEvents();
+  }, [selectedCalendars]);
+
+
   const handleEventPress = (event) => {
     setSelectedEvent(event);
     setPopupVisible(true);
@@ -31,10 +67,29 @@ const CalendarPage = () => {
         blurRadius={4}
       >
         <View style={styles.darken}>
-          <CalendarBar calendarMode={calendarMode} setCalendarMode={setCalendarMode} />
+          <CalendarBar 
+            calendarMode={calendarMode} 
+            setCalendarMode={setCalendarMode} 
+            setSelectedCalendars={setSelectedCalendars}
+            calendarOptions={calendarOptions}
+          />
           {calendarMode 
-            ? <CalendarView onEventPress={handleEventPress} /> 
-            : <ListView onEventPress={handleEventPress} />}
+            ? <CalendarView 
+              onEventPress={handleEventPress}
+              events={events}
+              setEvents={setEvents}
+              selectedCalendars={selectedCalendars}
+              setSelectedCalendars={setSelectedCalendars}
+              calendarOptions={calendarOptions}
+            /> 
+            : <ListView 
+              onEventPress={handleEventPress}
+              events={events}
+              setEvents={setEvents}
+              selectedCalendars={selectedCalendars}
+              setSelectedCalendars={setSelectedCalendars}
+              calendarOptions={calendarOptions}
+            />}
         </View>
       </ImageBackground>
       <Popup 
