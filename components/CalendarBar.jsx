@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { MultipleSelectList } from 'react-native-dropdown-select-list';
 
-const CalendarBar = ({ calendarMode, setCalendarMode }) => {
+const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, calendarOptions }) => {
   // "Today" button functionality can be customized as needed
   const newEvent = () => {
     alert("Google Submission Sheet");
@@ -29,6 +30,15 @@ const CalendarBar = ({ calendarMode, setCalendarMode }) => {
           </View>
         </TouchableOpacity>
       </View>
+      <MultipleSelectList 
+        setSelected={setSelectedCalendars} 
+        data={calendarOptions} 
+        save="key"
+        label="Select Calendars"
+        placeholder="Select Calendar"
+        dropdownStyles={styles.dropdown} // Apply custom styles to the dropdown
+        boxStyles={styles.dropdownBox} // Apply custom styles to the box
+      />
     </SafeAreaView>
   );
 };
@@ -71,5 +81,13 @@ const styles = StyleSheet.create({
   buttonText: {
     alignSelf: "center",
     color: "#FFFFFF",
+  },
+  dropdown: {
+    backgroundColor: '#fff', // White background for the dropdown
+  },
+  dropdownBox: {
+    backgroundColor: '#fff', // White background for the box
+    borderColor: '#fff', // Optional: Add border color
+    borderRadius:0
   },
 });

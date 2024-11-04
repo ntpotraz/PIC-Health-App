@@ -1,39 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-native';
 import { fetchCalendarEvents } from '../services/GoogleCalendarService';
-import { MultipleSelectList } from 'react-native-dropdown-select-list';
 
-const ListView = ({ onEventPress }) => {
-  const [events, setEvents] = useState([]);
-  const [selectedCalendars, setSelectedCalendars] = useState([]);
+const ListView = ({ onEventPress, events, setEvents, selectedCalendars, setSelectedCalendars, calendarOptions }) => {
   const [error, setError] = useState(null);
 
-  const calendarOptions = [
-    { key: 'pichealthtest@gmail.com', value: 'Pacific Islander Community' },
-    { key: 'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com', value: 'Latino Community' }
-  ];
+  //useEffect(() => {
+  //  async function loadEvents() { 
+  //    if (selectedCalendars.length === 0) {
+  //      setEvents([]);
+  //      return;
+  //    }
+  //
+  //    try {
+  //      const fetchedEvents = await fetchCalendarEvents(selectedCalendars);
+  //      if (!fetchedEvents || !Array.isArray(fetchedEvents)) {
+  //        throw new Error('Invalid events data');
+  //      }
+  //      const formattedEvents = formatEvents(fetchedEvents);
+  //      setEvents(formattedEvents);
+  //    } catch (err) {
+  //      console.error('Error fetching calendar events:', err);
+  //      setError(err.message);
+  //    }
+  //  }
+  //  loadEvents();
+  //}, [selectedCalendars]);
 
-  useEffect(() => {
-    async function loadEvents() {
-      if (selectedCalendars.length === 0) {
-        setEvents([]);
-        return;
-      }
 
-      try {
-        const fetchedEvents = await fetchCalendarEvents(selectedCalendars);
-        if (!fetchedEvents || !Array.isArray(fetchedEvents)) {
-          throw new Error('Invalid events data');
-        }
-        const formattedEvents = formatEvents(fetchedEvents);
-        setEvents(formattedEvents);
-      } catch (err) {
-        console.error('Error fetching calendar events:', err);
-        setError(err.message);
-      }
-    }
-    loadEvents();
-  }, [selectedCalendars]);
+  const eventsArray = [];
+  for (const [month, event] of Object.entries(events)) {
+    event.forEach(item => {
+      eventsArray.push(item)
+    });
+  }
 
   const formatEvents = (events) => {
     const groupedEvents = events.reduce((acc, event) => {
@@ -58,24 +58,19 @@ const ListView = ({ onEventPress }) => {
     return sortedEvents;
   };
 
+  const sortedEventsArray = formatEvents(eventsArray);
+
+  console.log(sortedEventsArray);
+
   return (
     <View style={styles.container}>
-      <MultipleSelectList 
-        setSelected={setSelectedCalendars} 
-        data={calendarOptions} 
-        save="key"
-        label="Select Calendars"
-        placeholder="Select Calendar"
-        dropdownStyles={styles.dropdown} // Apply custom styles to the dropdown
-        boxStyles={styles.dropdownBox} // Apply custom styles to the box
-      />
       {error ? (
         <Text style={styles.errorText}>Error: {error}</Text>
       ) : selectedCalendars.length === 0 ? (
         <Text style={styles.noEventsText}>Please select a calendar to view events</Text>
-      ) : events.length > 0 ? (
+      ) : sortedEventsArray.length > 0 ? (
         <SectionList
-          sections={events}
+          sections={sortedEventsArray}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => onEventPress(item)}>
@@ -143,6 +138,6 @@ const styles = StyleSheet.create({
   dropdownBox: {
     backgroundColor: '#fff', // White background for the box
     borderColor: '#fff', // Optional: Add border color
-    borderRadius:0
+    borderRadius: 0
   },
 });

@@ -2,37 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
 import { fetchCalendarEvents } from '../services/GoogleCalendarService';
 import { Calendar } from 'react-native-calendars';
-import { MultipleSelectList } from 'react-native-dropdown-select-list';
 
-const CalendarView = ({ onEventPress }) => {
-  const [events, setEvents] = useState({});
-  const [selectedCalendars, setSelectedCalendars] = useState([]);
-
-  const calendarOptions = [
-    { key: 'pichealthtest@gmail.com', value: 'Pacific Islander Community' },
-    { key: 'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com', value: 'Latino Community' }
-  ];
-
-  useEffect(() => {
-    async function loadEvents() {
-      if (selectedCalendars.length === 0) {
-        setEvents({});
-        return;
-      }
-
-      const fetchedEvents = await fetchCalendarEvents(selectedCalendars);
-
-      const formattedEvents = fetchedEvents.reduce((acc, event) => {
-        const date = (event.start.dateTime || event.start.date).split('T')[0];
-        if (!acc[date]) acc[date] = [];
-        acc[date].push({ name: event.summary, time: new Date(event.start.dateTime).toLocaleTimeString(), ...event });
-        return acc;
-      }, {});
-      
-      setEvents(formattedEvents);
-    }
-    loadEvents();
-  }, [selectedCalendars]);
+const CalendarView = ({ onEventPress, events, setEvents, selectedCalendars, setSelectedCalendars, calendarOptions }) => {
 
   const markedDates = Object.keys(events).reduce((acc, date) => {
     acc[date] = { marked: true };
@@ -41,15 +12,6 @@ const CalendarView = ({ onEventPress }) => {
 
   return (
     <View style={styles.container}>
-      <MultipleSelectList 
-        setSelected={setSelectedCalendars} 
-        data={calendarOptions} 
-        save="key"
-        label="Select Calendars"
-        placeholder="Select Calendar"
-        dropdownStyles={styles.dropdown} // Apply custom styles to the dropdown
-        boxStyles={styles.dropdownBox} // Apply custom styles to the box
-      />
       {selectedCalendars.length === 0 ? (
         <Text style={styles.noEventsText}>Please select a calendar to view events</Text>
       ) : (
@@ -83,8 +45,8 @@ export default CalendarView;
 
 const styles = StyleSheet.create({
   container: {
-    height: Dimensions.get('window').height / 2, // Half of the screen height
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Slight transparency
+    //height: Dimensions.get('window').height / 2, // Half of the screen height
+    //backgroundColor: 'rgba(255, 255, 255, 0.8)', // Slight transparency
   },
   eventItem: {
     padding: 10,
