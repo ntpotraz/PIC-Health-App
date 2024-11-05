@@ -36,8 +36,6 @@ const ListView = ({ onEventPress, events, selectedCalendars }) => {
 
   const sortedEventsArray = formatEvents(eventsArray);
 
-  console.log(sortedEventsArray);
-
   return (
     <View style={styles.container}>
       {error ? (
