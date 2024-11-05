@@ -1,24 +1,9 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import { fetchCalendarEvents } from '../services/GoogleCalendarService';
 import { Calendar } from 'react-native-calendars';
 
-const UpcomingEvent = ({ title, desc, date }) => {
-  return (
-    <View style={styles.upcomingEvent}>
-      <View>
-        <Text style={styles.eventTitle}>{title}</Text>
-        <Text style={styles.eventDesc}>{desc}</Text>
-      </View>
-      <View>
-        <Text style={styles.eventDate}>{date}</Text>
-      </View>
-    </View>
-  )
-}
-
-
-const CalendarView = ({ onEventPress, events, eventsArray, selectedCalendars }) => {
-
-console.log(eventsArray)
+const CalendarView = ({ onEventPress, events, setEvents, selectedCalendars, setSelectedCalendars, calendarOptions }) => {
 
   const markedDates = Object.keys(events).reduce((acc, date) => {
     acc[date] = { marked: true };
@@ -52,14 +37,6 @@ console.log(eventsArray)
           </View>
         </TouchableOpacity>
       </View>
-      <View>
-        <Text>Upcoming Events</Text>
-        <UpcomingEvent 
-          title={eventsArray} 
-          desc={"Desc"} 
-          date={"time"} 
-        />
-      </View>
     </View>
   );
 };
@@ -80,7 +57,7 @@ const styles = StyleSheet.create({
     marginTop: 20, // Add space between calendar and buttons
   },
   wellnessSOS: {
-    width: 200,
+    width: 150,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
@@ -101,19 +78,5 @@ const styles = StyleSheet.create({
     color: '#888',
     textAlign: 'center',
     marginTop: 20,
-  },
-  eventTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "white",
-  },
-  eventDesc: {
-    margin: "auto",
-    paddingBottom: 10,
-    color: "#DDD",
-  },
-  eventDate: {
-    margin: "auto",
-    color: "white"
   },
 });

@@ -8,6 +8,11 @@ import CalendarBar from "../components/CalendarBar";
 
 import { fetchCalendarEvents } from '../services/GoogleCalendarService';
 
+  const calendarOptions = [
+    { key: 'pichealthtest@gmail.com', value: 'Pacific Islander Community' },
+    { key: 'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com', value: 'Latino Community' }
+  ];
+
 const CalendarPage = () => {
   const [calendarMode, setCalendarMode] = useState(true);
   const [popupVisible, setPopupVisible] = useState(false);
@@ -20,14 +25,6 @@ const CalendarPage = () => {
     { key: 'pichealthtest@gmail.com', value: 'Pacific Islander Community' },
     { key: 'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com', value: 'Latino Community' }
   ];
-
-  const eventsArray = [];
-  for (const event of Object.entries(events)) {
-    event[1].forEach(item => {
-      eventsArray.push(item)
-    });
-  }
-
 
   useEffect(() => {
     async function loadEvents() {
@@ -80,14 +77,18 @@ const CalendarPage = () => {
             ? <CalendarView 
               onEventPress={handleEventPress}
               events={events}
+              setEvents={setEvents}
               selectedCalendars={selectedCalendars}
-              eventsArray={eventsArray}
+              setSelectedCalendars={setSelectedCalendars}
+              calendarOptions={calendarOptions}
             /> 
             : <ListView 
               onEventPress={handleEventPress}
               events={events}
+              setEvents={setEvents}
               selectedCalendars={selectedCalendars}
-              eventsArray={eventsArray}
+              setSelectedCalendars={setSelectedCalendars}
+              calendarOptions={calendarOptions}
             />}
         </View>
       </ImageBackground>
