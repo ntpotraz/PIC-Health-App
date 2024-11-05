@@ -1,7 +1,24 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
-const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
+const UpcomingEvent = ({ title, desc, date }) => {
+  return (
+    <View style={styles.upcomingEvent}>
+      <View>
+        <Text style={styles.eventTitle}>{title}</Text>
+        <Text style={styles.eventDesc}>{desc}</Text>
+      </View>
+      <View>
+        <Text style={styles.eventDate}>{date}</Text>
+      </View>
+    </View>
+  )
+}
+
+
+const CalendarView = ({ onEventPress, events, eventsArray, selectedCalendars }) => {
+
+console.log(eventsArray)
 
   const markedDates = Object.keys(events).reduce((acc, date) => {
     acc[date] = { marked: true };
@@ -35,6 +52,14 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
           </View>
         </TouchableOpacity>
       </View>
+      <View>
+        <Text>Upcoming Events</Text>
+        <UpcomingEvent 
+          title={eventsArray} 
+          desc={"Desc"} 
+          date={"time"} 
+        />
+      </View>
     </View>
   );
 };
@@ -55,7 +80,7 @@ const styles = StyleSheet.create({
     marginTop: 20, // Add space between calendar and buttons
   },
   wellnessSOS: {
-    width: 150,
+    width: 200,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
@@ -76,5 +101,19 @@ const styles = StyleSheet.create({
     color: '#888',
     textAlign: 'center',
     marginTop: 20,
+  },
+  eventTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "white",
+  },
+  eventDesc: {
+    margin: "auto",
+    paddingBottom: 10,
+    color: "#DDD",
+  },
+  eventDate: {
+    margin: "auto",
+    color: "white"
   },
 });

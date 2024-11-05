@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-native';
 
-const ListView = ({ onEventPress, events , selectedCalendars }) => {
+const ListView = ({ onEventPress, eventsArray , selectedCalendars }) => {
   const [error, setError] = useState(null);
-
-  const eventsArray = [];
-  for (const event of Object.entries(events)) {
-    event[1].forEach(item => {
-      eventsArray.push(item)
-    });
-  }
 
   const formatEvents = (events) => {
     const groupedEvents = events.reduce((acc, event) => {
