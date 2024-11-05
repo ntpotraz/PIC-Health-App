@@ -21,7 +21,7 @@ const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, cale
             <Text style={styles.buttonText}>Submit Event</Text>
           </View>
         </TouchableOpacity>
-        <Text style={[styles.flexItem, styles.title]}>PIC Health App</Text>
+        <Text style={[styles.flexItem, styles.title]}>Calendar</Text>
         <TouchableOpacity onPress={viewBtn} style={styles.flexItem}>
           <View style={[styles.buttons, styles.calBtn]}>
             <Text style={styles.buttonText}>
@@ -34,7 +34,7 @@ const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, cale
         setSelected={setSelectedCalendars} 
         data={calendarOptions} 
         save="key"
-        label="Select Calendars"
+        label="Selected Calendars"
         placeholder="Select Calendar"
         dropdownStyles={styles.dropdown} // Apply custom styles to the dropdown
         boxStyles={styles.dropdownBox} // Apply custom styles to the box
@@ -54,9 +54,6 @@ const styles = StyleSheet.create({
     height: 65,
     shadowRadius: 3,
     shadowOffset: 4,
-    marginTop: 30,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
     paddingHorizontal: 10,
   },
   flexItem: {
@@ -84,10 +81,13 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     backgroundColor: '#fff', // White background for the dropdown
+    borderRadius: 0,
+    marginTop: 0,
+    marginBottom: 10,
   },
   dropdownBox: {
     backgroundColor: '#fff', // White background for the box
     borderColor: '#fff', // Optional: Add border color
-    borderRadius:0
+    borderRadius: 0,
   },
 });
