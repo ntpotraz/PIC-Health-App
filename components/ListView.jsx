@@ -48,8 +48,9 @@ const ListView = ({ onEventPress, events, selectedCalendars }) => {
         <SectionList
           sections={sortedEventsArray}
           keyExtractor={(item) => item.id}
+          style={styles.sectionList}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => onEventPress(item)}>
+            <TouchableOpacity style={styles.listItem} onPress={() => onEventPress(item)}>
               <View style={styles.eventItem}>
                 <Text style={styles.eventTitle}>{item.summary}</Text>
                 <Text style={styles.eventTime}>
@@ -74,16 +75,22 @@ export default ListView;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    backgroundColor: '#fff',
+    paddingVertical: 16,
+  },
+  listItem: {
+    borderColor: "black",
+    marginHorizontal: 10,
+    borderWidth: 2,
+    borderRadius: 15,
+    margin: 5,
   },
   eventItem: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    padding: 15,
+    borderRadius: 15,
+    backgroundColor: "rgba(255,255,255,0.6)",
   },
   eventTitle: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   eventTime: {
@@ -91,10 +98,13 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   sectionHeader: {
+    color: "white",
     fontSize: 18,
     fontWeight: 'bold',
-    backgroundColor: '#f4f4f4',
-    padding: 8,
+    backgroundColor: 'hsla(200, 0%, 20%, 0.6)',
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    marginBottom: 10,
   },
   noEventsText: {
     fontSize: 16,
@@ -115,5 +125,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff', // White background for the box
     borderColor: '#fff', // Optional: Add border color
     borderRadius: 0
+  },
+  listBorder: {
+    borderColor: "black",
+    borderWidth: 2,
+    borderRadius: 15,
+    margin: 5,
   },
 });
