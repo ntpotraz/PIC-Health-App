@@ -1,32 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-native';
-import { fetchCalendarEvents } from '../services/GoogleCalendarService';
 
-const ListView = ({ onEventPress, events, setEvents, selectedCalendars, setSelectedCalendars, calendarOptions }) => {
+const ListView = ({ onEventPress, events, selectedCalendars }) => {
   const [error, setError] = useState(null);
-
-  //useEffect(() => {
-  //  async function loadEvents() { 
-  //    if (selectedCalendars.length === 0) {
-  //      setEvents([]);
-  //      return;
-  //    }
-  //
-  //    try {
-  //      const fetchedEvents = await fetchCalendarEvents(selectedCalendars);
-  //      if (!fetchedEvents || !Array.isArray(fetchedEvents)) {
-  //        throw new Error('Invalid events data');
-  //      }
-  //      const formattedEvents = formatEvents(fetchedEvents);
-  //      setEvents(formattedEvents);
-  //    } catch (err) {
-  //      console.error('Error fetching calendar events:', err);
-  //      setError(err.message);
-  //    }
-  //  }
-  //  loadEvents();
-  //}, [selectedCalendars]);
-
 
   const eventsArray = [];
   for (const [month, event] of Object.entries(events)) {

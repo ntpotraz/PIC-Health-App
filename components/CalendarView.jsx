@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
-import { fetchCalendarEvents } from '../services/GoogleCalendarService';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
-const CalendarView = ({ onEventPress, events, setEvents, selectedCalendars, setSelectedCalendars, calendarOptions }) => {
+const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
 
   const markedDates = Object.keys(events).reduce((acc, date) => {
     acc[date] = { marked: true };
