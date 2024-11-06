@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ImageBackground, View, StyleSheet } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ListView from "../components/ListView";
-import CalendarView from "../components/CalendarView"
+import CalendarView from "../components/CalendarView";
 import Popup from "../components/PopUp";
 import CalendarBar from "../components/CalendarBar"; 
 
@@ -21,10 +21,6 @@ const CalendarPage = () => {
     { key: 'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com', value: 'Latino Community' }
   ];
 
-  /*  TODO: Not important right now but we should have the loadEvents() selectedCalendars() functions
-  *         in the utils directory for the future. the DropdownSelectList logic is spread across 3
-  *         different files (CalendarBar, CalendarScreen, CalendarView)
-  */
   useEffect(() => {
     async function loadEvents() {
       if (selectedCalendars.length === 0) {
@@ -45,7 +41,6 @@ const CalendarPage = () => {
     }
     loadEvents();
   }, [selectedCalendars]);
-
 
   const handleEventPress = (event) => {
     setSelectedEvent(event);
