@@ -10,17 +10,19 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
 
   return (
     <View style={styles.container}>
-      {selectedCalendars.length === 0 ? (
-        <Text style={styles.noEventsText}>Please select a calendar to view events</Text>
-      ) : (
-        <Calendar
-          markedDates={markedDates}
-          onDayPress={(day) => {
-            const selectedDateEvents = events[day.dateString] || [];
-            selectedDateEvents.forEach(event => onEventPress(event));
-          }}
-        />
-      )}
+      <View style={styles.calendarContainer}>
+        {selectedCalendars.length === 0 ? (
+          <Text style={styles.noEventsText}>Please select a calendar to view events</Text>
+        ) : (
+          <Calendar
+            markedDates={markedDates}
+            onDayPress={(day) => {
+              const selectedDateEvents = events[day.dateString] || [];
+              selectedDateEvents.forEach(event => onEventPress(event));
+            }}
+          />
+        )}
+      </View>
       
       {/* Button Section */}
       <View style={styles.middleBtns}>
@@ -43,8 +45,8 @@ export default CalendarView;
 
 const styles = StyleSheet.create({
   container: {
-    //height: Dimensions.get('window').height / 2, // Half of the screen height
-    //backgroundColor: 'rgba(255, 255, 255, 0.8)', // Slight transparency
+  },
+  calendarContainer: {
   },
   eventItem: {
     padding: 10,
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
     marginTop: 20, // Add space between calendar and buttons
   },
   wellnessSOS: {
-    width: 150,
+    width: 200,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
