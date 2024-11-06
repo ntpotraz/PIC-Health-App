@@ -30,15 +30,17 @@ const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, cale
           </View>
         </TouchableOpacity>
       </View>
-      <MultipleSelectList 
-        setSelected={setSelectedCalendars} 
-        data={calendarOptions} 
-        save="key"
-        label="Selected Calendars"
-        placeholder="Select Calendar"
-        dropdownStyles={styles.dropdown} // Apply custom styles to the dropdown
-        boxStyles={styles.dropdownBox} // Apply custom styles to the box
-      />
+      <View style={calendarMode ? {} : {display: "none"}}>
+        <MultipleSelectList
+          setSelected={setSelectedCalendars}
+          data={calendarOptions}
+          save="key"
+          label="Select Calendars"
+          placeholder="Select Calendar"
+          dropdownStyles={styles.dropdown} // Apply custom styles to the dropdown
+          boxStyles={styles.dropdownBox} // Apply custom styles to the box
+        />
+      </View>
     </SafeAreaView>
   );
 };
@@ -88,6 +90,6 @@ const styles = StyleSheet.create({
   dropdownBox: {
     backgroundColor: '#fff', // White background for the box
     borderColor: '#fff', // Optional: Add border color
-    borderRadius: 0,
+    borderRadius: 0
   },
 });
