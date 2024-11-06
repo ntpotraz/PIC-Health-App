@@ -76,10 +76,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   listItem: {
-    borderColor: "black",
     marginHorizontal: 10,
-    borderWidth: 2,
-    borderRadius: 15,
     margin: 5,
   },
   eventItem: {
