@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
 const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
@@ -51,6 +51,20 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
           />
         )}
       </View>
+      
+      {/* Button Section */}
+      <View style={styles.middleBtns}>
+        <TouchableOpacity>
+          <View style={styles.wellnessSOS}>
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>Wellness Check</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.wellnessSOS}>
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>SOS</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -69,5 +83,19 @@ const styles = StyleSheet.create({
     color: '#888',
     textAlign: 'center',
     marginTop: 20,
+  },
+  middleBtns: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginTop: 20, // Add space between calendar and buttons
+  },
+  wellnessSOS: {
+    width: 150,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+    backgroundColor: "rgba(255, 255, 255, 0.6)",
+    marginBottom: 20,
   },
 });

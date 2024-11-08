@@ -12,7 +12,7 @@ export default function EducationScreen() {
         style={styles.image}
         blurRadius={4}
       >
-        <Header />
+        <Header title="Education"/>
         <ScrollView>
           <View style={{ flex: 1, margin: 5, borderRadius: 10 }}>
 
