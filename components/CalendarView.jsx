@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginTop: 20, // Add space between calendar and buttons
   },
   wellnessSOS: {
-    width: 150,
+    width: 200,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
