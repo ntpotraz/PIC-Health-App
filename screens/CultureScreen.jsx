@@ -12,7 +12,7 @@ export default function CultureScreen() {
         style={styles.image}
         blurRadius={4}
       >
-        <Header title="Culture"/>
+        <Header title="Culture, Arts, & Language"/>
         <ScrollView>
           <View style={{ flex: 1, margin: 5, borderRadius: 10 }}>
 
