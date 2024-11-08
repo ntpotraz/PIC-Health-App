@@ -25,7 +25,7 @@ const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, cale
         <TouchableOpacity onPress={viewBtn} style={styles.flexItem}>
           <View style={[styles.buttons, styles.calBtn]}>
             <Text style={styles.buttonText}>
-              {calendarMode ? "List View" : "Calendar View"}
+              {calendarMode ? "List" : "Calendar"}
             </Text>
           </View>
         </TouchableOpacity>
