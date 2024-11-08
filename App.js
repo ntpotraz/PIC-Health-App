@@ -42,11 +42,11 @@ export default function App() {
           }
         })}
       >
-        <Tab.Screen name="About Us" component={HomeScreen} />
-        <Tab.Screen name="Health" component={HealthScreen} />
         <Tab.Screen name="Home" component={CalendarScreen} />
+        <Tab.Screen name="Health" component={HealthScreen} />
         <Tab.Screen name="Education" component={EducationScreen} />
         <Tab.Screen name="Culture" component={CultureScreen} />
+        <Tab.Screen name="About Us" component={HomeScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
