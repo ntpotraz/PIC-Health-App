@@ -1,5 +1,6 @@
 import React from 'react';
-import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Modal, View, Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
+import RenderHtml from 'react-native-render-html';
 
 const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
   if (!event) return null;
@@ -14,7 +15,18 @@ const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
       <View style={styles.overlay}>
         <View style={styles.container}>
           <Text style={styles.title}>{event.summary}</Text>
-          <Text style={styles.description}>{event.description || "No description available"}</Text>
+          {event.description ? (
+            <RenderHtml
+            contentWidth={300} // adjust
+            source={{ html: event.description }}
+            defaultTextProps={{ selectable: true }}
+            onLinkPress={(evt, href) => {
+              Linking.openURL(href).catch(err => console.error("Failed to open URL:", err));
+            }}
+            />
+          ) : (
+            <Text style={styles.description}>{event.description ? renderDescriptionWithLinks(event.description) : "No Description available"}</Text>
+          )}
           <Text style={styles.date}>
             Date: {new Date(event.start.dateTime || event.start.date).toLocaleString()}
           </Text>
@@ -65,6 +77,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 10,
     textAlign: 'center',
+  },
+  linkText: {
+    fontsize: 16,
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
   date: {
     fontSize: 14,
