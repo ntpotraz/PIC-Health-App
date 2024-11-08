@@ -13,7 +13,7 @@ export default function HealthScreen() {
         style={styles.image}
         blurRadius={4}
       >
-      <Header />
+      <Header title="Health" />
       <ScrollView>
         <View style={{ flex: 1,  margin: 5, borderRadius: 10}}>
 

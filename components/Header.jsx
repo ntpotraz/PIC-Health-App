@@ -1,14 +1,14 @@
 import { View, Text , StyleSheet, Image} from 'react-native'
 import React from 'react'
 
-const Header = () => {
+const Header = ({ title }) => {
   return (
     <View style={header.container}>
       <Image
         style={{ width: 60, height: 60 }}
         source={require('../assets/pic-logo.png')}
       />
-      <Text style={header.title}>Health Resources</Text>
+      <Text style={header.title}>{title}</Text>
     </View>
   )
 }

@@ -13,6 +13,7 @@ export default function HomeScreen() {
           style={styles.image}
           blurRadius={4}
         >
+          <Header title="About Us" />
           <ScrollView>
 
             {/* Logo and homepage title area */}
