@@ -4,6 +4,10 @@ import RenderHtml from 'react-native-render-html';
 
 const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
   if (!event) return null;
+  
+  const handleLinkPress = (event, href) => {
+    Linking.openURL(href).catch(err => console.error("Failed to open URL:", err));
+  };
 
   return (
     <Modal
@@ -17,15 +21,17 @@ const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
           <Text style={styles.title}>{event.summary}</Text>
           {event.description ? (
             <RenderHtml
-            contentWidth={300} // adjust
-            source={{ html: event.description }}
-            defaultTextProps={{ selectable: true }}
-            onLinkPress={(evt, href) => {
-              Linking.openURL(href).catch(err => console.error("Failed to open URL:", err));
-            }}
+              contentWidth={300}
+              source={{ html: event.description }}
+              defaultTextProps={{ selectable: true }}
+              renderersProps={{
+                a: {
+                  onPress: handleLinkPress,
+                },
+              }}
             />
           ) : (
-            <Text style={styles.description}>{event.description ? renderDescriptionWithLinks(event.description) : "No Description available"}</Text>
+            <Text style={styles.description}>No description available</Text>
           )}
           <Text style={styles.date}>
             Date: {new Date(event.start.dateTime || event.start.date).toLocaleString()}
