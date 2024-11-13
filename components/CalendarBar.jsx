@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView,  Linking} from 'react-native';
 import { MultipleSelectList } from 'react-native-dropdown-select-list';
 
 const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, calendarOptions }) => {
   // "Today" button functionality can be customized as needed
   const newEvent = () => {
-    alert("Google Submission Sheet");
+    Linking.openURL('https://forms.gle/Tkgafh2Qa4kTmG1N9');
   };
 
   // Toggles between Calendar and List view
