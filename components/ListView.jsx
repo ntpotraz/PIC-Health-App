@@ -49,25 +49,12 @@ const ListView = ({ onEventPress, events, selectedCalendars }) => {
           style={styles.sectionList}
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.listItem} onPress={() => onEventPress(item)}>
-              {
-                item.organizer.email === "pichealthtest@gmail.com" ? (
-              <View style={styles.picItem}>
+              <View style={item.organizer.email === "pichealthtest@gmail.com" ? styles.picItem : styles.latinoItem}>
                 <Text style={styles.eventTitle}>{item.summary}</Text>
                 <Text style={styles.eventTime}>
-                  {console.log(item)}
                   {new Date(item.start.dateTime || item.start.date).toLocaleString()}
                 </Text>
               </View>
-                ) : (
-              <View style={styles.latinoItem}>
-                <Text style={styles.eventTitle}>{item.summary}</Text>
-                <Text style={styles.eventTime}>
-                  {console.log(item)}
-                  {new Date(item.start.dateTime || item.start.date).toLocaleString()}
-                </Text>
-              </View>
-                )
-              }
             </TouchableOpacity>
           )}
           renderSectionHeader={({ section: { title } }) => (
