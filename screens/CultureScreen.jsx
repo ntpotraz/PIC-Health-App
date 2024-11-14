@@ -44,7 +44,7 @@ export default function CultureScreen() {
             </View>
 
             <View style={textBox.container}>
-              <Text style={textBox.title}>Movement Classes</Text>
+              <Text style={textBox.title}>Movement Class</Text>
               <Text style={textBox.text}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
