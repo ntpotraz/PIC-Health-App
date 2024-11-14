@@ -82,6 +82,17 @@ export default function HomeScreen() {
                 </Text>
               </View>
 
+              <Seperator />
+
+              <View style={textBox.container}>
+                <Text style={textBox.title}>Community Partners</Text>
+                <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+                <Text style={textBox.text}>
+                  https://google.com
+                 </Text>
+                </TouchableOpacity>
+              </View>
+
               {/* TO DO: Insert Social media links/icons */}
             </View>
           </ScrollView>
