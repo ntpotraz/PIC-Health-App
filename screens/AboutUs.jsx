@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { ImageBackground, View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Seperator from "../components/Seperator";
 import Header from '../components/Header';
