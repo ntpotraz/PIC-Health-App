@@ -57,7 +57,7 @@ export default function HealthScreen() {
           </View>
 
           <View style={textBox.container}>
-            <Text style={textBox.title}>Sports Programs</Text>
+            <Text style={textBox.title}>Mental Wellness Resources</Text>
             <Text style={textBox.text}>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
