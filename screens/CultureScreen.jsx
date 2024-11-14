@@ -29,7 +29,7 @@ export default function CultureScreen() {
             </View>
 
             <View style={textBox.container}>
-              <Text style={textBox.title}>Traditional Arts</Text>
+              <Text style={textBox.title}>Language Courses</Text>
               <Text style={textBox.text}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -44,7 +44,7 @@ export default function CultureScreen() {
             </View>
 
             <View style={textBox.container}>
-              <Text style={textBox.title}>Cultural Workshops</Text>
+              <Text style={textBox.title}>Movement Classes</Text>
               <Text style={textBox.text}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
