@@ -72,6 +72,21 @@ export default function EducationScreen() {
               </TouchableOpacity>
             </View>
 
+            <View style={textBox.container}>
+              <Text style={textBox.title}>Testimonials</Text>
+              <Text style={textBox.text}>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type
+                specimen book.
+              </Text>
+              <TouchableOpacity onPress={() => Linking.openURL('https://studentaid.gov/')}>
+                <Text style={textBox.link}>
+                 https://studentaid.gov/
+                </Text>
+              </TouchableOpacity>
+            </View>
+
           </View>
         </ScrollView>
       </ImageBackground>
