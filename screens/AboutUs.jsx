@@ -42,7 +42,6 @@ export default function HomeScreen() {
                   to promoting wellness and resilience by addressing the unique health needs
                   and disparities our Pasifika communities endure and navigate every day.
                 </Text>
-              </View>
               <Text style={textBox.text}>
                   
                 </Text>
