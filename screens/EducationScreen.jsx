@@ -35,9 +35,9 @@ export default function EducationScreen() {
               Desi American students in California State University, 
               San Marcos
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.csusm.edu/apida/index.html')}>
                 <Text style={textBox.link}>
-                  Hyperlink
+                 https://www.csusm.edu/apida/index.html
                 </Text>
               </TouchableOpacity>
             </View>
