@@ -65,9 +65,9 @@ export default function EducationScreen() {
                 when an unknown printer took a galley of type and scrambled it to make a type
                 specimen book.
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+              <TouchableOpacity onPress={() => Linking.openURL('https://studentaid.gov/')}>
                 <Text style={textBox.link}>
-                  Hyperlink
+                 https://studentaid.gov/
                 </Text>
               </TouchableOpacity>
             </View>
