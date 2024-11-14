@@ -18,14 +18,14 @@ export default function HomeScreen() {
 
             {/* Logo and homepage title area */}
             <View style={{alignItems: 'center', margin: 20}}>
+            <Text 
+                style={{fontSize: 30, fontWeight: 'bold', textAlign: 'center', color: 'white'}}>
+                  Pacific Islander Community Health
+              </Text>
               <Image
                 source={require('../assets/pic-logo.png')}
                 style={{height: 200, width: 200, alignSelf: 'center'}}
               />
-              <Text 
-                style={{fontSize: 30, fontWeight: 'bold', textAlign: 'center', color: 'white'}}>
-                  Welcome to PIC Health App PWA Application Mobile Interface Headquarters Incorporated, Inc.
-              </Text>
             </View>
 
             {/* Information section */}
