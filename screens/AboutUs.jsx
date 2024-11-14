@@ -43,6 +43,19 @@ export default function HomeScreen() {
                   and disparities our Pasifika communities endure and navigate every day.
                 </Text>
               </View>
+              <Text style={textBox.text}>
+                  
+                </Text>
+                <Text style={textBox.text}>
+                  Learn more:
+                </Text>
+                <TouchableOpacity onPress={() => Linking.openURL('https://pacificislandercommunityhealth.weebly.com/about-us.html')}>
+                  <Image
+                  source={require('../assets/Screenshot 2024-10-24 122310.png')}
+                  style={{height: 200, width: 250, alignSelf: 'center'}}
+                  />
+                </TouchableOpacity>
+              </View>
 
               <Seperator />
     
