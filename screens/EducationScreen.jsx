@@ -29,12 +29,11 @@ export default function EducationScreen() {
             </View>
 
             <View style={textBox.container}>
-              <Text style={textBox.title}>Online Courses</Text>
+              <Text style={textBox.title}>CSUSM APIDA</Text>
               <Text style={textBox.text}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type
-                specimen book.
+              Success initiative for Asian, Pacific Islander, and 
+              Desi American students in California State University, 
+              San Marcos
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
                 <Text style={textBox.link}>
