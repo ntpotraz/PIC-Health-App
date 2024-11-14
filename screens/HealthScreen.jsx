@@ -22,9 +22,9 @@ export default function HealthScreen() {
             <Text style={textBox.text}>
             Health care provider in San Diego and Riverside
             </Text>
-            <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+            <TouchableOpacity onPress={() => Linking.openURL('https://truecare.org/about/')}>
               <Text style={textBox.link}>
-                Hyperlink
+              https://truecare.org/about/
               </Text>
             </TouchableOpacity>
           </View>
