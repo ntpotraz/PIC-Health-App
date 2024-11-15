@@ -50,8 +50,8 @@ export default function HomeScreen() {
                 </Text>
                 <TouchableOpacity onPress={() => Linking.openURL('https://pacificislandercommunityhealth.weebly.com/about-us.html')}>
                   <Image
-                  source={require('../assets/Screenshot 2024-10-24 122310.png')}
-                  style={{height: 200, width: 250, alignSelf: 'center'}}
+                  source={require('../assets/picteam.jpeg')}
+                  style={{alignSelf: 'center'}}
                   />
                 </TouchableOpacity>
               </View>
