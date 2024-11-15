@@ -38,18 +38,14 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
   return (
     <View style={styles.container}>
       <View style={styles.calendarContainer}>
-        {selectedCalendars.length === 0 ? (
-          <Text style={styles.noEventsText}>Please select a calendar to view events</Text>
-        ) : (
-          <Calendar
-            markedDates={markedDates}
-            markingType={'multi-dot'}
-            onDayPress={(day) => {
-              const selectedDateEvents = events[day.dateString] || [];
-              selectedDateEvents.forEach(event => onEventPress(event));
-            }}
-          />
-        )}
+        <Calendar
+          markedDates={markedDates}
+          markingType={'multi-dot'}
+          onDayPress={(day) => {
+            const selectedDateEvents = events[day.dateString] || [];
+            selectedDateEvents.forEach(event => onEventPress(event));
+          }}
+        />
       </View>
       
       {/* Button Section */}
