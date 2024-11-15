@@ -54,12 +54,12 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
       
       {/* Button Section */}
       <View style={styles.middleBtns}>
-        <TouchableOpacity>
+        <TouchableOpacity style={{flex: 1, alignItems:"center"}}>
           <View style={styles.wellnessSOS}>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>Wellness Check</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity style={{flex: 1, alignItems:"center"}}>
           <View style={styles.wellnessSOS}>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>SOS</Text>
           </View>
@@ -85,13 +85,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   middleBtns: {
+    display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 20, // Add space between calendar and buttons
   },
   wellnessSOS: {
-    width: 200,
     height: 50,
+    width: "90%",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
