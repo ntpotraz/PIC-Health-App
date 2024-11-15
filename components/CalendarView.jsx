@@ -74,7 +74,8 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
                   date,
                   time: event.time,
                   description: event.description || 'No description available',
-                  dateTime: event.start.dateTime || event.start.date
+                  dateTime: event.start.dateTime || event.start.date,
+                  organizer: event.organizer
                 });
               }
             });
@@ -123,7 +124,8 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
         <Text style={styles.upcomingTitle}>Upcoming Events</Text>
         {upcomingEvents.length > 0 ? (
           upcomingEvents.map((event, index) => (
-            <View key={index} style={styles.upcomingEvent}>
+            <View key={index} 
+            style={event.organizer?.email === "pichealthtest@gmail.com" ? styles.picEvent : styles.latinoEvent}>
               <Text style={styles.eventTitle}>{event.name}</Text>
               <Text style={styles.eventDate}>{event.date}</Text>
               <Text style={styles.eventTime}>{event.time}</Text>
@@ -181,6 +183,20 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.6)",
     marginBottom: 20,
   },
+  picEvent: {
+    padding: 15, 
+    borderRadius: 15,
+    backgroundColor: "hsla(360,80%,50%,0.6)", // red color
+    marginHorizontal: 10,
+    marginBottom: 10,
+  },
+  latinoEvent: {
+    padding: 15,
+    borderRadius: 15,
+    backgroundColor: "hsla(200,80%,60%,0.6)", // blue color
+    marginHorizontal: 10,
+    marginBottom: 10,
+  },
   upcomingEventsContainer: {
     marginTop: 20,
   },
@@ -192,13 +208,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 10,
     marginBottom: 10,
-  },
-  upcomingEvent: {
-    padding: 15,
-    borderRadius: 15,
-    backgroundColor: "rgba(255,255,255,0.6)",
-    marginHorizontal: 10,
-    margin: 5,
   },
   eventTitle: {
     fontSize: 20,
