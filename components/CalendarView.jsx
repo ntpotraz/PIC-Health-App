@@ -146,7 +146,7 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
             </View>
           ))
         ) : (
-          <Text style={styles.noEventText}>No upcoming events</Text>
+          <Text style={styles.noUpcomingEventText}>No upcoming events</Text>
         )}
       </ScrollView>
     </View>
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     color: '#444',
     marginTop: 5,
   },
-  noEventText: {
+  noUpcomingEventText: {
     fontSize: 16,
     color: '#888',
     textAlign: 'center',
