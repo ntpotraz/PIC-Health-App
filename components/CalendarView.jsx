@@ -1,10 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking } from 'react-native';
 import { Calendar } from 'react-native-calendars';
+import RenderHTML from 'react-native-render-html';
 
 const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
   const [markedDates, setMarkedDates] = useState({});
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
 
+  // Helper function to add days
+  const addDays = (date, days) => {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  };
+
+  // Open links in description
+  const handleLinkPress = (event, href) => {
+    Linking.openURL(href).catch(err => console.error("Failed to open URL:", err));
+  };
+
+  // Format description HTML to add <br> before links
+  const formattedDescription = (description) => {
+    return description.replace(/<a /g, '<br><a '); // adds <br> before each <a> tag to move links to new line
+  };
+
+  // Format and mark events on the calendar
   useEffect(() => {
     const formatEvents = (events) => {
       const calendarColors = {
@@ -35,8 +55,44 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
     }
   }, [events, selectedCalendars]);
 
+  // Filter upcoming events within the next 7 days
+  useEffect(() => {
+    const filterUpcomingEvents = () => {
+      const today = new Date();
+      const endDate = addDays(today, 7);
+      const upcomingEventsList = [];
+      
+      if (events && typeof events === 'object') {
+        Object.entries(events).forEach(([date, eventsOnDate = []]) => {
+          if (Array.isArray(eventsOnDate)) {
+            eventsOnDate.forEach(event => {
+              const eventDateObj = new Date(event.start?.dateTime || event.Start?.date);
+
+              if (!isNaN(eventDateObj) && eventDateObj >= today && eventDateObj <= endDate) {
+                upcomingEventsList.push({
+                  name: event.summary,
+                  date,
+                  time: event.time,
+                  description: event.description || 'No description available',
+                  dateTime: event.start.dateTime || event.start.date
+                });
+              }
+            });
+          }
+        });
+      }
+      
+      // Sort upcoming events by date and time
+      upcomingEventsList.sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime));
+      setUpcomingEvents(upcomingEventsList);
+    };
+
+      filterUpcomingEvents();
+    }, [events]);
+
   return (
     <View style={styles.container}>
+      {/* Calendar Section */}
       <View style={styles.calendarContainer}>
         <Calendar
           markedDates={markedDates}
@@ -48,7 +104,7 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
         />
       </View>
       
-      {/* Button Section */}
+      {/* wellness check & SOS Button Section */}
       <View style={styles.middleBtns}>
         <TouchableOpacity style={{flex: 1, alignItems:"center"}}>
           <View style={styles.wellnessSOS}>
@@ -61,6 +117,36 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
           </View>
         </TouchableOpacity>
       </View>
+
+      {/* Upcoming Events section*/}
+      <ScrollView style={styles.upcomingEventsContainer}>
+        <Text style={styles.upcomingTitle}>Upcoming Events</Text>
+        {upcomingEvents.length > 0 ? (
+          upcomingEvents.map((event, index) => (
+            <View key={index} style={styles.upcomingEvent}>
+              <Text style={styles.eventTitle}>{event.name}</Text>
+              <Text style={styles.eventDate}>{event.date}</Text>
+              <Text style={styles.eventTime}>{event.time}</Text>
+              {event.description ? (
+                <RenderHTML
+                  contentWidth={300}
+                  source={{ html: formattedDescription(event.description) }}
+                  defaultTextProps={{ selectable: true }}
+                  renderersProps={{
+                    a: {
+                      onPress: handleLinkPress,
+                    },
+                  }}
+                />
+              ) : (
+                <Text style={styles.eventTime}> No description available</Text>
+              )}
+            </View>
+          ))
+        ) : (
+          <Text style={styles.noEventText}>No upcoming events</Text>
+        )}
+      </ScrollView>
     </View>
   );
 };
@@ -94,5 +180,47 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "rgba(255, 255, 255, 0.6)",
     marginBottom: 20,
+  },
+  upcomingEventsContainer: {
+    marginTop: 20,
+  },
+  upcomingTitle: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: 'bold',
+    backgroundColor: 'hsla(200, 0%, 20%, 0.6)',
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    marginBottom: 10,
+  },
+  upcomingEvent: {
+    padding: 15,
+    borderRadius: 15,
+    backgroundColor: "rgba(255,255,255,0.6)",
+    marginHorizontal: 10,
+    margin: 5,
+  },
+  eventTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  eventDate: {
+    fontSize: 14,
+    color: '#555',
+  },
+  eventTime: {
+    fontSize: 14,
+    color: '#555',
+  },
+  eventDescription: {
+    fontSize: 14,
+    color: '#444',
+    marginTop: 5,
+  },
+  noEventText: {
+    fontSize: 16,
+    color: '#888',
+    textAlign: 'center',
+    marginTop: 20,
   },
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
-import RenderHtml from 'react-native-render-html';
+import { RenderHTML } from 'react-native-render-html';
 
 const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
   if (!event) return null;
@@ -20,7 +20,7 @@ const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
         <View style={styles.container}>
           <Text style={styles.title}>{event.summary}</Text>
           {event.description ? (
-            <RenderHtml
+            <RenderHTML
               contentWidth={300}
               source={{ html: event.description }}
               defaultTextProps={{ selectable: true }}

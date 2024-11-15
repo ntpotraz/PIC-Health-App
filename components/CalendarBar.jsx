@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView,  Linking} from 'react-native';
 import { MultipleSelectList } from 'react-native-dropdown-select-list';
 
-const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, calendarOptions }) => {
+const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, calendarOptions, upcomingEvents = [] }) => {
   // "Today" button functionality can be customized as needed
   const newEvent = () => {
     Linking.openURL('https://forms.gle/Tkgafh2Qa4kTmG1N9');

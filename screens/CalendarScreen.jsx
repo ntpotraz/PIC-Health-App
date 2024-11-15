@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ImageBackground, View, StyleSheet } from "react-native";
+import { ImageBackground, View, StyleSheet, ScrollView } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ListView from "../components/ListView";
 import CalendarView from "../components/CalendarView";
@@ -33,7 +33,12 @@ const CalendarPage = () => {
       const formattedEvents = fetchedEvents.reduce((acc, event) => {
         const date = (event.start.dateTime || event.start.date).split('T')[0];
         if (!acc[date]) acc[date] = [];
-        acc[date].push({ name: event.summary, time: new Date(event.start.dateTime).toLocaleTimeString(), ...event });
+        acc[date].push({ 
+          name: event.summary, 
+          time: new Date(event.start.dateTime).toLocaleTimeString(),
+          description: event.description || 'No description available',
+          ...event
+        });
         return acc;
       }, {});
       
@@ -60,25 +65,27 @@ const CalendarPage = () => {
         style={styles.image}
         blurRadius={4}
       >
-        <View style={styles.darken}>
-          <CalendarBar 
-            calendarMode={calendarMode} 
-            setCalendarMode={setCalendarMode} 
-            setSelectedCalendars={setSelectedCalendars}
-            calendarOptions={calendarOptions}
-          />
-          {calendarMode 
-            ? <CalendarView 
-              onEventPress={handleEventPress}
-              events={events}
-              selectedCalendars={selectedCalendars}
-            /> 
-            : <ListView 
-              onEventPress={handleEventPress}
-              events={events}
-              selectedCalendars={selectedCalendars}
-            />}
-        </View>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.darken}>
+            <CalendarBar 
+              calendarMode={calendarMode} 
+              setCalendarMode={setCalendarMode} 
+              setSelectedCalendars={setSelectedCalendars}
+              calendarOptions={calendarOptions}
+            />
+            {calendarMode 
+              ? <CalendarView 
+                onEventPress={handleEventPress}
+                events={events}
+                selectedCalendars={selectedCalendars}
+              /> 
+              :  <ListView 
+                onEventPress={handleEventPress}
+                events={events}
+                selectedCalendars={selectedCalendars}
+              />}
+          </View>
+        </ScrollView>
       </ImageBackground>
       <Popup 
         visible={popupVisible} 
@@ -106,5 +113,9 @@ const styles = StyleSheet.create({
   darken: {
     flex: 1,
     backgroundColor: "rgba(0,0,0,0.4)",
+  },
+  scrollContainer: {
+    flexgrow: 1,
+    paddingBotom:20,
   },
 });
