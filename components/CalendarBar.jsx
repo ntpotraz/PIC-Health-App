@@ -23,7 +23,7 @@ const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, cale
         </TouchableOpacity>
         <Text style={[styles.flexItem, styles.title]}>Calendar</Text>
         <TouchableOpacity onPress={viewBtn} style={styles.flexItem}>
-          <View style={[styles.buttons, styles.calBtn]}>
+          <View style={styles.buttons}>
             <Text style={styles.buttonText}>
               {calendarMode ? "List" : "Calendar"}
             </Text>
@@ -73,9 +73,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     borderColor: "#808080",
-  },
-  calBtn: {
-    width: 100,
+    minWidth: 100,
   },
   buttonText: {
     alignSelf: "center",
