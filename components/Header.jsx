@@ -1,14 +1,37 @@
-import { View, Text , StyleSheet, Image} from 'react-native'
+import { View, Text , StyleSheet, Image, TouchableOpacity, Alert} from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react'
 
 const Header = ({ title }) => {
+  // function
+  const handlePress = () => {
+    
+  }
+
+
   return (
     <View style={header.container}>
-      <Image
-        style={{ width: 60, height: 60 }}
-        source={require('../assets/pic-logo.png')}
-      />
-      <Text style={header.title}>{title}</Text>
+      <View style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}>
+        <Image
+          style={{ width: 60, height: 60 }}
+          source={require('../assets/pic-logo.png')}
+        />
+        <Text style={header.title}>{title}</Text>
+      </View>
+      
+      <View style={header.iconContainer}>
+        <TouchableOpacity 
+          onPress={() => {
+            Alert.alert("Discalimer:", "Description");
+          }}
+        >
+          <Icon
+            name='information-circle-outline'
+            size={25}
+            color='white'
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -19,6 +42,7 @@ export default Header
 const header = StyleSheet.create({
     container: {
       flexDirection: 'row',
+      justifyContent: 'space-between',
       alignItems: 'center',
       width: '100%',
       height: 65,
@@ -35,5 +59,9 @@ const header = StyleSheet.create({
     },
     toggle: {
 
-    }
+    },
+    iconContainer: {
+      paddingRight: 10,
+    },
+
   });
