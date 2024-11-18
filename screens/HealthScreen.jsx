@@ -52,11 +52,13 @@ export default function HealthScreen() {
           <View style={textBox.container}>
             <Text style={textBox.title}>Diabetes Screening</Text>
             <Text style={textBox.text}>
-             Health care provider in Southern California in general
+            This test is used to identify individuals who may have 
+            diabetes or are at risk of developing the condition, often 
+            before they show any noticeable symptoms.
             </Text>
-            <TouchableOpacity onPress={() => Linking.openURL('https://www.vistacommunityclinic.org/about/')}>
+            <TouchableOpacity onPress={() => Linking.openURL('https://www.cdc.gov/prediabetes/risktest/index.html  ')}>
               <Text style={textBox.link}>
-               https://www.vistacommunityclinic.org/about/
+               https://www.cdc.gov/prediabetes/risktest/index.html  
               </Text>
             </TouchableOpacity>
           </View>
@@ -77,6 +79,21 @@ export default function HealthScreen() {
             <TouchableOpacity onPress={() => Linking.openURL('https://screening.mhanational.org/screening-tools/depression/?ref')}>
               <Text style={textBox.link}>
                https://screening.mhanational.org/screening-tools/depression/?ref
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={textBox.container}>
+            <Text style={textBox.title}>Mental Health America</Text>
+            <Text style={textBox.text}>
+            Take charge of your mental health by becoming informed and proactive. 
+            Address any worries you have about your well-being, and explore the 
+            various treatment options available to you. Your mental health matters, 
+            and help is within reach.
+            </Text>
+            <TouchableOpacity onPress={() => Linking.openURL('https://screening.mhanational.org/mental-health-101/')}>
+              <Text style={textBox.link}>
+                Hyperlink
               </Text>
             </TouchableOpacity>
           </View>
