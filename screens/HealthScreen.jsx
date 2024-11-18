@@ -56,12 +56,12 @@ export default function HealthScreen() {
           <View style={textBox.container}>
             <Text style={textBox.title}>Mental Wellness Resources</Text>
             <Text style={textBox.text}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-            when an unknown printer took a galley of type and scrambled it to make a type 
-            specimen book.
+            Take charge of your mental health by becoming informed and proactive. 
+            Address any worries you have about your well-being, and explore the 
+            various treatment options available to you. Your mental health matters, 
+            and help is within reach.
             </Text>
-            <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+            <TouchableOpacity onPress={() => Linking.openURL('https://screening.mhanational.org/mental-health-101/')}>
               <Text style={textBox.link}>
                 Hyperlink
               </Text>
