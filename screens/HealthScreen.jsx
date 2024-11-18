@@ -59,11 +59,17 @@ export default function HealthScreen() {
             Take charge of your mental health by becoming informed and proactive. 
             Address any worries you have about your well-being, and explore the 
             various treatment options available to you. Your mental health matters, 
-            and help is within reach.
+            and help is within reach. If you have any concerns about depression, 
+            you can take a depression test for more clarity.
             </Text>
             <TouchableOpacity onPress={() => Linking.openURL('https://screening.mhanational.org/mental-health-101/')}>
               <Text style={textBox.link}>
-                Hyperlink
+               Mental Health 101
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://screening.mhanational.org/screening-tools/depression/?ref')}>
+              <Text style={textBox.link}>
+               Depression Test
               </Text>
             </TouchableOpacity>
           </View>
