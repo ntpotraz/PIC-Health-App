@@ -56,7 +56,7 @@ export default function HealthScreen() {
           <View style={textBox.container}>
             <Text style={textBox.title}>Mental Wellness Resources</Text>
             <Text style={textBox.text}>
-            Take charge of your mental health by becoming informed and proactive. 
+            Take charge of your mental health by becoming informed. 
             Address any worries you have about your well-being, and explore the 
             various treatment options available to you. Your mental health matters, 
             and help is within reach. If you have any concerns about depression, 
