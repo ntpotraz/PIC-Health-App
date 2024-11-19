@@ -103,6 +103,23 @@ export default function HealthScreen() {
               </Text>
             </TouchableOpacity>
           </View>
+          <View style={textBox.container}>
+            <Text style={textBox.title}>Cancer Screening</Text>
+            <Text style={textBox.text}>
+              Learn more about screenings for specific cancers and when 
+              you should begin them
+            </Text>
+            <TouchableOpacity onPress={() => Linking.openURL('https://www.cancer.org/cancer/screening/american-cancer-society-guidelines-for-the-early-detection-of-cancer.html')}>
+              <Text style={textBox.link}>
+                Early Detection Guidelines
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://www.cancer.org/cancer/screening/screening-quiz.html')}>
+              <Text style={textBox.link}>
+                Screening quiz
+              </Text>
+            </TouchableOpacity>
+          </View>
 
         </View>
       </ScrollView>
