@@ -1,13 +1,36 @@
 import React from 'react';
-import { Modal, View, Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
-import { RenderHTML } from 'react-native-render-html';
+import { Modal, View, Text, TouchableOpacity, StyleSheet, Linking, FlatList } from 'react-native';
+import RenderHtml from 'react-native-render-html';
 
-const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
-  if (!event) return null;
-  
+const Popup = ({ visible, onClose, events }) => {
+  if (!events || events.length === 0) return null;
+
   const handleLinkPress = (event, href) => {
     Linking.openURL(href).catch(err => console.error("Failed to open URL:", err));
   };
+
+  const renderEvent = ({ item }) => (
+    <View style={styles.eventContainer}>
+      <Text style={styles.title}>{item.summary}</Text>
+      {item.description ? (
+        <RenderHtml
+          contentWidth={300}
+          source={{ html: item.description }}
+          defaultTextProps={{ selectable: true }}
+          renderersProps={{
+            a: {
+              onPress: handleLinkPress,
+            },
+          }}
+        />
+      ) : (
+        <Text style={styles.noDescription}>No description available</Text>
+      )}
+      <Text style={styles.eventTime}>
+        {new Date(item.start.dateTime || item.start.date).toLocaleString()}
+      </Text>
+    </View>
+  );
 
   return (
     <Modal
@@ -18,37 +41,11 @@ const Popup = ({ visible, onClose, event, onGoing, onNotGoing, onMaybe }) => {
     >
       <View style={styles.overlay}>
         <View style={styles.container}>
-          <Text style={styles.title}>{event.summary}</Text>
-          {event.description ? (
-            <RenderHTML
-              contentWidth={300}
-              source={{ html: event.description }}
-              defaultTextProps={{ selectable: true }}
-              renderersProps={{
-                a: {
-                  onPress: handleLinkPress,
-                },
-              }}
-            />
-          ) : (
-            <Text style={styles.description}>No description available</Text>
-          )}
-          <Text style={styles.date}>
-            Date: {new Date(event.start.dateTime || event.start.date).toLocaleString()}
-          </Text>
-
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={onGoing}>
-              <Text style={styles.buttonText}>Going</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={onNotGoing}>
-              <Text style={styles.buttonText}>Not Going</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={onMaybe}>
-              <Text style={styles.buttonText}>Maybe</Text>
-            </TouchableOpacity>
-          </View>
-
+          <FlatList
+            data={events}
+            keyExtractor={(item, index) => item.id + index}
+            renderItem={renderEvent}
+          />
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Close</Text>
           </TouchableOpacity>
@@ -68,57 +65,38 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    width: '80%',
+    width: 300,
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 20,
-    alignItems: 'center',
+  },
+  eventContainer: {
+    marginBottom: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
   },
-  description: {
-    fontSize: 16,
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-  linkText: {
-    fontsize: 16,
-    color: 'blue',
-    textDecorationLine: 'underline',
-  },
-  date: {
+  noDescription: {
     fontSize: 14,
-    marginBottom: 20,
+    color: '#555',
+    marginBottom: 10,
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-    marginBottom: 20,
-  },
-  button: {
-    flex: 1,
-    marginHorizontal: 5,
-    padding: 10,
-    backgroundColor: '#2196F3',
-    borderRadius: 5,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
+  eventTime: {
+    fontSize: 14,
+    color: '#555',
+    marginTop: 10,
   },
   closeButton: {
-    marginTop: 10,
+    marginTop: 20,
+    backgroundColor: '#2d4887',
     padding: 10,
-    backgroundColor: 'red',
     borderRadius: 5,
+    alignItems: 'center',
   },
   closeButtonText: {
     color: 'white',
-    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
