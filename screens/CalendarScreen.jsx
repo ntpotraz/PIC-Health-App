@@ -60,10 +60,10 @@ const CalendarPage = () => {
   return (
     <SafeAreaView edges={["top"]} style={styles.container}>
       <ImageBackground
-        source={require("../assets/background.png")}
+        source={require("../assets/beach-bg.jpg")}
         resizeMode="cover"
         style={styles.image}
-        blurRadius={4}
+        blurRadius={0}
       >
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.darken}>

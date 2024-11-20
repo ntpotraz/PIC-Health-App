@@ -9,22 +9,21 @@ export default function HomeScreen() {
     <View style={{flex: 1}}>
       <SafeAreaView style={{flex: 1,}}>
         <ImageBackground
-          source={require("../assets/background.png")}
+          source={require("../assets/beach-bg.jpg")}
           style={styles.image}
-          blurRadius={4}
+          blurRadius={0}
+          resizeMode='cover'
         >
-          <Header title="About Us" />
+          <Header title="About" />
           <ScrollView>
 
             {/* Logo and homepage title area */}
-            <View style={{alignItems: 'center', margin: 20}}>
-            <Text 
-                style={{fontSize: 30, fontWeight: 'bold', textAlign: 'center', color: 'white'}}>
-                  Pacific Islander Community Health
-              </Text>
+            <View 
+              style={{alignItems: 'center', justifyContent: 'center',flexDirection: 'row' , padding: 20}}>
               <Image
-                source={require('../assets/pic-logo.png')}
-                style={{height: 200, width: 200, alignSelf: 'center'}}
+                source={require('../assets/pic-health-logo-TEXT.png')}
+                style={{height: 150, width: 350}}
+                resizeMode='stretch'
               />
             </View>
 
@@ -51,7 +50,8 @@ export default function HomeScreen() {
                 <TouchableOpacity onPress={() => Linking.openURL('https://pacificislandercommunityhealth.weebly.com/about-us.html')}>
                   <Image
                   source={require('../assets/picteam.jpeg')}
-                  style={{alignSelf: 'center'}}
+                  style={{alignSelf: 'center', height: 250, width: 350}}
+                  resizeMode='stretch'
                   />
                 </TouchableOpacity>
               </View>

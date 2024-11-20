@@ -206,14 +206,14 @@ const styles = StyleSheet.create({
   picEvent: {
     padding: 15, 
     borderRadius: 15,
-    backgroundColor: "hsla(360,80%,50%,0.6)", // red color
+    backgroundColor: "hsla(360,80%,50%,0.9)", // red color
     marginHorizontal: 10,
     marginBottom: 10,
   },
   latinoEvent: {
     padding: 15,
     borderRadius: 15,
-    backgroundColor: "hsla(200,80%,60%,0.6)", // blue color
+    backgroundColor: "hsla(200,80%,60%,0.9)", // blue color
     marginHorizontal: 10,
     marginBottom: 10,
   },
@@ -254,4 +254,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
   },
-});
