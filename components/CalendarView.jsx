@@ -90,8 +90,6 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
         const dateA = new Date(a.dateTime).getTime();
         const dateB = new Date(b.dateTime).getTime();
         
-        if (a.isAllDay && !b.isAllDay) return -1;
-        if (!a.isAllDay && b.isAllDay) return 1;
         return dateA - dateB;
       });
 
