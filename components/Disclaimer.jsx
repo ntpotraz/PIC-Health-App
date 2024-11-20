@@ -25,6 +25,6 @@ export default Disclaimer
 
 const styles = StyleSheet.create({
     iconContainer: {
-        padding: 0,
+        paddingRight: 5,
     }
 })
