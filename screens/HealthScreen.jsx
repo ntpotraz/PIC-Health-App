@@ -71,12 +71,12 @@ export default function HealthScreen() {
             </Text>
             <TouchableOpacity onPress={() => Linking.openURL('https://screening.mhanational.org/mental-health-101/')}>
               <Text style={textBox.link}>
-               Mental Health 101
+               https://screening.mhanational.org/mental-health-101/
               </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => Linking.openURL('https://screening.mhanational.org/screening-tools/depression/?ref')}>
               <Text style={textBox.link}>
-               Depression Test
+               https://screening.mhanational.org/screening-tools/depression/?ref
               </Text>
             </TouchableOpacity>
           </View>
