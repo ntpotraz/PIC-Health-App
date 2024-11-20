@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-native';
+import Popup from './PopUp'; // Make sure to import the Popup component
 
 const ListView = ({ onEventPress, events, selectedCalendars }) => {
   const [error, setError] = useState(null);
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [selectedEvents, setSelectedEvents] = useState([]);
 
   const eventsArray = [];
   for (const [month, event] of Object.entries(events)) {
     event.forEach(item => {
-      eventsArray.push(item)
+      eventsArray.push(item);
     });
   }
 
@@ -36,6 +39,11 @@ const ListView = ({ onEventPress, events, selectedCalendars }) => {
 
   const sortedEventsArray = formatEvents(eventsArray);
 
+  const handleEventPress = (item) => {
+    setSelectedEvents([item]);
+    setPopupVisible(true);
+  };
+
   return (
     <View style={styles.container}>
       {error ? (
@@ -48,7 +56,7 @@ const ListView = ({ onEventPress, events, selectedCalendars }) => {
           keyExtractor={(item) => item.id}
           style={styles.sectionList}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.listItem} onPress={() => onEventPress(item)}>
+            <TouchableOpacity style={styles.listItem} onPress={() => handleEventPress(item)}>
               <View style={item.organizer.email === "pichealthtest@gmail.com" ? styles.picItem : styles.latinoItem}>
                 <Text style={styles.eventTitle}>{item.summary}</Text>
                 <Text style={styles.eventTime}>
@@ -64,6 +72,11 @@ const ListView = ({ onEventPress, events, selectedCalendars }) => {
       ) : (
         <Text style={styles.noEventsText}>No events available</Text>
       )}
+      <Popup
+        visible={popupVisible}
+        onClose={() => setPopupVisible(false)}
+        events={selectedEvents}
+      />
     </View>
   );
 };

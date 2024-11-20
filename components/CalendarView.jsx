@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import RenderHTML from 'react-native-render-html';
+import Popup from './PopUp'; // Make sure to import the Popup component
 
 const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
   const [markedDates, setMarkedDates] = useState({});
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [selectedEvents, setSelectedEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
 
   // Helper function to add days
@@ -96,8 +99,14 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
       setUpcomingEvents(upcomingEventsList);
     };
 
-      filterUpcomingEvents();
-    }, [events]);
+    filterUpcomingEvents();
+  }, [events]);
+
+  const handleDayPress = (day) => {
+    const selectedDateEvents = events[day.dateString] || [];
+    setSelectedEvents(selectedDateEvents);
+    setPopupVisible(true);
+  };
 
   return (
     <View style={styles.container}>
@@ -106,10 +115,7 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
         <Calendar
           markedDates={markedDates}
           markingType={'multi-dot'}
-          onDayPress={(day) => {
-            const selectedDateEvents = events[day.dateString] || [];
-            selectedDateEvents.forEach(event => onEventPress(event));
-          }}
+          onDayPress={handleDayPress}
         />
       </View>
       
@@ -157,6 +163,12 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
           <Text style={styles.noUpcomingEventText}>No upcoming events</Text>
         )}
       </ScrollView>
+
+      <Popup
+        visible={popupVisible}
+        onClose={() => setPopupVisible(false)}
+        events={selectedEvents}
+      />
     </View>
   );
 };
