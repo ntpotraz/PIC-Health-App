@@ -231,8 +231,7 @@ const styles = StyleSheet.create({
   },
   upcomingEventsContainer: {
     marginTop: 20,
-    paddingBottom: 50,
-    marginHorizontal: 10,
+    height: 250,
   },
   upcomingTitle: {
     color: "white",
