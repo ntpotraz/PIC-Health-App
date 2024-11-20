@@ -66,16 +66,18 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
         Object.entries(events).forEach(([date, eventsOnDate = []]) => {
           if (Array.isArray(eventsOnDate)) {
             eventsOnDate.forEach(event => {
-              const eventDateObj = new Date(event.start?.dateTime || event.Start?.date);
+              const isAllDay = !!event.start?.date;
+              const eventDateObj = new Date(event.start?.dateTime || event.start?.date);
 
               if (!isNaN(eventDateObj) && eventDateObj >= today && eventDateObj <= endDate) {
                 upcomingEventsList.push({
                   name: event.summary,
                   date,
-                  time: event.time,
+                  time: isAllDay ? "All Day" : new Date(event.start.dateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
                   description: event.description || 'No description available',
                   dateTime: event.start.dateTime || event.start.date,
-                  organizer: event.organizer
+                  organizer: event.organizer,
+                  isAllDay,
                 });
               }
             });
@@ -84,7 +86,15 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
       }
       
       // Sort upcoming events by date and time
-      upcomingEventsList.sort((a, b) => new Date(a.dateTime) - new Date(b.dateTime));
+      upcomingEventsList.sort((a, b) => {
+        const dateA = new Date(a.dateTime).getTime();
+        const dateB = new Date(b.dateTime).getTime();
+        
+        if (a.isAllDay && !b.isAllDay) return -1;
+        if (!a.isAllDay && b.isAllDay) return 1;
+        return dateA - dateB;
+      });
+
       setUpcomingEvents(upcomingEventsList);
     };
 
@@ -199,15 +209,17 @@ const styles = StyleSheet.create({
   },
   upcomingEventsContainer: {
     marginTop: 20,
+    paddingBottom: 50,
+    marginHorizontal: 10,
   },
   upcomingTitle: {
     color: "white",
     fontSize: 18,
     fontWeight: 'bold',
-    backgroundColor: 'hsla(200, 0%, 20%, 0.6)',
     paddingHorizontal: 30,
     paddingVertical: 10,
     marginBottom: 10,
+    textAlign: 'center',
   },
   eventTitle: {
     fontSize: 20,
