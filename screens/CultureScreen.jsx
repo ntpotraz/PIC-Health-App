@@ -7,10 +7,10 @@ export default function CultureScreen() {
   return (
     <SafeAreaView edges={["top"]} style={styles.container}>
       <ImageBackground
-        source={require("../assets/background.png")}
+        source={require("../assets/beach-bg.jpg")}
         resizeMode="cover"
         style={styles.image}
-        blurRadius={4}
+        blurRadius={0}
       >
         <Header title="Culture, Arts, & Language"/>
         <ScrollView>
