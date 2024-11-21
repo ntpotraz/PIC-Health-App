@@ -19,7 +19,13 @@ export default function CultureScreen() {
             <View style={textBox.container}>
               <Text style={textBox.title}>Umeke</Text>
               <Text style={textBox.text}>
-               Educational program about Hawaiian culture
+              Based in North County San Diego, UMEKE is a 
+              501(c)(3) organization dedicated to the preservation, 
+              perpetuation and education of Hawaiian culture. Their 
+              vision is to educate local communities through cross-cultural 
+              learning, embracing an intersectional approach to work towards 
+              the equity and advancement of all marginalized and underserved 
+              populations.  
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://www.umeke.org/')}>
                 <Text style={textBox.link}>
@@ -29,33 +35,48 @@ export default function CultureScreen() {
             </View>
 
             <View style={textBox.container}>
-              <Text style={textBox.title}>Language Courses</Text>
+              <Text style={textBox.title}>Language Course</Text>
               <Text style={textBox.text}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type
-                specimen book.
+              As a part of the CSUSM U-Act Project you will find information 
+              here on language and education programs for the Pacific Islander 
+              Community. These programs are The Chamoru Language Immersion Experience 
+              and The Gagana Sāmoa Language Performing Arts Program. The Chamoru 
+              Language Immersion Experience is an educational initiative designed 
+              to immerse participants in the Chamoru language and culture. The Gagana 
+              Sāmoa Language Performing Arts Program focuses on teaching the Sāmoan 
+              language (Gagana Samoa) and traditional Samoan performing arts. 
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.csusm.edu/apida/uact.html ')}>
                 <Text style={textBox.link}>
-                  Hyperlink
+                 https://www.csusm.edu/apida/uact.html 
                 </Text>
               </TouchableOpacity>
             </View>
 
             <View style={textBox.container}>
-              <Text style={textBox.title}>Movement Class</Text>
+              <Text style={textBox.title}>Movement Course</Text>
               <Text style={textBox.text}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type
-                specimen book.
+              Kūhai Hālau O ʻIlima Pā ʻŌlapa Kahiko (KHOI) stands 
+              as a traditional hālau hula (hula school), located in 
+              the coastal community of Oceanside, CA. Our hālau is 
+              passionately committed to fostering cultural learning 
+              among our haumāna (students) through the art of hula. 
+              At the core of our mission is the dedication to learning, 
+              teaching, and perpetuating every facet of hula, drawn from 
+              our ancestral lineage. 
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.kahulaoilima.com/')}>
                 <Text style={textBox.link}>
-                  Hyperlink
+                 https://www.kahulaoilima.com/ 
                 </Text>
               </TouchableOpacity>
+            </View>
+
+            <View style={textBox.container}>
+              <Text style={textBox.title}>Other</Text>
+              <Text style={textBox.text}>
+                Coming soon
+              </Text>
             </View>
 
           </View>
