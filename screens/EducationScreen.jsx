@@ -19,7 +19,13 @@ export default function EducationScreen() {
             <View style={textBox.container}>
               <Text style={textBox.title}>Mana Academy</Text>
               <Text style={textBox.text}>
-               Charter school for Native Americans in Utah
+               Mana is a program of Mira Costa Community College 
+               that builds community on campus among Native Hawaiian 
+               and Pacific Islander (NHPI) students and offers many 
+               support services toward academic, cultural, and personal 
+               goals. Mana is a holistic program which provides students 
+               with a culturally relevant entry into higher education whilst 
+               offering academic and counseling support. 
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://www.themanaacademy.org/')}>
                 <Text style={textBox.link}>
@@ -31,9 +37,10 @@ export default function EducationScreen() {
             <View style={textBox.container}>
               <Text style={textBox.title}>CSUSM APIDA</Text>
               <Text style={textBox.text}>
-              Success initiative for Asian, Pacific Islander, and 
-              Desi American students in California State University, 
-              San Marcos
+              The Asian & Pacific Islander & Desi American (APIDA) 
+              Success Initiative strives to inspire and prepare all 
+              students for success at CSUSM with care and support. 
+              For our low-income, first-generation, and returning students.
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://www.csusm.edu/apida/index.html')}>
                 <Text style={textBox.link}>
@@ -45,14 +52,16 @@ export default function EducationScreen() {
             <View style={textBox.container}>
               <Text style={textBox.title}>How to apply to college?</Text>
               <Text style={textBox.text}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type
-                specimen book.
+              This will guide students through the often complex, competitive, 
+              and time-sensitive process of selecting and applying to higher 
+              education institutions. These resources help ensure that students 
+              make informed decisions, submit strong applications, and ultimately 
+              gain access to the educational opportunities that best fit their goals
+              and needs. 
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.commonapp.org/')}>
                 <Text style={textBox.link}>
-                  Hyperlink
+                 https://www.commonapp.org/  
                 </Text>
               </TouchableOpacity>
             </View>
@@ -60,10 +69,11 @@ export default function EducationScreen() {
             <View style={textBox.container}>
               <Text style={textBox.title}>Financial Aid</Text>
               <Text style={textBox.text}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type
-                specimen book.
+              FAFSA provides essential support for individuals 
+              seeking financial assistance for higher education. 
+              The FAFSA is a key tool for students to access federal 
+              financial aid, including grants, loans, and work-study 
+              opportunities, as well as for state and institutional aid. 
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://studentaid.gov/')}>
                 <Text style={textBox.link}>
@@ -75,16 +85,15 @@ export default function EducationScreen() {
             <View style={textBox.container}>
               <Text style={textBox.title}>Testimonials</Text>
               <Text style={textBox.text}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type
-                specimen book.
+               Coming soon
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
-                <Text style={textBox.link}>
-                 https://google.com
-                </Text>
-              </TouchableOpacity>
+            </View>
+
+            <View style={textBox.container}>
+              <Text style={textBox.title}>Other</Text>
+              <Text style={textBox.text}>
+                Coming soon
+              </Text>
             </View>
 
           </View>
