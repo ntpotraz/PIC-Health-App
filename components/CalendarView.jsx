@@ -31,8 +31,8 @@ const CalendarView = ({ onEventPress, events, selectedCalendars, setIsWellnessVi
   useEffect(() => {
     const formatEvents = (events) => {
       const calendarColors = {
-        'pichealthtest@gmail.com': 'red',
-        'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com': 'blue',
+        'pichealthtest@gmail.com': '#0B75B9',
+        'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com': '#71AD45',
       };
 
       const formattedEvents = Object.keys(events).reduce((acc, date) => {
