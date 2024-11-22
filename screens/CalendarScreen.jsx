@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ImageBackground, View, StyleSheet, ScrollView, Platform } from "react-native";
+import { ImageBackground, View, StyleSheet, Linking, Platform } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ListView from "../components/ListView";
 import CalendarView from "../components/CalendarView";
