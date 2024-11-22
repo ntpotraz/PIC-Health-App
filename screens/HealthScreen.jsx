@@ -14,6 +14,9 @@ export default function HealthScreen() {
         blurRadius={0}
       >
       <Header title="Health" />
+      <Disclaimer description="This is a disclaimer for the health screen." />
+      <Header/>
+
       <ScrollView>
         <View style={{ flex: 1,  margin: 5, borderRadius: 10}}>
 
