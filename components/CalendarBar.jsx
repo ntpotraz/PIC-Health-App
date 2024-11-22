@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView,  Linking} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView,  Linking, Platform } from 'react-native';
 import { MultipleSelectList } from 'react-native-dropdown-select-list';
 
-const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, calendarOptions, upcomingEvents = [] }) => {
+const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, calendarOptions, setIsVisible = [] }) => {
   // "Today" button functionality can be customized as needed
   const newEvent = () => {
-    Linking.openURL('https://forms.gle/Tkgafh2Qa4kTmG1N9');
+    Platform.OS === "web" 
+    ? Linking.openURL('https://forms.gle/Tkgafh2Qa4kTmG1N9')
+    : setIsVisible(true);
   };
 
   // Toggles between Calendar and List view

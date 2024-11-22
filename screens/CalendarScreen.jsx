@@ -5,6 +5,7 @@ import ListView from "../components/ListView";
 import CalendarView from "../components/CalendarView";
 import Popup from "../components/PopUp";
 import CalendarBar from "../components/CalendarBar"; 
+import WebViewModal from '../components/WebViewModal';
 
 import { fetchCalendarEvents } from '../services/GoogleCalendarService';
 
@@ -12,6 +13,7 @@ const CalendarPage = () => {
   const [calendarMode, setCalendarMode] = useState(true);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const [events, setEvents] = useState({});
   const [selectedCalendars, setSelectedCalendars] = useState([]);
@@ -69,6 +71,7 @@ const CalendarPage = () => {
           <View style={styles.darken}>
             <CalendarBar 
               calendarMode={calendarMode} 
+              setIsVisible={setIsVisible}
               setCalendarMode={setCalendarMode} 
               setSelectedCalendars={setSelectedCalendars}
               calendarOptions={calendarOptions}
@@ -95,6 +98,9 @@ const CalendarPage = () => {
         onNotGoing={() => console.log('Not Going')} 
         onMaybe={() => console.log('Maybe')} 
       />
+
+      {/*Web Browser*/}
+      <WebViewModal isVisible={isVisible} setIsVisible={setIsVisible} />
     </SafeAreaView>
   );
 };
