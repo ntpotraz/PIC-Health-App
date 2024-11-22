@@ -28,9 +28,7 @@ export default function CultureScreen() {
               populations.  
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://www.umeke.org/')}>
-                <Text style={textBox.link}>
-                 https://www.umeke.org/
-                </Text>
+                <Text style={textBox.link}>Homepage</Text>
               </TouchableOpacity>
             </View>
 
@@ -47,9 +45,7 @@ export default function CultureScreen() {
               language (Gagana Samoa) and traditional Samoan performing arts. 
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://www.csusm.edu/apida/uact.html ')}>
-                <Text style={textBox.link}>
-                 https://www.csusm.edu/apida/uact.html 
-                </Text>
+                <Text style={textBox.link}>CSUSM U-ACT</Text>
               </TouchableOpacity>
             </View>
 
@@ -67,8 +63,16 @@ export default function CultureScreen() {
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://www.kahulaoilima.com/')}>
                 <Text style={textBox.link}>
-                 https://www.kahulaoilima.com/ 
+                  KHOI Homepage
                 </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={textBox.container}>
+              <Text style={textBox.title}>MindFull Movement</Text>
+              <Text style={textBox.text}>MindFull Movement is all about creating space for belonging. The Oceanside-based dance and movement collective is a haven of hejalthy self-expression, wellness, and healing for Native Hawaiian and Pacific Islander (NHPI) and Black, Indigenous and People of Color (BIPOC) individuals.</Text>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/mindfull.movement/?igsh=NTc4MTIwNjQ2YQ%3D%3D')}>
+                <Text style={textBox.link}>Instagram Account</Text>
               </TouchableOpacity>
             </View>
 

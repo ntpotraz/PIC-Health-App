@@ -27,10 +27,8 @@ export default function EducationScreen() {
                with a culturally relevant entry into higher education whilst 
                offering academic and counseling support. 
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://www.themanaacademy.org/')}>
-                <Text style={textBox.link}>
-                https://www.themanaacademy.org/
-                </Text>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.miracosta.edu/student-services/student-equity/mana/index.html')}>
+                <Text style={textBox.link}>Mana @ MiraCosta College</Text>
               </TouchableOpacity>
             </View>
 
@@ -43,14 +41,12 @@ export default function EducationScreen() {
               For our low-income, first-generation, and returning students.
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://www.csusm.edu/apida/index.html')}>
-                <Text style={textBox.link}>
-                 https://www.csusm.edu/apida/index.html
-                </Text>
+                <Text style={textBox.link}>Homepage</Text>
               </TouchableOpacity>
             </View>
 
             <View style={textBox.container}>
-              <Text style={textBox.title}>How to apply to college?</Text>
+              <Text style={textBox.title}>How to Apply to College?</Text>
               <Text style={textBox.text}>
               This will guide students through the often complex, competitive, 
               and time-sensitive process of selecting and applying to higher 
@@ -60,9 +56,7 @@ export default function EducationScreen() {
               and needs. 
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://www.commonapp.org/')}>
-                <Text style={textBox.link}>
-                 https://www.commonapp.org/  
-                </Text>
+                <Text style={textBox.link}>CommonApp</Text>
               </TouchableOpacity>
             </View>
 
@@ -76,9 +70,7 @@ export default function EducationScreen() {
               opportunities, as well as for state and institutional aid. 
               </Text>
               <TouchableOpacity onPress={() => Linking.openURL('https://studentaid.gov/')}>
-                <Text style={textBox.link}>
-                 https://studentaid.gov/
-                </Text>
+                <Text style={textBox.link}>Federal Student Aid</Text>
               </TouchableOpacity>
             </View>
 
