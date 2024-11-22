@@ -13,7 +13,9 @@ const CalendarPage = () => {
   const [calendarMode, setCalendarMode] = useState(true);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isWellnessVisible, setIsWellnessVisible] = useState(false);
+  const [isSosVisible, setIsSosVisible] = useState(false);
 
   const [events, setEvents] = useState({});
   const [selectedCalendars, setSelectedCalendars] = useState([]);
@@ -67,28 +69,31 @@ const CalendarPage = () => {
         style={styles.image}
         blurRadius={0}
       >
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <CalendarBar
+          calendarMode={calendarMode}
+          setIsVisible={setIsFormVisible}
+          setCalendarMode={setCalendarMode}
+          setSelectedCalendars={setSelectedCalendars}
+          calendarOptions={calendarOptions}
+        />
           <View style={styles.darken}>
-            <CalendarBar 
-              calendarMode={calendarMode} 
-              setIsVisible={setIsVisible}
-              setCalendarMode={setCalendarMode} 
-              setSelectedCalendars={setSelectedCalendars}
-              calendarOptions={calendarOptions}
-            />
             {calendarMode 
-              ? <CalendarView 
+            ?
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
+              <CalendarView
                 onEventPress={handleEventPress}
+                setIsWellnessVisible={setIsWellnessVisible}
+                setIsSosVisible={setIsSosVisible}
                 events={events}
                 selectedCalendars={selectedCalendars}
-              /> 
-              :  <ListView 
+              />
+            </ScrollView>
+            : <ListView 
                 onEventPress={handleEventPress}
                 events={events}
                 selectedCalendars={selectedCalendars}
               />}
           </View>
-        </ScrollView>
       </ImageBackground>
       <Popup 
         visible={popupVisible} 
@@ -100,7 +105,9 @@ const CalendarPage = () => {
       />
 
       {/*Web Browser*/}
-      <WebViewModal isVisible={isVisible} setIsVisible={setIsVisible} />
+      <WebViewModal url="https://forms.gle/Tkgafh2Qa4kTmG1N9" isVisible={isFormVisible} setIsVisible={setIsFormVisible} />
+      <WebViewModal url="https://www.healthcentral.com/quiz/stress-test" isVisible={isWellnessVisible} setIsVisible={setIsWellnessVisible} />
+      <WebViewModal url="https://www.google.com" isVisible={isSosVisible} setIsVisible={setIsSosVisible} />
     </SafeAreaView>
   );
 };

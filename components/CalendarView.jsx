@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking, Platform } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import RenderHTML from 'react-native-render-html';
 import Popup from './PopUp'; // Make sure to import the Popup component
 
-const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
+const CalendarView = ({ onEventPress, events, selectedCalendars, setIsWellnessVisible, setIsSosVisible }) => {
   const [markedDates, setMarkedDates] = useState({});
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedEvents, setSelectedEvents] = useState([]);
@@ -108,6 +108,18 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
     setPopupVisible(true);
   };
 
+  const wellnessCheck = () => {
+    Platform.OS === "web" 
+    ? Linking.openURL("https://www.healthcentral.com/quiz/stress-test")
+    : setIsWellnessVisible(true);
+  }
+
+  const sosCheck = () => {
+    Platform.OS === "web" 
+    ? Linking.openURL("https://www.google.com")
+    : setIsSosVisible(true);
+  }
+
   return (
     <View style={styles.container}>
       {/* Calendar Section */}
@@ -121,12 +133,12 @@ const CalendarView = ({ onEventPress, events, selectedCalendars }) => {
       
       {/* wellness check & SOS Button Section */}
       <View style={styles.middleBtns}>
-        <TouchableOpacity style={{flex: 1, alignItems:"center"}}>
+        <TouchableOpacity onPress={wellnessCheck} style={{flex: 1, alignItems:"center"}}>
           <View style={styles.wellnessSOS}>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>Wellness Check</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={{flex: 1, alignItems:"center"}}>
+        <TouchableOpacity onPress={sosCheck} style={{flex: 1, alignItems:"center"}}>
           <View style={styles.wellnessSOS}>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>SOS</Text>
           </View>
@@ -206,14 +218,14 @@ const styles = StyleSheet.create({
   picEvent: {
     padding: 15, 
     borderRadius: 15,
-    backgroundColor: "hsla(360,80%,50%,0.9)", // red color
+    backgroundColor: "#0B75B9", // red color
     marginHorizontal: 10,
     marginBottom: 10,
   },
   latinoEvent: {
     padding: 15,
     borderRadius: 15,
-    backgroundColor: "hsla(200,80%,60%,0.9)", // blue color
+    backgroundColor: "#71AD45", // blue color
     marginHorizontal: 10,
     marginBottom: 10,
   },

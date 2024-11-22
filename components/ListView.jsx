@@ -95,12 +95,12 @@ const styles = StyleSheet.create({
   picItem: {
     padding: 15,
     borderRadius: 15,
-    backgroundColor: "hsla(360,80%,50%,0.6)",
+    backgroundColor: "#0B75B9", // red color
   },
   latinoItem: {
     padding: 15,
     borderRadius: 15,
-    backgroundColor: "hsla(200,80%,60%,0.6)",
+    backgroundColor: "#71AD45", // blue color
   },
   eventTitle: {
     fontSize: 20,

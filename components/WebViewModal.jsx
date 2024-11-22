@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
 import WebView from 'react-native-webview';
 
-const WebViewModal = ({ isVisible, setIsVisible }) => {
+const WebViewModal = ({ url, isVisible, setIsVisible }) => {
   return (
     <Modal
       animationType="slide"
@@ -21,7 +21,7 @@ const WebViewModal = ({ isVisible, setIsVisible }) => {
 
           <View style={styles.webviewContainer}>
             <WebView
-              source={{ uri: "https://forms.gle/Tkgafh2Qa4kTmG1N9" }}
+              source={{ uri: url }}
               style={styles.webview}
               onError={(syntheticEvent) => {
                 const { nativeEvent } = syntheticEvent;
