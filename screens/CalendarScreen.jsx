@@ -93,14 +93,12 @@ const CalendarScreen = () => {
           <View style={styles.darken}>
             {calendarMode 
             ?
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
               <CalendarView
                 onEventPress={handleEventPress}
                 events={events}
                 selectedCalendars={selectedCalendars}
                 callWebView={callWebView}
               />
-            </ScrollView>
             : <ListView 
                 onEventPress={handleEventPress}
                 events={events}

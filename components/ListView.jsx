@@ -8,9 +8,12 @@ const ListView = ({ onEventPress, events, selectedCalendars }) => {
   const [selectedEvents, setSelectedEvents] = useState([]);
 
   const eventsArray = [];
+  const todayDate = new Date().toISOString().split('T')[0];
   for (const [month, event] of Object.entries(events)) {
     event.forEach(item => {
-      eventsArray.push(item);
+      if (todayDate <= (item.end.dateTime || item.end.date).split('T')[0]) {
+        eventsArray.push(item);
+      }
     });
   }
 
@@ -52,6 +55,7 @@ const ListView = ({ onEventPress, events, selectedCalendars }) => {
         <Text style={styles.noEventsText}>Please select a calendar to view events</Text>
       ) : sortedEventsArray.length > 0 ? (
         <SectionList
+          stickySectionHeadersEnabled
           sections={sortedEventsArray}
           keyExtractor={(item) => item.id}
           style={styles.sectionList}
