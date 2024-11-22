@@ -218,7 +218,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   upcomingEventsContainer: {
-    marginTop: 20,
     height: 250,
   },
   upcomingTitle: {
@@ -226,7 +225,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     paddingHorizontal: 30,
-    paddingVertical: 10,
+    paddingBottom: 10,
     marginBottom: 10,
     textAlign: 'center',
   },
@@ -253,3 +252,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
   },
+})
