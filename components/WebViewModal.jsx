@@ -2,17 +2,17 @@ import React from 'react';
 import { Modal, View, TouchableOpacity, Text, StyleSheet, Platform } from 'react-native';
 import WebView from 'react-native-webview';
 
-const WebViewModal = ({ url, isVisible, setIsVisible }) => {
+const WebViewModal = ({ url, isVisible, onClose }) => {
   return (
     <Modal
       animationType="slide"
       visible={isVisible}
-      onRequestClose={() => setIsVisible(false)}
+      onRequestClose={onClose}
     >
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity
-              onPress={() => setIsVisible(false)}
+              onPress={() => onClose()}
               style={styles.closeButton}
             >
               <Text style={styles.closeButtonText}>Close</Text>
@@ -23,10 +23,7 @@ const WebViewModal = ({ url, isVisible, setIsVisible }) => {
             <WebView
               source={{ uri: url }}
               style={styles.webview}
-              onError={(syntheticEvent) => {
-                const { nativeEvent } = syntheticEvent;
-                console.warn('WebView error: ', nativeEvent);
-              }}
+              onError={onClose}
             />
           </View>
         </View>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ImageBackground, View, StyleSheet, ScrollView } from "react-native";
+import { ImageBackground, View, StyleSheet, ScrollView, Platform } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ListView from "../components/ListView";
 import CalendarView from "../components/CalendarView";
@@ -9,13 +9,11 @@ import WebViewModal from '../components/WebViewModal';
 
 import { fetchCalendarEvents } from '../services/GoogleCalendarService';
 
-const CalendarPage = () => {
+const CalendarScreen = () => {
   const [calendarMode, setCalendarMode] = useState(true);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  const [isWellnessVisible, setIsWellnessVisible] = useState(false);
-  const [isSosVisible, setIsSosVisible] = useState(false);
+  const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
 
   const [events, setEvents] = useState({});
   const [selectedCalendars, setSelectedCalendars] = useState([]);
@@ -24,6 +22,22 @@ const CalendarPage = () => {
     { key: 'pichealthtest@gmail.com', value: 'Pacific Islander Community' },
     { key: 'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com', value: 'Latino Community' }
   ];
+
+  const callWebView = (url) => {
+    Platform.OS === "web" ? 
+      Linking.openURL(url) :
+      setModalConfig({
+        isVisible: true,
+        url: url
+      });
+  };
+
+  const closeModal = () => {
+    setModalConfig(prev => ({
+      ...prev,
+      isVisible: false
+    }));
+  };
 
   useEffect(() => {
     async function loadEvents() {
@@ -71,7 +85,7 @@ const CalendarPage = () => {
       >
         <CalendarBar
           calendarMode={calendarMode}
-          setIsVisible={setIsFormVisible}
+          callWebView={callWebView}
           setCalendarMode={setCalendarMode}
           setSelectedCalendars={setSelectedCalendars}
           calendarOptions={calendarOptions}
@@ -82,10 +96,9 @@ const CalendarPage = () => {
             <ScrollView contentContainerStyle={styles.scrollContainer}>
               <CalendarView
                 onEventPress={handleEventPress}
-                setIsWellnessVisible={setIsWellnessVisible}
-                setIsSosVisible={setIsSosVisible}
                 events={events}
                 selectedCalendars={selectedCalendars}
+                callWebView={callWebView}
               />
             </ScrollView>
             : <ListView 
@@ -105,14 +118,12 @@ const CalendarPage = () => {
       />
 
       {/*Web Browser*/}
-      <WebViewModal url="https://forms.gle/Tkgafh2Qa4kTmG1N9" isVisible={isFormVisible} setIsVisible={setIsFormVisible} />
-      <WebViewModal url="https://www.healthcentral.com/quiz/stress-test" isVisible={isWellnessVisible} setIsVisible={setIsWellnessVisible} />
-      <WebViewModal url="https://www.google.com" isVisible={isSosVisible} setIsVisible={setIsSosVisible} />
+      <WebViewModal url={modalConfig.url} isVisible={modalConfig.isVisible} onClose={closeModal} />
     </SafeAreaView>
   );
 };
 
-export default CalendarPage;
+export default CalendarScreen;
 
 const styles = StyleSheet.create({
   container: {

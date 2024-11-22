@@ -1,15 +1,9 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView,  Linking, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { MultipleSelectList } from 'react-native-dropdown-select-list';
 
-const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, calendarOptions, setIsVisible = [] }) => {
+const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, calendarOptions, callWebView }) => {
   // "Today" button functionality can be customized as needed
-  const newEvent = () => {
-    Platform.OS === "web" 
-    ? Linking.openURL('https://forms.gle/Tkgafh2Qa4kTmG1N9')
-    : setIsVisible(true);
-  };
-
   // Toggles between Calendar and List view
   const viewBtn = () => {
     setCalendarMode(prevMode => !prevMode);
@@ -18,7 +12,7 @@ const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, cale
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <TouchableOpacity onPress={newEvent} style={styles.flexItem}>
+        <TouchableOpacity onPress={() => callWebView('https://forms.gle/Tkgafh2Qa4kTmG1N9')} style={styles.flexItem}>
           <View style={styles.buttons}>
             <Text style={styles.buttonText}>Submit Event</Text>
           </View>

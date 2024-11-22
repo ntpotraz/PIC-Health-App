@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import RenderHTML from 'react-native-render-html';
 import Popup from './PopUp'; // Make sure to import the Popup component
 
-const CalendarView = ({ onEventPress, events, selectedCalendars, setIsWellnessVisible, setIsSosVisible }) => {
+const CalendarView = ({ events, selectedCalendars, callWebView }) => {
   const [markedDates, setMarkedDates] = useState({});
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedEvents, setSelectedEvents] = useState([]);
@@ -108,18 +108,6 @@ const CalendarView = ({ onEventPress, events, selectedCalendars, setIsWellnessVi
     setPopupVisible(true);
   };
 
-  const wellnessCheck = () => {
-    Platform.OS === "web" 
-    ? Linking.openURL("https://www.healthcentral.com/quiz/stress-test")
-    : setIsWellnessVisible(true);
-  }
-
-  const sosCheck = () => {
-    Platform.OS === "web" 
-    ? Linking.openURL("https://www.google.com")
-    : setIsSosVisible(true);
-  }
-
   return (
     <View style={styles.container}>
       {/* Calendar Section */}
@@ -133,12 +121,12 @@ const CalendarView = ({ onEventPress, events, selectedCalendars, setIsWellnessVi
       
       {/* wellness check & SOS Button Section */}
       <View style={styles.middleBtns}>
-        <TouchableOpacity onPress={wellnessCheck} style={{flex: 1, alignItems:"center"}}>
+        <TouchableOpacity onPress={() => callWebView("https://www.healthcentral.com/quiz/stress-test")} style={{flex: 1, alignItems:"center"}}>
           <View style={styles.wellnessSOS}>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>Wellness Check</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={sosCheck} style={{flex: 1, alignItems:"center"}}>
+        <TouchableOpacity onPress={() => callWebView("https://www.cavshate.org/")} style={{flex: 1, alignItems:"center"}}>
           <View style={styles.wellnessSOS}>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>SOS</Text>
           </View>
