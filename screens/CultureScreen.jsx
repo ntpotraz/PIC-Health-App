@@ -3,7 +3,7 @@ import { ImageBackground, Text, View, StyleSheet, ScrollView, Linking, Touchable
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header';
 
-export default function CultureScreen() {
+const CultureScreen = () => {
   return (
     <SafeAreaView edges={["top"]} style={styles.container}>
       <ImageBackground
@@ -89,6 +89,8 @@ export default function CultureScreen() {
     </SafeAreaView>
   );
 }
+
+export default CultureScreen;
 
 const styles = StyleSheet.create({
   container: {

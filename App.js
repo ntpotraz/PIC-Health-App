@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import HomeScreen from './screens/AboutUs';
+import AboutUs from './screens/AboutUs';
 import HealthScreen from './screens/HealthScreen';
 import CalendarScreen from './screens/CalendarScreen';
 import EducationScreen from './screens/EducationScreen';
@@ -11,7 +11,7 @@ import { StyleSheet } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+const App = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -46,11 +46,13 @@ export default function App() {
         <Tab.Screen name="Health" component={HealthScreen} />
         <Tab.Screen name="Education" component={EducationScreen} />
         <Tab.Screen name="Culture" component={CultureScreen} />
-        <Tab.Screen name="About Us" component={HomeScreen} />
+        <Tab.Screen name="About Us" component={AboutUs} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {

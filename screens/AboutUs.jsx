@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageBackground, View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Seperator from "../components/Seperator";
 import Header from '../components/Header';
+import WebViewModal from '../components/WebViewModal';
 
-export default function HomeScreen() {
+const AboutUs = () => {
   return (
     <View style={{flex: 1}}>
       <SafeAreaView style={{flex: 1,}}>
@@ -101,6 +102,8 @@ export default function HomeScreen() {
     </View>
   );
 }
+
+export default AboutUs;
 
 // styles for the page
 const styles = StyleSheet.create({

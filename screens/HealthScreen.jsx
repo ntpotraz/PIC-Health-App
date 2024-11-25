@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header';
 import Disclaimer from '../components/Disclaimer';
 
-export default function HealthScreen() {
+const HealthScreen = () => {
   return (
     <SafeAreaView edges={["top"]} style={styles.container}>
       <ImageBackground
@@ -98,6 +98,8 @@ export default function HealthScreen() {
     </SafeAreaView>
   );
 }
+
+export default HealthScreen;
 
 const styles = StyleSheet.create({
   container: {

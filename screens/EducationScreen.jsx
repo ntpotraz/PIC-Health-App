@@ -3,7 +3,7 @@ import { ImageBackground, Text, View, StyleSheet, ScrollView, Linking, Touchable
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header';
 
-export default function EducationScreen() {
+const EducationScreen = () => {
   return (
     <SafeAreaView edges={["top"]} style={styles.container}>
       <ImageBackground
@@ -94,6 +94,8 @@ export default function EducationScreen() {
     </SafeAreaView>
   );
 }
+
+export default EducationScreen;
 
 const styles = StyleSheet.create({
   container: {
