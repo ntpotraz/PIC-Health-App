@@ -1,16 +1,34 @@
 import React, { useState } from 'react';
-import { ImageBackground, View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Linking } from 'react-native';
+import { ImageBackground, View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Linking, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Seperator from "../components/Seperator";
 import Header from '../components/Header';
 import WebViewModal from '../components/WebViewModal';
 
 const AboutUs = () => {
+  const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
+
+  const callWebView = (url) => {
+    Platform.OS === 'web' ?
+      Linking.openURL(url) :
+      setModalConfig({
+        isVisible: true,
+        url: url
+      });
+  };
+
+  const closeModal = () => {
+    setModalConfig(prev => ({
+      ...prev,
+      isVisible: false
+    }));
+  }
+
   return (
     <View style={{flex: 1}}>
       <SafeAreaView style={{flex: 1,}}>
         <ImageBackground
-          source={require("../assets/beach-bg.jpg")}
+          source={require('../assets/beach-bg.jpg')}
           style={styles.image}
           blurRadius={0}
           resizeMode='cover'
@@ -48,10 +66,10 @@ const AboutUs = () => {
                 <Text style={textBox.text}>
                   Learn more:
                 </Text>
-                <TouchableOpacity onPress={() => Linking.openURL('https://pacificislandercommunityhealth.weebly.com/about-us.html')}>
+                <TouchableOpacity onPress={() => callWebView('https://pacificislandercommunityhealth.weebly.com/about-us.html')}>
                   <Image
                   source={require('../assets/picteam.jpeg')}
-                  style={{alignSelf: 'center', height: 250, width: 350}}
+                  style={styles.groupPhoto}
                   resizeMode='stretch'
                   />
                 </TouchableOpacity>
@@ -87,7 +105,7 @@ const AboutUs = () => {
 
               <View style={textBox.container}>
                 <Text style={textBox.title}>Community Partners</Text>
-                <TouchableOpacity onPress={() => Linking.openURL('https://google.com')}>
+                <TouchableOpacity onPress={() => callWebView('https://google.com')}>
                 <Text style={textBox.text}>
                   https://google.com
                  </Text>
@@ -98,6 +116,7 @@ const AboutUs = () => {
             </View>
           </ScrollView>
         </ImageBackground>
+        <WebViewModal url={modalConfig.url} isVisible={modalConfig.isVisible} onClose={closeModal} />
       </SafeAreaView>
     </View>
   );
@@ -131,6 +150,13 @@ const styles = StyleSheet.create({
     height: 250,
     width: 250,
     alignSelf: 'center',
+  },
+  groupPhoto: { 
+    alignSelf: 'center', 
+    height: 250, 
+    width: 350, 
+    marginTop: 10,
+    borderRadius: 10,
   }
 });
 
