@@ -1,9 +1,28 @@
-import React from 'react';
-import { ImageBackground, Text, View, StyleSheet, ScrollView, Linking, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { ImageBackground, Text, View, StyleSheet, ScrollView, Linking, TouchableOpacity, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header';
+import WebViewModal from '../components/WebViewModal';
 
 const EducationScreen = () => {
+  const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
+
+  const callWebView = (url) => {
+    Platform.OS === "web" ? 
+      Linking.openURL(url) :
+      setModalConfig({
+        isVisible: true,
+        url: url
+      });
+  };
+
+  const closeModal = () => {
+    setModalConfig(prev => ({
+      ...prev,
+      isVisible: false
+    }));
+  };
+
   return (
     <SafeAreaView edges={["top"]} style={styles.container}>
       <ImageBackground
@@ -27,7 +46,7 @@ const EducationScreen = () => {
                with a culturally relevant entry into higher education whilst 
                offering academic and counseling support. 
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://www.miracosta.edu/student-services/student-equity/mana/index.html')}>
+              <TouchableOpacity onPress={() => callWebView('https://www.miracosta.edu/student-services/student-equity/mana/index.html')} style={{flex: 1}}>
                 <Text style={textBox.link}>Mana @ MiraCosta College</Text>
               </TouchableOpacity>
             </View>
@@ -40,7 +59,7 @@ const EducationScreen = () => {
               students for success at CSUSM with care and support. 
               For our low-income, first-generation, and returning students.
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://www.csusm.edu/apida/index.html')}>
+              <TouchableOpacity onPress={() => callWebView('https://www.csusm.edu/apida/index.html')} style={{flex: 1}}>
                 <Text style={textBox.link}>Homepage</Text>
               </TouchableOpacity>
             </View>
@@ -55,7 +74,7 @@ const EducationScreen = () => {
               gain access to the educational opportunities that best fit their goals
               and needs. 
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://www.commonapp.org/')}>
+              <TouchableOpacity onPress={() => callWebView('https://www.commonapp.org/')} style={{flex: 1}}>
                 <Text style={textBox.link}>CommonApp</Text>
               </TouchableOpacity>
             </View>
@@ -69,7 +88,7 @@ const EducationScreen = () => {
               financial aid, including grants, loans, and work-study 
               opportunities, as well as for state and institutional aid. 
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://studentaid.gov/')}>
+              <TouchableOpacity onPress={() => callWebView('https://studentaid.gov/')} style={{flex: 1}}>
                 <Text style={textBox.link}>Federal Student Aid</Text>
               </TouchableOpacity>
             </View>
@@ -91,6 +110,10 @@ const EducationScreen = () => {
           </View>
         </ScrollView>
       </ImageBackground>
+
+      {/*Web Browser*/}
+      <WebViewModal url={modalConfig.url} isVisible={modalConfig.isVisible} onClose={closeModal} />
+
     </SafeAreaView>
   );
 }
