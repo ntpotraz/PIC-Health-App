@@ -8,7 +8,7 @@ const Disclaimer = ({description}) => {
     <View style={styles.iconContainer}>
         <TouchableOpacity 
           onPress={() => {
-            Alert.alert("Discalimer:", description);
+            Alert.alert('Discalimer:', description);
           }}
         >
           <Icon

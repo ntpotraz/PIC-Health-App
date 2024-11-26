@@ -8,7 +8,7 @@ const EducationScreen = () => {
   const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
 
   const callWebView = (url) => {
-    Platform.OS === "web" ? 
+    Platform.OS === 'web' ? 
       Linking.openURL(url) :
       setModalConfig({
         isVisible: true,
@@ -24,14 +24,14 @@ const EducationScreen = () => {
   };
 
   return (
-    <SafeAreaView edges={["top"]} style={styles.container}>
+    <SafeAreaView edges={['top']} style={styles.container}>
       <ImageBackground
-        source={require("../assets/beach-bg.jpg")}
-        resizeMode="cover"
+        source={require('../assets/beach-bg.jpg')}
+        resizeMode='cover'
         style={styles.image}
         blurRadius={0}
       >
-        <Header title="Education"/>
+        <Header title='Education'/>
         <ScrollView>
           <View style={{ flex: 1, margin: 5, borderRadius: 10 }}>
 
@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
 });
 

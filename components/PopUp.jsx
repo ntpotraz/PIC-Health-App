@@ -6,7 +6,7 @@ const Popup = ({ visible, onClose, events }) => {
   if (!events || events.length === 0) return null;
 
   const handleLinkPress = (event, href) => {
-    Linking.openURL(href).catch(err => console.error("Failed to open URL:", err));
+    Linking.openURL(href).catch(err => console.error('Failed to open URL:', err));
   };
 
   const renderEvent = ({ item }) => (
@@ -36,7 +36,7 @@ const Popup = ({ visible, onClose, events }) => {
     <Modal
       transparent={true}
       visible={visible}
-      animationType="slide"
+      animationType='slide'
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>

@@ -19,7 +19,7 @@ const CalendarView = ({ events, selectedCalendars, callWebView }) => {
 
   // Open links in description
   const handleLinkPress = (event, href) => {
-    Linking.openURL(href).catch(err => console.error("Failed to open URL:", err));
+    Linking.openURL(href).catch(err => console.error('Failed to open URL:', err));
   };
 
   // Format description HTML to add <br> before links
@@ -76,7 +76,7 @@ const CalendarView = ({ events, selectedCalendars, callWebView }) => {
                 upcomingEventsList.push({
                   name: event.summary,
                   date,
-                  time: isAllDay ? "All Day" : new Date(event.start.dateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                  time: isAllDay ? 'All Day' : new Date(event.start.dateTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
                   description: event.description || 'No description available',
                   dateTime: event.start.dateTime || event.start.date,
                   organizer: event.organizer,
@@ -111,7 +111,7 @@ const CalendarView = ({ events, selectedCalendars, callWebView }) => {
   return (
     <View style={styles.container}>
       {/* Calendar Section */}
-      <View style={styles.calendarContainer}>
+      <View>
         <Calendar
           markedDates={markedDates}
           markingType={'multi-dot'}
@@ -121,25 +121,27 @@ const CalendarView = ({ events, selectedCalendars, callWebView }) => {
       
       {/* wellness check & SOS Button Section */}
       <View style={styles.middleBtns}>
-        <TouchableOpacity onPress={() => callWebView("https://www.healthcentral.com/quiz/stress-test")} style={{flex: 1, alignItems:"center"}}>
+        <TouchableOpacity onPress={() => callWebView('https://www.healthcentral.com/quiz/stress-test')} style={{flex: 1, alignItems:'center'}}>
           <View style={styles.wellnessSOS}>
-            <Text style={{ fontSize: 20, fontWeight: "bold" }}>Wellness Check</Text>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Wellness Check</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => callWebView("https://www.cavshate.org/")} style={{flex: 1, alignItems:"center"}}>
+        <TouchableOpacity onPress={() => callWebView('https://www.cavshate.org/')} style={{flex: 1, alignItems:'center'}}>
           <View style={styles.wellnessSOS}>
-            <Text style={{ fontSize: 20, fontWeight: "bold" }}>SOS</Text>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>SOS</Text>
           </View>
         </TouchableOpacity>
       </View>
 
       {/* Upcoming Events section*/}
-      <ScrollView style={styles.upcomingEventsContainer}>
-        <Text style={styles.upcomingTitle}>Upcoming Events</Text>
+      <ScrollView stickyHeaderIndices={[0]} style={styles.upcomingEventsContainer}>
+        <View style={styles.upcomingHeader}>
+          <Text style={styles.upcomingTitle}>Upcoming Events</Text>
+        </View>
         {upcomingEvents.length > 0 ? (
           upcomingEvents.map((event, index) => (
             <View key={index} 
-            style={event.organizer?.email === "pichealthtest@gmail.com" ? styles.picEvent : styles.latinoEvent}>
+            style={event.organizer?.email === 'pichealthtest@gmail.com' ? styles.picEvent : styles.latinoEvent}>
               <Text style={styles.eventTitle}>{event.name}</Text>
               <Text style={styles.eventDate}>{event.date}</Text>
               <Text style={styles.eventTime}>{event.time}</Text>
@@ -178,56 +180,55 @@ export default CalendarView;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
-  },
-  calendarContainer: {
-  },
-  noEventsText: {
-    fontSize: 16,
-    color: '#888',
-    textAlign: 'center',
-    marginTop: 20,
+    justifyContent: 'space-between',
   },
   middleBtns: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-around",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     marginTop: 20, // Add space between calendar and buttons
   },
   wellnessSOS: {
     height: 50,
-    width: "90%",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '90%',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 10,
-    backgroundColor: "rgba(255, 255, 255, 0.6)",
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
     marginBottom: 20,
   },
   picEvent: {
     padding: 15, 
     borderRadius: 15,
-    backgroundColor: "#0B75B9", // red color
+    backgroundColor: '#0B75B9', // red color
     marginHorizontal: 10,
     marginBottom: 10,
   },
   latinoEvent: {
     padding: 15,
     borderRadius: 15,
-    backgroundColor: "#71AD45", // blue color
+    backgroundColor: '#71AD45', // blue color
     marginHorizontal: 10,
     marginBottom: 10,
   },
   upcomingEventsContainer: {
     height: 250,
+    paddingTop: 10,
   },
   upcomingTitle: {
-    color: "white",
+    color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
     paddingHorizontal: 30,
-    paddingBottom: 10,
+  },
+  upcomingHeader: {
+    display: 'flex',
+    width: '100%',
+    alignItems: 'center',
+    backgroundColor: 'hsla(0, 0%, 0%, 0.5)',
+    paddingVertical: 10,
+    margin: 'auto',
     marginBottom: 10,
-    textAlign: 'center',
   },
   eventTitle: {
     fontSize: 20,
@@ -240,11 +241,6 @@ const styles = StyleSheet.create({
   eventTime: {
     fontSize: 14,
     color: '#555',
-  },
-  eventDescription: {
-    fontSize: 14,
-    color: '#444',
-    marginTop: 5,
   },
   noUpcomingEventText: {
     fontSize: 16,

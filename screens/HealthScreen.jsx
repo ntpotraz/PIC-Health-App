@@ -6,15 +6,15 @@ import Disclaimer from '../components/Disclaimer';
 
 const HealthScreen = () => {
   return (
-    <SafeAreaView edges={["top"]} style={styles.container}>
+    <SafeAreaView edges={['top']} style={styles.container}>
       <ImageBackground
-        source={require("../assets/beach-bg.jpg")}
-        resizeMode="cover"
+        source={require('../assets/beach-bg.jpg')}
+        resizeMode='cover'
         style={styles.image}
         blurRadius={0}
       >
-        <Header title="Health">
-          <Disclaimer description="The information provided here is for general informational purposes only and is not intended as medical advice. Always consult with a qualified healthcare provider for advice regarding your specific medical condition, symptoms, or treatment options. Do not disregard professional medical advice or delay seeking treatment." />
+        <Header title='Health'>
+          <Disclaimer description='The information provided here is for general informational purposes only and is not intended as medical advice. Always consult with a qualified healthcare provider for advice regarding your specific medical condition, symptoms, or treatment options. Do not disregard professional medical advice or delay seeking treatment.' />
         </Header>
         <ScrollView>
           <View style={{ flex: 1, margin: 5, borderRadius: 10 }}>
@@ -109,15 +109,8 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    width: "100%",
-    height: "100%",
-  },
-  text: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: "center",
-    color: "white",
-    margin: "auto",
+    width: '100%',
+    height: '100%',
   },
 });
 

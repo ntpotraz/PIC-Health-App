@@ -7,7 +7,6 @@ import HealthScreen from './screens/HealthScreen';
 import CalendarScreen from './screens/CalendarScreen';
 import EducationScreen from './screens/EducationScreen';
 import CultureScreen from './screens/CultureScreen';
-import { StyleSheet } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +14,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Home" // Set the initial route to Home (CalendarScreen)
+        initialRouteName='Home' // Set the initial route to Home (CalendarScreen)
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             let iconName;
@@ -42,21 +41,14 @@ const App = () => {
           }
         })}
       >
-        <Tab.Screen name="Home" component={CalendarScreen} />
-        <Tab.Screen name="Health" component={HealthScreen} />
-        <Tab.Screen name="Education" component={EducationScreen} />
-        <Tab.Screen name="Culture" component={CultureScreen} />
-        <Tab.Screen name="About Us" component={AboutUs} />
+        <Tab.Screen name='Home' component={CalendarScreen} />
+        <Tab.Screen name='Health' component={HealthScreen} />
+        <Tab.Screen name='Education' component={EducationScreen} />
+        <Tab.Screen name='Culture' component={CultureScreen} />
+        <Tab.Screen name='About Us' component={AboutUs} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 }
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2d4887',
-  },
-});

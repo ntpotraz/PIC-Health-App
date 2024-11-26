@@ -13,13 +13,13 @@ export async function fetchCalendarEvents(calendarIds) {
       if (data.items) {
         allEvents.push(...data.items);
       } else {
-        console.error("No events found in calendar:", data);
+        console.error('No events found in calendar:', data);
       }
     }
 
     return allEvents;
   } catch (error) {
-    console.error("Error fetching calendar events:", error);
+    console.error('Error fetching calendar events:', error);
     return [];
   }
 }

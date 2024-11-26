@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ImageBackground, View, StyleSheet, Linking, Platform } from "react-native";
+import { ImageBackground, View, StyleSheet, Linking, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ListView from "../components/ListView";
-import CalendarView from "../components/CalendarView";
-import Popup from "../components/PopUp";
-import CalendarBar from "../components/CalendarBar"; 
+import ListView from '../components/ListView';
+import CalendarView from '../components/CalendarView';
+import Popup from '../components/PopUp';
+import CalendarBar from '../components/CalendarBar'; 
 import WebViewModal from '../components/WebViewModal';
 
 import { fetchCalendarEvents } from '../services/GoogleCalendarService';
@@ -24,7 +24,7 @@ const CalendarScreen = () => {
   ];
 
   const callWebView = (url) => {
-    Platform.OS === "web" ? 
+    Platform.OS === 'web' ? 
       Linking.openURL(url) :
       setModalConfig({
         isVisible: true,
@@ -76,10 +76,10 @@ const CalendarScreen = () => {
   };
 
   return (
-    <SafeAreaView edges={["top"]} style={styles.container}>
+    <SafeAreaView edges={['top']} style={styles.container}>
       <ImageBackground
-        source={require("../assets/beach-bg.jpg")}
-        resizeMode="cover"
+        source={require('../assets/beach-bg.jpg')}
+        resizeMode='cover'
         style={styles.image}
         blurRadius={0}
       >
@@ -129,15 +129,11 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
   darken: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0,0.4)",
-  },
-  scrollContainer: {
-    flexgrow: 1,
-    paddingBotom:20,
+    backgroundColor: 'rgba(0,0,0,0.4)',
   },
 });

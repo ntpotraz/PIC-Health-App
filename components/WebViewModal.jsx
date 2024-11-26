@@ -5,7 +5,7 @@ import WebView from 'react-native-webview';
 const WebViewModal = ({ url, isVisible, onClose }) => {
   return (
     <Modal
-      animationType="slide"
+      animationType='slide'
       visible={isVisible}
       onRequestClose={onClose}
     >
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginTop: Platform.OS === "ios" ? 50 : 0,
+    marginTop: Platform.OS === 'ios' ? 50 : 0,
   },
   header: {
     flexDirection: 'row',

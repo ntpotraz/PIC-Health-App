@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ImageBackground, View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Linking, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Seperator from "../components/Seperator";
+import Seperator from '../components/Seperator';
 import Header from '../components/Header';
 import WebViewModal from '../components/WebViewModal';
 
@@ -33,7 +33,7 @@ const AboutUs = () => {
           blurRadius={0}
           resizeMode='cover'
         >
-          <Header title="About" />
+          <Header title='About' />
           <ScrollView>
 
             {/* Logo and homepage title area */}
@@ -126,30 +126,10 @@ export default AboutUs;
 
 // styles for the page
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   image: {
     flex: 1,
-    width: "100%",
-    height: "100%",
-  },
-  text: {
-    fontSize: 18,
-    fontWeight: 'thin',
-    fontFamily: 'sans-serif',
-    color: 'white'
-  },
-  image: {
-    flex: 1,
-    height: "100%",
-    width: "100%",
-  },
-  logo: {
-    flex: 1,
-    height: 250,
-    width: 250,
-    alignSelf: 'center',
+    width: '100%',
+    height: '100%',
   },
   groupPhoto: { 
     alignSelf: 'center', 
@@ -172,13 +152,13 @@ const textBox = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     fontFamily: 'sans-serif',
-    color: "black",
+    color: 'black',
     marginBottom: 10,
   },
   text: {
     fontSize: 18,
     fontWeight: 'thin',
     fontFamily: 'sans-serif',
-    color: "hsl(200, 50%, 50%)",
+    color: 'hsl(200, 50%, 50%)',
   },
 });

@@ -5,14 +5,14 @@ import Header from '../components/Header';
 
 const CultureScreen = () => {
   return (
-    <SafeAreaView edges={["top"]} style={styles.container}>
+    <SafeAreaView edges={['top']} style={styles.container}>
       <ImageBackground
-        source={require("../assets/beach-bg.jpg")}
-        resizeMode="cover"
+        source={require('../assets/beach-bg.jpg')}
+        resizeMode='cover'
         style={styles.image}
         blurRadius={0}
       >
-        <Header title="Culture, Arts, & Language"/>
+        <Header title='Culture, Arts, & Language'/>
         <ScrollView>
           <View style={{ flex: 1, margin: 5, borderRadius: 10 }}>
 
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
   },
 });
 

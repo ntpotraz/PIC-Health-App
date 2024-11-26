@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-native';
 import Popup from './PopUp'; // Make sure to import the Popup component
 
-const ListView = ({ onEventPress, events, selectedCalendars }) => {
+const ListView = ({ events, selectedCalendars }) => {
   const [error, setError] = useState(null);
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedEvents, setSelectedEvents] = useState([]);
@@ -61,7 +61,7 @@ const ListView = ({ onEventPress, events, selectedCalendars }) => {
           style={styles.sectionList}
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.listItem} onPress={() => handleEventPress(item)}>
-              <View style={item.organizer.email === "pichealthtest@gmail.com" ? styles.picItem : styles.latinoItem}>
+              <View style={item.organizer.email === 'pichealthtest@gmail.com' ? styles.picItem : styles.latinoItem}>
                 <Text style={styles.eventTitle}>{item.summary}</Text>
                 <Text style={styles.eventTime}>
                   {new Date(item.start.dateTime || item.start.date).toLocaleString()}
@@ -99,12 +99,12 @@ const styles = StyleSheet.create({
   picItem: {
     padding: 15,
     borderRadius: 15,
-    backgroundColor: "#0B75B9", // red color
+    backgroundColor: '#0B75B9', // red color
   },
   latinoItem: {
     padding: 15,
     borderRadius: 15,
-    backgroundColor: "#71AD45", // blue color
+    backgroundColor: '#71AD45', // blue color
   },
   eventTitle: {
     fontSize: 20,
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   sectionHeader: {
-    color: "white",
+    color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
     backgroundColor: 'hsla(200, 0%, 20%, 0.6)',
@@ -134,19 +134,5 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     marginTop: 20,
-  },
-  dropdown: {
-    backgroundColor: '#fff', // White background for the dropdown
-  },
-  dropdownBox: {
-    backgroundColor: '#fff', // White background for the box
-    borderColor: '#fff', // Optional: Add border color
-    borderRadius: 0
-  },
-  listBorder: {
-    borderColor: "black",
-    borderWidth: 2,
-    borderRadius: 15,
-    margin: 5,
   },
 });
