@@ -109,7 +109,7 @@ const CalendarView = ({ events, selectedCalendars, callWebView }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {/* Calendar Section */}
       <View>
         <Calendar
@@ -134,10 +134,7 @@ const CalendarView = ({ events, selectedCalendars, callWebView }) => {
       </View>
 
       {/* Upcoming Events section*/}
-      <ScrollView stickyHeaderIndices={[0]} style={styles.upcomingEventsContainer}>
-        <View style={styles.upcomingHeader}>
-          <Text style={styles.upcomingTitle}>Upcoming Events</Text>
-        </View>
+        <Text style={styles.upcomingTitle}>Upcoming Events</Text>
         {upcomingEvents.length > 0 ? (
           upcomingEvents.map((event, index) => (
             <View key={index} 
@@ -164,14 +161,12 @@ const CalendarView = ({ events, selectedCalendars, callWebView }) => {
         ) : (
           <Text style={styles.noUpcomingEventText}>No upcoming events</Text>
         )}
-      </ScrollView>
-
       <Popup
         visible={popupVisible}
         onClose={() => setPopupVisible(false)}
         events={selectedEvents}
       />
-    </View>
+    </ScrollView>
   );
 };
 
@@ -180,7 +175,7 @@ export default CalendarView;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    contentContainerStyle: 'space-between',
   },
   middleBtns: {
     display: 'flex',
@@ -219,16 +214,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
-    paddingHorizontal: 30,
-  },
-  upcomingHeader: {
-    display: 'flex',
-    width: '100%',
-    alignItems: 'center',
-    backgroundColor: 'hsla(0, 0%, 0%, 0.5)',
-    paddingVertical: 10,
-    margin: 'auto',
     marginBottom: 10,
+    textAlign: 'center',
   },
   eventTitle: {
     fontSize: 20,
