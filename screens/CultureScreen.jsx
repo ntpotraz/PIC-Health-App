@@ -1,9 +1,28 @@
-import React from 'react';
-import { ImageBackground, Text, View, StyleSheet, ScrollView, Linking, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { ImageBackground, Text, View, StyleSheet, ScrollView, Platform, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header';
+import WebViewModal from '../components/WebViewModal';
 
 const CultureScreen = () => {
+  const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
+
+  const callWebView = (url) => {
+    Platform.OS === 'web' ? 
+      callWebView(url) :
+      setModalConfig({
+        isVisible: true,
+        url: url
+      });
+  };
+
+  const closeModal = () => {
+    setModalConfig(prev => ({
+      ...prev,
+      isVisible: false
+    }));
+  };
+
   return (
     <SafeAreaView edges={['top']} style={styles.container}>
       <ImageBackground
@@ -27,7 +46,7 @@ const CultureScreen = () => {
               the equity and advancement of all marginalized and underserved 
               populations.  
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://www.umeke.org/')}>
+              <TouchableOpacity onPress={() => callWebView('https://www.umeke.org/')}>
                 <Text style={textBox.link}>Homepage</Text>
               </TouchableOpacity>
             </View>
@@ -44,7 +63,7 @@ const CultureScreen = () => {
               Sāmoa Language Performing Arts Program focuses on teaching the Sāmoan 
               language (Gagana Samoa) and traditional Samoan performing arts. 
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://www.csusm.edu/apida/uact.html ')}>
+              <TouchableOpacity onPress={() => callWebView('https://www.csusm.edu/apida/uact.html ')}>
                 <Text style={textBox.link}>CSUSM U-ACT</Text>
               </TouchableOpacity>
             </View>
@@ -61,7 +80,7 @@ const CultureScreen = () => {
               teaching, and perpetuating every facet of hula, drawn from 
               our ancestral lineage. 
               </Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://www.kahulaoilima.com/')}>
+              <TouchableOpacity onPress={() => callWebView('https://www.kahulaoilima.com/')}>
                 <Text style={textBox.link}>
                   KHOI Homepage
                 </Text>
@@ -71,7 +90,7 @@ const CultureScreen = () => {
             <View style={textBox.container}>
               <Text style={textBox.title}>MindFull Movement</Text>
               <Text style={textBox.text}>MindFull Movement is all about creating space for belonging. The Oceanside-based dance and movement collective is a haven of hejalthy self-expression, wellness, and healing for Native Hawaiian and Pacific Islander (NHPI) and Black, Indigenous and People of Color (BIPOC) individuals.</Text>
-              <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/mindfull.movement/?igsh=NTc4MTIwNjQ2YQ%3D%3D')}>
+              <TouchableOpacity onPress={() => callWebView('https://www.instagram.com/mindfull.movement/?igsh=NTc4MTIwNjQ2YQ%3D%3D')}>
                 <Text style={textBox.link}>Instagram Account</Text>
               </TouchableOpacity>
             </View>
@@ -86,6 +105,10 @@ const CultureScreen = () => {
           </View>
         </ScrollView>
       </ImageBackground>
+
+      {/*Web Browser*/}
+      <WebViewModal url={modalConfig.url} isVisible={modalConfig.isVisible} onClose={closeModal} />
+
     </SafeAreaView>
   );
 }
