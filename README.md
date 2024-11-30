@@ -5,12 +5,12 @@ A community driven event and health application for the Pacific Islander and Lat
 ## Table of Contents
 
 - [Features](#features)
-- Setting Up the Environment
-- Installation
-- Usage
-- Contributing
-- License
-- Contact
+- [Setting Up the Environment](#setting-up-the-environment)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## Features
 
@@ -77,10 +77,10 @@ MIT License
 
 ## Contact
 
-Nathan Potraz [linkedin] [email]
-Adam Salter [linkedin] [email]
-Billy Vo [linkedin] [email]
-Michael Duggan[linkedin] [email]
-Kane Svelan [linkedin] [email]
+- Nathan Potraz [linkedin] [email]
+- Adam Salter [linkedin] [email]
+- Billy Vo [linkedin] [email]
+- Michael Duggan[linkedin] [email]
+- Kane Svelan [linkedin] [email]
 
-PIC Health Team pichealth@gmail.com instagram: @pichealth
+- PIC Health Team pichealth@gmail.com instagram: @pichealth
