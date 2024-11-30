@@ -22,8 +22,8 @@ A community driven event and health application for the Pacific Islander and Lat
 
 ## Setting Up the Environment
 
-https://reactnative.dev/docs/set-up-your-environment
-https://docs.expo.dev/more/expo-cli/
+- https://reactnative.dev/docs/set-up-your-environment
+- https://docs.expo.dev/more/expo-cli/
 
 Install node packages
 
