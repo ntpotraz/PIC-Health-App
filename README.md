@@ -23,11 +23,11 @@ A community driven event and health application for the Pacific Islander and Lat
 ## Setting Up the Environment
 
 https://reactnative.dev/docs/set-up-your-environment
+https://docs.expo.dev/more/expo-cli/
 
 Install node packages
 
 ```bash
-cd PIC-Health-App
 npm install
 npm install expo
 ```
@@ -50,6 +50,12 @@ npm install react-native-icons
 git clone https://github.com/ntpotraz/PIC-Health-App
 ```
 
+2. Navigate to repository
+
+```bash
+cd PIC-Health-App
+```
+
 ## Usage
 
 Before running the application, start the Metro Bundler using this command:
@@ -60,7 +66,18 @@ npx expo start
 
 Instructions for opening the app on the desired platform (iOS, Android, Web) will be displayed in your terminal.
 
-web view is default to: http://localhost:8081
+Web view will be waiting at: http://localhost:8081
+
+- Generate the native Android and iOS directories for your project: (`npx expo prebuild`).
+- Build and Run the native apps locally: (`npx expo run:ios`) and (`npx expo run:android`)
+- Install and update packages: (`npx expo install package-name`)
+- To view a list of available commands in the Expo CLI, run the following command:
+
+```bash
+- npx expo -h
+```
+
+- You can also run (`yarn expo -h`) if you prefer to use yarn as your package manager.
 
 ## Contributing
 
@@ -77,10 +94,9 @@ MIT License
 
 ## Contact
 
-- Nathan Potraz [linkedin] [email]
-- Adam Salter [linkedin] [email]
-- Billy Vo [linkedin] [email]
-- Michael Duggan[linkedin] [email]
-- Kane Svelan [linkedin] [email]
-
-- PIC Health Team pichealth@gmail.com instagram: @pichealth
+- Nathan Potraz: [linkedin] [email]
+- Adam Salter: [linkedin] [email]
+- Billy Vo: [linkedin] [email]
+- Michael Duggan: [linkedin] [email]
+- Kane Svelan: [linkedin] [email]
+- PIC Health Team: pichealth@gmail.com instagram: @pichealth
