@@ -2,21 +2,23 @@ import React, { useState } from 'react';
 import { View, Text, SectionList, StyleSheet, TouchableOpacity } from 'react-native';
 import Popup from './PopUp'; // Make sure to import the Popup component
 
-const ListView = ({ events, selectedCalendars }) => {
+const ListView = ({ onEventPress, events, selectedCalendars }) => {
+  // State to manage errors
   const [error, setError] = useState(null);
+  // State to control the visibility of the Popup
   const [popupVisible, setPopupVisible] = useState(false);
+  // State to store the selected events for the Popup
   const [selectedEvents, setSelectedEvents] = useState([]);
 
+  // Convert events object to an array
   const eventsArray = [];
-  const todayDate = new Date().toISOString().split('T')[0];
   for (const [month, event] of Object.entries(events)) {
     event.forEach(item => {
-      if (todayDate <= (item.end.dateTime || item.end.date).split('T')[0]) {
-        eventsArray.push(item);
-      }
+      eventsArray.push(item);
     });
   }
 
+  // Function to format events into sections by month
   const formatEvents = (events) => {
     const groupedEvents = events.reduce((acc, event) => {
       const eventDate = new Date(event.start.dateTime || event.start.date);
@@ -40,8 +42,10 @@ const ListView = ({ events, selectedCalendars }) => {
     return sortedEvents;
   };
 
+  // Format the events array into sections
   const sortedEventsArray = formatEvents(eventsArray);
 
+  // Function to handle event press and show the Popup
   const handleEventPress = (item) => {
     setSelectedEvents([item]);
     setPopupVisible(true);
@@ -50,10 +54,13 @@ const ListView = ({ events, selectedCalendars }) => {
   return (
     <View style={styles.container}>
       {error ? (
+        // Display error message if there's an error
         <Text style={styles.errorText}>Error: {error}</Text>
       ) : selectedCalendars.length === 0 ? (
+        // Display message if no calendars are selected
         <Text style={styles.noEventsText}>Please select a calendar to view events</Text>
       ) : sortedEventsArray.length > 0 ? (
+        // Display the SectionList if there are events
         <SectionList
           stickySectionHeadersEnabled
           sections={sortedEventsArray}
@@ -74,8 +81,10 @@ const ListView = ({ events, selectedCalendars }) => {
           )}
         />
       ) : (
+        // Display message if no events are available
         <Text style={styles.noEventsText}>No events available</Text>
       )}
+      {/* Popup component to display event details */}
       <Popup
         visible={popupVisible}
         onClose={() => setPopupVisible(false)}
@@ -99,12 +108,12 @@ const styles = StyleSheet.create({
   picItem: {
     padding: 15,
     borderRadius: 15,
-    backgroundColor: '#0B75B9', // red color
+    backgroundColor: "hsla(360,80%,50%,0.6)",
   },
   latinoItem: {
     padding: 15,
     borderRadius: 15,
-    backgroundColor: '#71AD45', // blue color
+    backgroundColor: "hsla(200,80%,60%,0.6)",
   },
   eventTitle: {
     fontSize: 20,
@@ -115,7 +124,7 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   sectionHeader: {
-    color: 'white',
+    color: "white",
     fontSize: 18,
     fontWeight: 'bold',
     backgroundColor: 'hsla(200, 0%, 20%, 0.6)',
@@ -134,5 +143,19 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     marginTop: 20,
+  },
+  dropdown: {
+    backgroundColor: '#fff', // White background for the dropdown
+  },
+  dropdownBox: {
+    backgroundColor: '#fff', // White background for the box
+    borderColor: '#fff', // Optional: Add border color
+    borderRadius: 0
+  },
+  listBorder: {
+    borderColor: "black",
+    borderWidth: 2,
+    borderRadius: 15,
+    margin: 5,
   },
 });
