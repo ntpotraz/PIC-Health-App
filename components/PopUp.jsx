@@ -1,15 +1,33 @@
-import React from 'react';
-import { Modal, View, Text, TouchableOpacity, StyleSheet, Linking, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { Platform, Alert, Modal, View, Text, TouchableOpacity, StyleSheet, Linking, FlatList } from 'react-native';
 import RenderHtml from 'react-native-render-html';
+import WebViewModal from './WebViewModal';
 
 // Popup component to display event details in a modal
 const Popup = ({ visible, onClose, events }) => {
   // If there are no events, do not render the popup
   if (!events || events.length === 0) return null;
+  const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
 
   // Function to handle link presses within the HTML content
   const handleLinkPress = (event, href) => {
-    Linking.openURL(href).catch(err => console.error('Failed to open URL:', err));
+    callWebView(href);
+  };
+
+  const callWebView = (url) => {
+    Platform.OS === 'web' ? 
+      callWebView(url) :
+      setModalConfig({
+        isVisible: true,
+        url: url
+      });
+  };
+
+  const closeModal = () => {
+    setModalConfig(prev => ({
+      ...prev,
+      isVisible: false
+    }));
   };
 
   // Function to render each event in the FlatList
@@ -57,6 +75,7 @@ const Popup = ({ visible, onClose, events }) => {
           </TouchableOpacity>
         </View>
       </View>
+      <WebViewModal url={modalConfig.url} isVisible={modalConfig.isVisible} onClose={closeModal} />
     </Modal>
   );
 };
@@ -106,4 +125,3 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
   },
-});
