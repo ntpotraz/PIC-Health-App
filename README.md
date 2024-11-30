@@ -95,7 +95,7 @@ MIT License
 ## Contact
 
 - Nathan Potraz: [linkedin] [email]
-- Adam Salter: [linkedin] [email]
+- Adam Salter: [www.linkedin.com/in/adam-salter-10-11-7-rmn] [apsalter11@gmail.com]
 - Billy Vo: [linkedin] [email]
 - Michael Duggan: [linkedin] [email]
 - Kane Svelan: [linkedin] [email]
