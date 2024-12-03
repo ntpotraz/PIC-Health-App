@@ -6,7 +6,7 @@ const Header = ({ title, children }) => {
     <View style={header.container}>
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
         <Image
-          style={{ width: 60, height: 60 }}
+          style={{ width: 50, height: 50, }}
           source={require('../assets/pic-logo.png')}
         />
         <Text style={header.title}>{title}</Text>
@@ -36,5 +36,6 @@ const header = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'sans-serif',
     color: 'white',
+    marginLeft: 10,
   },
 });
