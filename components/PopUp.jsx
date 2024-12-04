@@ -51,6 +51,9 @@ const Popup = ({ visible, onClose, events }) => {
       <Text style={styles.eventTime}>
         {new Date(item.start.dateTime || item.start.date).toLocaleString([], { hour: '2-digit', minute: '2-digit' })}
       </Text>
+      <Text style={styles.eventTime}>
+        {item.location}
+      </Text>
     </View>
   );
 
