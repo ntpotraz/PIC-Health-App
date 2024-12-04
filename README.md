@@ -25,13 +25,6 @@ A community driven event and health application for the Pacific Islander and Lat
 - https://reactnative.dev/docs/set-up-your-environment
 - https://docs.expo.dev/more/expo-cli/
 
-Install node packages
-
-```bash
-npm install
-npm install expo
-```
-
 \*You may need to install these dependencies:
 
 ```bash
@@ -54,6 +47,13 @@ git clone https://github.com/ntpotraz/PIC-Health-App
 
 ```bash
 cd PIC-Health-App
+```
+
+3. Install node packages
+
+```bash
+npm install
+npm install expo
 ```
 
 ## Usage
@@ -82,10 +82,10 @@ Web view will be waiting at: http://localhost:8081
 ## Contributing
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
+2. Create a new branch (`git switch -c feature-branch`).
 3. Make your changes.
 4. Commit your changes (`git commit -m 'Add some feature'`).
-5. Push to the branch (`git push origin feature-branch`).
+5. Push to the branch (`git push --set-upstream origin feature-branch`).
 6. Open a pull request.
 
 ## License
@@ -94,9 +94,9 @@ MIT License
 
 ## Contact
 
-- Nathan Potraz: [linkedin] [email]
+- Nathan Potraz: [https://www.linkedin.com/in/nathan-potraz-a538482b2/] [ntpotraz@pm.me]
 - Adam Salter: [www.linkedin.com/in/adam-salter-10-11-7-rmn] [apsalter11@gmail.com]
-- Billy Vo: [linkedin] [email]
+- Billy Vo: [billyvo97@gmail.com]
 - Michael Duggan: [linkedin] [email]
 - Kane Svelan: [linkedin] [email]
 - PIC Health Team: pichealth@gmail.com instagram: @pichealth
