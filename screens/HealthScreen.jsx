@@ -6,6 +6,8 @@ import Disclaimer from '../components/Disclaimer';
 import WebViewModal from '../components/WebViewModal';
 
 const HealthScreen = () => {
+  // State for WebView stuff. isVisible is when to show the browser,
+  // url is the link that the browser is opening to
   const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
 
   const callWebView = (url) => {

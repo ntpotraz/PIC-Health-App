@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import WebViewModal from '../components/WebViewModal';
 
 const EducationScreen = () => {
+  // State for WebView stuff. isVisible is when to show the browser,
+  // url is the link that the browser is opening to
   const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
 
   const callWebView = (url) => {

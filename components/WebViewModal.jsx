@@ -4,9 +4,11 @@ import WebView from 'react-native-webview';
 
 const WebViewModal = ({ url, isVisible, onClose }) => {
   return (
+    // Basis of the WebView Popup
     <Modal
       animationType='slide'
-      visible={isVisible}
+      // State for when it should appear, on pages that use it
+      visible={isVisible} 
       onRequestClose={onClose}
     >
         <View style={styles.container}>

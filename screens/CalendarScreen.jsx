@@ -10,14 +10,23 @@ import WebViewModal from '../components/WebViewModal';
 import { fetchCalendarEvents } from '../services/GoogleCalendarService';
 
 const CalendarScreen = () => {
+  // Track state of Calendar, True = Calendar View, False = List View
   const [calendarMode, setCalendarMode] = useState(true);
+  // State for when an event is pressed and the Pop up is called
   const [popupVisible, setPopupVisible] = useState(false);
+  // Event that is being selected for the Popup
   const [selectedEvent, setSelectedEvent] = useState(null);
+  // State for WebView stuff. isVisible is when to show the browser,
+  // url is the link that the browser is opening to
   const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
 
+  // Events that are loaded from the calendar
   const [events, setEvents] = useState({});
+  // What calendars are being selected to fill the events state
   const [selectedCalendars, setSelectedCalendars] = useState([]);
 
+  // Calendar Information. Key is the email related to the calendear,
+  // value is the name that's to be displayed for it in the dropdown
   const calendarOptions = [
     { key: 'pichealthtest@gmail.com', value: 'Pacific Islander Community' },
     { key: 'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com', value: 'Latino Community' }
@@ -39,6 +48,7 @@ const CalendarScreen = () => {
     }));
   };
 
+  // Used for fetching the events from the calendar api
   useEffect(() => {
     async function loadEvents() {
       if (selectedCalendars.length === 0) {
@@ -46,9 +56,13 @@ const CalendarScreen = () => {
         return;
       }
 
+      // Calling Google api and grabbing events from selected calendar
       const fetchedEvents = await fetchCalendarEvents(selectedCalendars);
 
+      // Building usable objects from the events that were fetched to use
+      // on the page
       const formattedEvents = fetchedEvents.reduce((acc, event) => {
+        // dateTime is events with time, date is all day events
         const date = (event.start.dateTime || event.start.date).split('T')[0];
         if (!acc[date]) acc[date] = [];
         acc[date].push({ 
@@ -91,7 +105,7 @@ const CalendarScreen = () => {
           calendarOptions={calendarOptions}
         />
           <View style={styles.darken}>
-            {calendarMode 
+            {calendarMode //Checks calendar mode to load proper component
             ?
               <CalendarView
                 onEventPress={handleEventPress}

@@ -4,7 +4,7 @@ import { MultipleSelectList } from 'react-native-dropdown-select-list';
 
 const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, calendarOptions, callWebView }) => {
   // 'Today' button functionality can be customized as needed
-  // Toggles between Calendar and List view
+  // Toggles between Calendar and List view, state is in CalendarScreen
   const viewBtn = () => {
     setCalendarMode(prevMode => !prevMode);
   };
@@ -12,15 +12,18 @@ const CalendarBar = ({ calendarMode, setCalendarMode, setSelectedCalendars, cale
   return (
     <SafeAreaView>
       <View style={styles.container}>
+        {/*Form submission button*/}
         <TouchableOpacity onPress={() => callWebView('https://forms.gle/Tkgafh2Qa4kTmG1N9')} style={styles.flexItem}>
           <View style={styles.buttons}>
             <Text style={styles.buttonText}>Submit Event</Text>
           </View>
         </TouchableOpacity>
         <Text style={[styles.flexItem, styles.title]}>Calendar</Text>
+        {/*View switch button*/}
         <TouchableOpacity onPress={viewBtn} style={styles.flexItem}>
           <View style={styles.buttons}>
             <Text style={styles.buttonText}>
+              {/*Switches based on the state of calendarMode*/}
               {calendarMode ? 'List' : 'Calendar'}
             </Text>
           </View>
