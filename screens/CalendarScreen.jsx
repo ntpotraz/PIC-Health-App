@@ -112,6 +112,7 @@ const CalendarScreen = () => {
                 events={events}
                 selectedCalendars={selectedCalendars}
                 callWebView={callWebView}
+                closeModal={closeModal}
               />
             : <ListView 
                 onEventPress={handleEventPress}

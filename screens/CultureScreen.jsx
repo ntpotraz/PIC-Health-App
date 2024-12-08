@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, Text, View, StyleSheet, ScrollView, Platform, TouchableOpacity } from 'react-native';
+import { ImageBackground, Text, View, StyleSheet, Linking, ScrollView, Platform, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header';
 import WebViewModal from '../components/WebViewModal';
@@ -11,7 +11,7 @@ const CultureScreen = () => {
 
   const callWebView = (url) => {
     Platform.OS === 'web' ? 
-      callWebView(url) :
+      Linking.openURL(url) :
       setModalConfig({
         isVisible: true,
         url: url

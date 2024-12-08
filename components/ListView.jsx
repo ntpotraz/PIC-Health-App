@@ -23,26 +23,33 @@ const ListView = ({ events, selectedCalendars }) => {
   }
 
   const formatEvents = (events) => {
-    // This is grouping events based on the month that they happen
+    // Group events by year-month for proper chronological sorting
     const groupedEvents = events.reduce((acc, event) => {
       const eventDate = new Date(event.start.dateTime || event.start.date);
-      const month = eventDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+      // Create a sortable key in format "YYYY-MM" and a display title
+      const sortKey = `${eventDate.getFullYear()}-${String(eventDate.getMonth() + 1).padStart(2, '0')}`;
+      const displayTitle = eventDate.toLocaleString('default', { month: 'long', year: 'numeric' });
 
-      if (!acc[month]) {
-        acc[month] = [];
+      if (!acc[sortKey]) {
+        acc[sortKey] = {
+          displayTitle,
+          events: []
+        };
       }
 
-      acc[month].push(event);
+      acc[sortKey].events.push(event);
       return acc;
     }, {});
 
-    // This sorts the grouped events based on the month
-    const sortedEvents = Object.keys(groupedEvents).map((month) => {
-      return {
-        title: month,
-        data: groupedEvents[month].sort((a, b) => new Date(a.start.dateTime || a.start.date) - new Date(b.start.dateTime || b.start.date)),
-      };
-    });
+    // Convert to array and sort by the sortable key
+    const sortedEvents = Object.entries(groupedEvents)
+      .sort(([keyA], [keyB]) => keyA.localeCompare(keyB))
+      .map(([_, { displayTitle, events }]) => ({
+        title: displayTitle,
+        data: events.sort((a, b) =>
+          new Date(a.start.dateTime || a.start.date) - new Date(b.start.dateTime || b.start.date)
+        ),
+      }));
 
     return sortedEvents;
   };

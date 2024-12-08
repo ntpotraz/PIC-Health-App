@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking, Platform } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import RenderHTML from 'react-native-render-html';
 import Popup from './PopUp'; // Make sure to import the Popup component
+import WebViewModal from './WebViewModal';
 
-const CalendarView = ({ events, selectedCalendars, callWebView }) => {
+const CalendarView = ({ events, selectedCalendars, callWebView, closeModal }) => {
   const [markedDates, setMarkedDates] = useState({});
   const [popupVisible, setPopupVisible] = useState(false);
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);
+
+  // url is the link that the browser is opening to
+  const [modalConfig, setModalConfig] = useState({isVisible: false, url: ''});
 
   // Helper function to add days
   const addDays = (date, days) => {
@@ -19,7 +23,8 @@ const CalendarView = ({ events, selectedCalendars, callWebView }) => {
 
   // Open links in description
   const handleLinkPress = (event, href) => {
-    Linking.openURL(href).catch(err => console.error('Failed to open URL:', err));
+    //Linking.openURL(href).catch(err => console.error('Failed to open URL:', err));
+    callWebView(href);
   };
 
   // Format description HTML to add <br> before links
@@ -166,6 +171,8 @@ const CalendarView = ({ events, selectedCalendars, callWebView }) => {
         onClose={() => setPopupVisible(false)}
         events={selectedEvents}
       />
+      {/*Web Browser*/}
+      <WebViewModal url={modalConfig.url} isVisible={modalConfig.isVisible} onClose={closeModal} />
     </ScrollView>
   );
 };
