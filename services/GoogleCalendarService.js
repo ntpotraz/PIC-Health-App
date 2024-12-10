@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyAQzdOl2c0zmiep0xfxiYg9BhvhOcPncM4';
+const API_KEY = 'API_KEY';
 
 export async function fetchCalendarEvents(calendarIds) {
   try {

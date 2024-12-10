@@ -36,8 +36,8 @@ const CalendarView = ({ events, selectedCalendars, callWebView, closeModal }) =>
   useEffect(() => {
     const formatEvents = (events) => {
       const calendarColors = {
-        'pichealthtest@gmail.com': '#0B75B9',
-        'f98eb9b3491ce0f74ae3d3dca31849eedcd596b5f7a7cb5a8604f05932d11128@group.calendar.google.com': '#71AD45',
+        'PIC_Calendar_Email@gmail.com': '#0B75B9',
+        'Latino_Calendar_Email@group.calendar.google.com': '#71AD45',
       };
 
       const formattedEvents = Object.keys(events).reduce((acc, date) => {
@@ -143,7 +143,7 @@ const CalendarView = ({ events, selectedCalendars, callWebView, closeModal }) =>
         {upcomingEvents.length > 0 ? (
           upcomingEvents.map((event, index) => (
             <View key={index} 
-            style={event.organizer?.email === 'pichealthtest@gmail.com' ? styles.picEvent : styles.latinoEvent}>
+            style={event.organizer?.email === 'PIC_Main_Email@gmail.com' ? styles.picEvent : styles.latinoEvent}>
               <Text style={styles.eventTitle}>{event.name}</Text>
               <Text style={styles.eventDate}>{event.date}</Text>
               <Text style={styles.eventTime}>{event.time}</Text>
