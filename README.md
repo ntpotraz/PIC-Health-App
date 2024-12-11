@@ -63,7 +63,6 @@ Before running the application, start the Metro Bundler using this command:
 ```bash
 npx expo start
 ```
-
 Instructions for opening the app on the desired platform (iOS, Android, Web) will be displayed in your terminal.
 
 Web view will be waiting at: http://localhost:8081
@@ -87,6 +86,18 @@ Web view will be waiting at: http://localhost:8081
 4. Commit your changes (`git commit -m 'Add some feature'`).
 5. Push to the branch (`git push --set-upstream origin feature-branch`).
 6. Open a pull request.
+
+## Future Feature Ideas
+
+- Fetch calendar events right at startup
+- Store each calendar and the calendars that are being selected into seperate variables or states for faster calendar filtering.
+- Have the calendars selected by default at startup. This will most likely require a different dropdown component
+- Setup a database so that the users can start "Liking" events and have it persist and sync accross all users in order to guage interests in events
+- Support repeated events. Right now if you make an event on Google Calendar that repeats, it'll only show up on the on the first day.
+- Have the location on events be clickable and bring up the address in Google/Apple Maps
+- Allow for users to have their own event list that keeps track of the events that they plan on attending
+- Allow user accounts, either custom or connect Google accounts.
+    - Using Google accounts could also also allow for events that the user is planning on attending to be added to their own personal Calendar
 
 ## License
 
