@@ -16,7 +16,7 @@ const Popup = ({ visible, onClose, events }) => {
 
   const callWebView = (url) => {
     Platform.OS === 'web' ? 
-      callWebView(url) :
+      Linking.openURL(url) :
       setModalConfig({
         isVisible: true,
         url: url
