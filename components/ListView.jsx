@@ -16,9 +16,9 @@ const ListView = ({ events, selectedCalendars }) => {
   // and only displays events that haven't happened yet
   for (const [month, event] of Object.entries(events)) {
     event.forEach(item => {
-      if (todayDate <= (item.end.dateTime || item.end.date).split('T')[0]) {
+      //if (todayDate <= (item.end.dateTime || item.end.date).split('T')[0]) {
         eventsArray.push(item);
-      }
+      //}
     });
   }
 
@@ -77,7 +77,7 @@ const ListView = ({ events, selectedCalendars }) => {
           // Creates the list item for each individual event, item is the event
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.listItem} onPress={() => handleEventPress(item)}>
-              <View style={item.organizer.email === 'PIC_Main_Email@gmail.com' ? styles.picItem : styles.latinoItem}>
+              <View style={item.organizer.email === 'da7238eecc7b4138aedf569210ebc1335143f14cc6b44d07a010a879106008f5@group.calendar.google.com' ? styles.picItem : styles.latinoItem}>
                 <Text style={styles.eventTitle}>{item.summary}</Text>
                 <Text style={styles.eventTime}>
                   {new Date(item.start.dateTime || item.start.date).toLocaleString()}

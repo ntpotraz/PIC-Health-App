@@ -11,12 +11,13 @@ const Popup = ({ visible, onClose, events }) => {
 
   // Function to handle link presses within the HTML content
   const handleLinkPress = (event, href) => {
+    console.log("HandleLink");
     callWebView(href);
   };
 
   const callWebView = (url) => {
     Platform.OS === 'web' ? 
-      callWebView(url) :
+      Linking.openURL(url) :
       setModalConfig({
         isVisible: true,
         url: url

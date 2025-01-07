@@ -28,8 +28,8 @@ const CalendarScreen = () => {
   // Calendar Information. Key is the email related to the calendear,
   // value is the name that's to be displayed for it in the dropdown
   const calendarOptions = [
-    { key: 'PIC_Calendar_Email@gmail.com', value: 'Pacific Islander Community' },
-    { key: 'Latino_Calendar_Email@group.calendar.google.com', value: 'Latino Community' }
+    { key: 'da7238eecc7b4138aedf569210ebc1335143f14cc6b44d07a010a879106008f5@group.calendar.google.com', value: 'Pacific Islander Community' },
+    { key: 'c303506ad09b18c5f9646dd0eb558ead96a814f60a089229e82cdc1e4ec745cd@group.calendar.google.com', value: 'Latino Community' }
   ];
 
   const callWebView = (url) => {
