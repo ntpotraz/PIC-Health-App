@@ -1,4 +1,4 @@
-const PROXY_URL = 'https://34e4fa06-pic-proxy-worker.ntpotraz.workers.dev/';
+const PROXY_URL = 'https://1ccd6015-pic-proxy-worker.ntpotraz.workers.dev/';
 
 export async function fetchCalendarEvents(calendarIds) {
   try {
