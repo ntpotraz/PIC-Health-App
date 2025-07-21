@@ -1,13 +1,12 @@
-const API_KEY = 'AIzaSyCndzFT2VE2kRcpmkwFFZTDyrSB4Lb-M6Y';
+const PROXY_URL = 'https://34e4fa06-pic-proxy-worker.ntpotraz.workers.dev/';
 
 export async function fetchCalendarEvents(calendarIds) {
   try {
     const allEvents = [];
 
     for (const calendarId of calendarIds) {
-      const response = await fetch(
-        `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${API_KEY}`
-      );
+      const url = `${PROXY_URL}?calendarId=${encodeURIComponent(calendarId)}`;
+      const response = await fetch(url);
       const data = await response.json();
 
       if (data.items) {
@@ -23,3 +22,4 @@ export async function fetchCalendarEvents(calendarIds) {
     return [];
   }
 }
+
